@@ -1,0 +1,494 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Misc on Dokyuments</title>
+    <link>https://sharkattack51.github.io/categories/misc/</link>
+    <description>Recent content in Misc on Dokyuments</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    
+    
+    
+    <lastBuildDate>Mon, 30 Mar 2015 22:11:58 JST</lastBuildDate>
+    <atom:link href="https://sharkattack51.github.io/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>logrotate</title>
+      <link>https://sharkattack51.github.io/post/logrotate/</link>
+      <pubDate>Mon, 30 Mar 2015 22:11:58 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/logrotate/</guid>
+      <description>
+
+&lt;pre&gt;&lt;code&gt;$ yum install logrotate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;cronによりdailyでスケジューリングされている&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat /etc/cron.daily/logrotate
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;基本設定ファイル:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;基本設定ファイル&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat /etc/logrotate.conf
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;サービスごとの設定ファイル:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;サービスごとの設定ファイル&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat /etc/logrotate.d
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;ローテション確認:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;ローテション確認&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;$ logrotate -dv /etc/logrotate.d/httpd
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>CentOSでSSLサーバー(OTAインストール用)を立てたいレシピ</title>
+      <link>https://sharkattack51.github.io/post/centos_ssl_server_recipe/</link>
+      <pubDate>Fri, 20 Mar 2015 21:51:33 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/centos_ssl_server_recipe/</guid>
+      <description>
+
+&lt;h1 id=&#34;virtualboxに新規vm作成:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;VirtualBoxに新規VM作成&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Vagrantが楽&lt;/li&gt;
+&lt;li&gt;じゃなければ
+
+&lt;ul&gt;
+&lt;li&gt;CentOS 64bit&lt;/li&gt;
+&lt;li&gt;基本デフォルト設定でおk&lt;/li&gt;
+&lt;li&gt;インストールドライブにインストーラーイメージを設定する&lt;/li&gt;
+&lt;li&gt;内部ネットワーク設定
+
+&lt;ul&gt;
+&lt;li&gt;割り当て : ブリッジアダプター&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;サーバー設定:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;サーバー設定&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;ネットワーク設定&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ emacs /etc/sysconfig/network-scripts/ifcfg-eth0
+
+
+ONBOOT=yes
+NM_CONTROLLED=no
+
+
+$ service network restart
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;openssh インストール&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ yum install openssh openssh-server openssh-clients
+$ service sshd start
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;以降はSSHにて作業&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;nginx インストール&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
+$ yum install nginx
+$ service nginx start
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;php-fpm インストール&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ yum install php-fpm
+$ emacs /etc/php-fpm.d/www.conf
+
+
+user = nginx
+group = nginx
+
+
+$ service php-fpm start
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Boot設定&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ chkconfig iptables off
+$ chkconfig nginx on
+$ chkconfig php-fpm on
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;サーバー証明書作成:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;サーバー証明書作成&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd ~
+$ openssl genrsa 2048 &amp;gt; cert.key
+$ openssl req -new -x509 -days 3650 -key cert.key -out cert.crt -subj &#39;/CN=XXXXXXXX&#39;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;iPhone構成ユーティリティから&lt;code&gt;.mobileconfig&lt;/code&gt;の生成
+
+&lt;ul&gt;
+&lt;li&gt;構成プロファイル &amp;gt; 新規作成 &amp;gt; 資格情報にcrtの登録 &amp;gt; 書き出し
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;cert.crt&lt;/code&gt;をインポート&lt;/li&gt;
+&lt;li&gt;プロファイル表示名を設定する&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;cert.mobileconfig&lt;/code&gt;を書き出し&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;nginx設定を変更:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;nginx設定を変更&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;https設定として証明書を指定、phpの動作を有効化する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cd /etc/nginx/conf.d
+$ mv default.conf default.conf.bak
+$ emacs example_ssl.conf
+
+
+server {
+    listen        80;
+    listen        443 ssl;
+    server_name   XXXXXXXX;
+
+
+    ssl_certificate       /XXX/cert.crt;
+    ssl_certificate_key   /XXX/cert.key;
+
+
+    ssl_session_cache     shared:SSL:1m;
+    ssl_session_timeout   5m;
+
+
+    ssl_ciphers                 HIGH:!aNULL:!MD5;
+    ssl_prefer_server_ciphers   on;
+
+
+    location / {
+        root    /usr/share/nginx/html;
+        index   index.html index.htm index.php;
+    }
+
+
+    location ~ \.php$ {
+        root           /usr/share/nginx/html;
+        fastcgi_pass   127.0.0.1:9000;
+        fastcgi_index  index.php;
+        fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html$fastcgi_script_name;
+        include        fastcgi_params;
+    }
+}
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;設定ファイルのテスト&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ service nginx configtest
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;設定ファイルの更新反映&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ service nginx reload
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>KINECT v2</title>
+      <link>https://sharkattack51.github.io/post/kinect2/</link>
+      <pubDate>Tue, 03 Feb 2015 22:12:59 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/kinect2/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;http://www.microsoftstore.com/store/msjp/ja_JP/pdp/productID.298959900&#34;&gt;MicrosoftStoreJapan オンラインストア&lt;/a&gt;
+¥21,578 (税込)&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;今後はXboxOne用+Windows用アダプタになる模様&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;動作環境:56dfcf25620037a9b9098a7284b1203a&#34;&gt;動作環境&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Windows 8.1&lt;/li&gt;
+&lt;li&gt;64ビット、デュアルコア 2.66GHz以上&lt;/li&gt;
+&lt;li&gt;メモリ2GB以上&lt;/li&gt;
+&lt;li&gt;DirectX11&lt;/li&gt;
+&lt;li&gt;USB 3.0&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;kinect-v1-とのスペック比較:56dfcf25620037a9b9098a7284b1203a&#34;&gt;Kinect(v1)とのスペック比較&lt;/h1&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;left&#34;&gt;機能&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Kinect v1&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;Kinect v2&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Color画像&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;640×480 30fps&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;1920×1080 30fps&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;Depth（深度）画像&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;320×240&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;512×424&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;最大距離&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.5m&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;4.5m&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;最少距離&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;40cm（Near Mode)&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;50cm&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;水平視野角&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;57度&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;70度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;垂直視野角&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;43度&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;60度&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;チルトモーター&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;有り コントロール可&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;無し　コントロール不可&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;骨格定義数&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;20関節/1人&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;25関節/1人&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;最大追跡対象スケルトン&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;2人&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;6人&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;手指の検出&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;なし&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;親指と指先&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;手のポーズ検出&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;グーとパーのみ&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;グー、チョキ、パー&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;left&#34;&gt;音声入力&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;あり&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;あり&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;距離測定のセンシング方式が変更になった
+
+&lt;ul&gt;
+&lt;li&gt;v1では赤外線ライトパターンを測定する方式だったが、v2では赤外線反射時間を測定するTimeOfFlight方式&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;チルトモーターの廃止によってプログラムからの本体角度調整が行えなくなった
+
+&lt;ul&gt;
+&lt;li&gt;手動にて角度調整を行う&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;構成:56dfcf25620037a9b9098a7284b1203a&#34;&gt;構成&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;KinectMonitor&lt;/code&gt;によりWindowsサービスとして実行されるようになった
+
+&lt;ul&gt;
+&lt;li&gt;複数アプリケーションが同時に接続使用可能になった&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;コードサンプル:56dfcf25620037a9b9098a7284b1203a&#34;&gt;コードサンプル&lt;/h1&gt;
+
+&lt;pre&gt;&lt;code&gt;void Start()
+{
+  KinectSensor kinect = KinectSensor.GetDefault();
+  BodyFrameReader reader = kinect.BodyFrameSource.OpenReader();
+}
+
+void Update()
+{
+  BodyFrame frame = reader.AcquireLatestFrame();
+  ...
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;取得データ:56dfcf25620037a9b9098a7284b1203a&#34;&gt;取得データ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Color画像
+
+&lt;ul&gt;
+&lt;li&gt;カメラ画角が広くなり、解像度が1920x1080に変更&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Depth画像
+
+&lt;ul&gt;
+&lt;li&gt;カメラ画角が広くなり、解像度が512x424に変更&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;スケルトントラッキング情報
+
+&lt;ul&gt;
+&lt;li&gt;最大人数が2人から6人に変更&lt;/li&gt;
+&lt;li&gt;トラッキング部位も20箇所から25箇所に変更&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;手の開閉
+
+&lt;ul&gt;
+&lt;li&gt;最大2人まで3種類の認識が可能
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;Closed&lt;/code&gt; グー（握っている）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Lasso&lt;/code&gt; チョキ（全部の指が開いていない）&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Open&lt;/code&gt; パー（全部の指が開いている）&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;顔認識
+
+&lt;ul&gt;
+&lt;li&gt;顔の３次元位置&lt;/li&gt;
+&lt;li&gt;表情パターン&lt;/li&gt;
+&lt;li&gt;左右目の開閉&lt;/li&gt;
+&lt;li&gt;口の開閉&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;その他:56dfcf25620037a9b9098a7284b1203a&#34;&gt;その他&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Gesture Builder
+
+&lt;ul&gt;
+&lt;li&gt;機械学習によるジェスチャ定義をサポートするアプリケーション（現状ベータ版）が標準インストールされる。
+
+&lt;ul&gt;
+&lt;li&gt;まだベータ段階のようで、使用方法や情報があまり見つからなかった。かなり有用な気がする。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;開発環境:56dfcf25620037a9b9098a7284b1203a&#34;&gt;開発環境&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Visual Studio 2012、または、Visual Studio 2013（無料のExpress可）&lt;/li&gt;
+&lt;li&gt;Unity Pro
+
+&lt;ul&gt;
+&lt;li&gt;Microsoft公式Unityアセット
+&lt;a href=&#34;http://download.microsoft.com/download/0/D/6/0D63A520-05FE-4054-9B5C-DDFE1D141681/KinectForWindows_UnityPro_PublicPreview_1409.zip&#34;&gt;Kinect for Windows SDK 2.0 Unity Pro Add-in&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Unityアセットストア内の有料アセット(v1,v2両対応)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>MQTT</title>
+      <link>https://sharkattack51.github.io/post/mqtt/</link>
+      <pubDate>Sat, 10 Jan 2015 21:36:30 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/mqtt/</guid>
+      <description>
+
+&lt;h1 id=&#34;mqttとは:4ac81870a274ec69df24400555a4c924&#34;&gt;MQTTとは？&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;インターネット上での双方向、1対多の通信が可能な通信プロトコル。&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;M2M、IoTでの利用を前提とした軽量メッセージングのための技術仕様。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;MQTTでは双方向、1対多の通信が可能なので、複数クライアントに対して一方的にデータを送れる。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;push型の通知が可能。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;mqttブローカーサービス:4ac81870a274ec69df24400555a4c924&#34;&gt;MQTTブローカーサービス&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://sango.shiguredo.jp/&#34;&gt;https://sango.shiguredo.jp/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;接続シーケンス:4ac81870a274ec69df24400555a4c924&#34;&gt;接続シーケンス&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;アプリ、またはブラウザからサーバーへ接続
+
+&lt;ul&gt;
+&lt;li&gt;クライアントは閉じられるまで接続を継続する&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;受信側は特定のチャンネルを常に受信
+
+&lt;ul&gt;
+&lt;li&gt;チャンネルは任意に無制限に設定可能&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;送信側は接続されている受信者に対して一斉送信（ブロードキャスト）する
+
+&lt;ul&gt;
+&lt;li&gt;ただし端末特定はできない&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;library:4ac81870a274ec69df24400555a4c924&#34;&gt;Library&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;iOS
+
+&lt;ul&gt;
+&lt;li&gt;MQTTKit
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://github.com/jmesnil/MQTTKit&#34;&gt;https://github.com/jmesnil/MQTTKit&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Python
+
+&lt;ul&gt;
+&lt;li&gt;paho-mqtt&lt;/li&gt;
+&lt;li&gt;&lt;a href=&#34;http://achiku.github.io/2014/08/29/mqtt-sango.html&#34;&gt;http://achiku.github.io/2014/08/29/mqtt-sango.html&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

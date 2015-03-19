@@ -1,0 +1,247 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>Unity AVProWindowsMediaプラグインでスムーズな動画再生を行う</title>
+  <meta name="description" content="Unity AVProWindowsMediaプラグインでスムーズな動画再生を行う">
+  <meta name="author" content="sharkattack51">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/fonts.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/normalize.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/skeleton.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="https://sharkattack51.github.io/highlight/styles/default.css">
+  
+  <script src="https://sharkattack51.github.io/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+<header id="menu">
+  <div class="container">
+	<span class="logo">Dokyuments</span>
+	<a>&#9776;</a>
+  </div>
+</header>
+
+<nav class="navbar">
+  <div class="container">
+	<div class="row">
+	  <div class="eight columns offset-by-two">
+		<ul class="">
+		  
+		  <li class="u-pull-left"> <a href="https://sharkattack51.github.io" class="brand" style="font-weight:bold;font-size:normal"> Dokyuments </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/ios" class=""> Ios </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/misc" class=""> Misc </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/unity" class=""> Unity </a></li>
+		  
+		</ul>
+	  </div>
+	</div>
+  </div>
+</nav>
+
+
+<div class="container post-wrapper">
+  <div class="row">
+	<div class="eight columns offset-by-two">
+	  <div id="post-title">
+		<p class="footnote">
+		  
+		  <time class="">2015-03-21</time>
+		  
+		  
+		  |
+		  
+		  
+
+		  
+		  categories:<a href="https://sharkattack51.github.io/categories/unity">Unity</a> 
+		  
+
+		  
+
+		</p>
+		<h5>Unity AVProWindowsMediaプラグインでスムーズな動画再生を行う</h5>
+	  </div>
+
+	  <div class="post">
+		
+
+<p>実はWMV再生が遅かったので（再生時デコードに時間がかかり、解像度が大きい映像データだとカクつく）
+その対応方法について</p>
+
+<h1 id="ハードウェアで対応:0c800cade67495a7e4307e6494708031">ハードウェアで対応</h1>
+
+<ul>
+<li>GPU,CPUは速いのが良い</li>
+<li>SSDが良い</li>
+<li>AVProWindowsMediaプラグイン自体は64bit対応されているので64bitビルドがお勧め
+
+<ul>
+<li>Unity4はEditorが32bitなので環境違いに注意</li>
+</ul></li>
+</ul>
+
+<h1 id="colourformatで対応:0c800cade67495a7e4307e6494708031">ColourFormatで対応</h1>
+
+<ul>
+<li>速い
+
+<ul>
+<li>YCbCr_HD (default)</li>
+<li>YCbCr_SD</li>
+</ul></li>
+<li>遅い
+
+<ul>
+<li>RGBA32</li>
+</ul></li>
+</ul>
+
+<h1 id="解像度で対応:0c800cade67495a7e4307e6494708031">解像度で対応</h1>
+
+<p>速↑</p>
+
+<ol>
+<li>幅、高さともに2乗 (eg 256, 512, 1024, 2048, 4096)</li>
+<li>幅のみ2乗</li>
+<li>幅、高さともに16の倍数</li>
+<li>幅のみ16の倍数</li>
+<li>幅、高さともに4の倍数</li>
+<li>幅のみ4の倍数</li>
+<li>幅、高さともに上記に当てはまらない</li>
+</ol>
+
+<p>遅↓</p>
+
+<h1 id="codecで対応:0c800cade67495a7e4307e6494708031">Codecで対応</h1>
+
+<ul>
+<li><p><code>.avi</code>を使用する</p>
+
+<ul>
+<li><code>mp4</code>は大きな解像度には向いていない</li>
+<li><code>Hap</code> が推奨。または<code>Xvid</code>。
+
+<ul>
+<li>CPUリソースとデコード速度のバランスが良い(最適なのはHap)</li>
+</ul></li>
+<li>DirectShowは1080pix以上の<code>H.264</code>に対応していない</li>
+<li><code>H.264</code>はCPUリソースを食う</li>
+<li>非圧縮
+
+<ul>
+<li>デコード処理が無いので早い</li>
+<li>メモリ読み込みの場合にメモリオーバーになる可能性あり</li>
+</ul></li>
+</ul></li>
+
+<li><p>Hap</p>
+
+<ul>
+<li><a href="http://www.renderheads.com/portfolio/HapDirectShow/">http://www.renderheads.com/portfolio/HapDirectShow/</a></li>
+</ul></li>
+
+<li><p>Xvid</p>
+
+<ul>
+<li><a href="https://www.xvid.com/download/">https://www.xvid.com/download/</a></li>
+<li><code>$ ffmpeg -i input.avi -b:v 50000k -c:v libxvid output.avi</code></li>
+</ul></li>
+</ul>
+
+<h1 id="multithreadingレンダリングオプションで対応:0c800cade67495a7e4307e6494708031">MultiThreadingレンダリングオプションで対応</h1>
+
+<ol>
+<li>UnityEditorのInspector上にて<code>Debug項目</code>を表示</li>
+<li><code>MTRendering設定</code></li>
+</ol>
+
+<h1 id="ガベージコレクションを回避:0c800cade67495a7e4307e6494708031">ガベージコレクションを回避</h1>
+
+<ul>
+<li>明示的な呼び出しは極力避ける</li>
+</ul>
+
+<h1 id="読み込み:0c800cade67495a7e4307e6494708031">読み込み</h1>
+
+<ul>
+<li><code>LoadMovie()</code>ではなく、<code>LoadMovieFromMemory()</code>
+
+<ul>
+<li>非圧縮の場合は注意</li>
+</ul></li>
+</ul>
+
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+	<div class="row">
+	  <div class="ten columns offset-by-two">
+		<p class="footnote">
+		  
+		  Written by @sharkattack51.
+		  
+		  
+		  Find me at
+
+		  
+		  <a href="https://github.com/http://sharkattack51.github.io" >GitHub</a>
+		  
+
+		  
+
+		  
+		  <a href="https://twitter.com/@sharkattack51">Twitter</a>
+		  
+
+		  
+
+		  
+		</p>
+	  </div>
+	</div>
+  </div>
+</div>
+
+
+<script src="https://sharkattack51.github.io/js/jquery.min.js" type="text/javascript"></script>
+<script src="https://sharkattack51.github.io/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#menu").click(function(){
+    $(".brand").text("HOME");
+    $(".navbar ul li").removeClass("cate");
+    $(".navbar").toggle();
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".navbar").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+

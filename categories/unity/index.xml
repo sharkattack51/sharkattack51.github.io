@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Unity on Dokyuments</title>
+    <link>https://sharkattack51.github.io/categories/unity/</link>
+    <description>Recent content in Unity on Dokyuments</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ja-jp</language>
+    
+    
+    
+    <lastBuildDate>Sat, 21 Mar 2015 20:57:00 JST</lastBuildDate>
+    <atom:link href="https://sharkattack51.github.io/categories/unity/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Unity AVProWindowsMediaプラグインでスムーズな動画再生を行う</title>
+      <link>https://sharkattack51.github.io/post/avpro_windows_media/</link>
+      <pubDate>Sat, 21 Mar 2015 20:57:00 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/avpro_windows_media/</guid>
+      <description>
+
+&lt;p&gt;実はWMV再生が遅かったので（再生時デコードに時間がかかり、解像度が大きい映像データだとカクつく）
+その対応方法について&lt;/p&gt;
+
+&lt;h1 id=&#34;ハードウェアで対応:0c800cade67495a7e4307e6494708031&#34;&gt;ハードウェアで対応&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;GPU,CPUは速いのが良い&lt;/li&gt;
+&lt;li&gt;SSDが良い&lt;/li&gt;
+&lt;li&gt;AVProWindowsMediaプラグイン自体は64bit対応されているので64bitビルドがお勧め
+
+&lt;ul&gt;
+&lt;li&gt;Unity4はEditorが32bitなので環境違いに注意&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;colourformatで対応:0c800cade67495a7e4307e6494708031&#34;&gt;ColourFormatで対応&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;速い
+
+&lt;ul&gt;
+&lt;li&gt;YCbCr_HD (default)&lt;/li&gt;
+&lt;li&gt;YCbCr_SD&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;遅い
+
+&lt;ul&gt;
+&lt;li&gt;RGBA32&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;解像度で対応:0c800cade67495a7e4307e6494708031&#34;&gt;解像度で対応&lt;/h1&gt;
+
+&lt;p&gt;速↑&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;幅、高さともに2乗 (eg 256, 512, 1024, 2048, 4096)&lt;/li&gt;
+&lt;li&gt;幅のみ2乗&lt;/li&gt;
+&lt;li&gt;幅、高さともに16の倍数&lt;/li&gt;
+&lt;li&gt;幅のみ16の倍数&lt;/li&gt;
+&lt;li&gt;幅、高さともに4の倍数&lt;/li&gt;
+&lt;li&gt;幅のみ4の倍数&lt;/li&gt;
+&lt;li&gt;幅、高さともに上記に当てはまらない&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;遅↓&lt;/p&gt;
+
+&lt;h1 id=&#34;codecで対応:0c800cade67495a7e4307e6494708031&#34;&gt;Codecで対応&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;&lt;code&gt;.avi&lt;/code&gt;を使用する&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;mp4&lt;/code&gt;は大きな解像度には向いていない&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;Hap&lt;/code&gt; が推奨。または&lt;code&gt;Xvid&lt;/code&gt;。
+
+&lt;ul&gt;
+&lt;li&gt;CPUリソースとデコード速度のバランスが良い(最適なのはHap)&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;DirectShowは1080pix以上の&lt;code&gt;H.264&lt;/code&gt;に対応していない&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;H.264&lt;/code&gt;はCPUリソースを食う&lt;/li&gt;
+&lt;li&gt;非圧縮
+
+&lt;ul&gt;
+&lt;li&gt;デコード処理が無いので早い&lt;/li&gt;
+&lt;li&gt;メモリ読み込みの場合にメモリオーバーになる可能性あり&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Hap&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;http://www.renderheads.com/portfolio/HapDirectShow/&#34;&gt;http://www.renderheads.com/portfolio/HapDirectShow/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Xvid&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://www.xvid.com/download/&#34;&gt;https://www.xvid.com/download/&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;$ ffmpeg -i input.avi -b:v 50000k -c:v libxvid output.avi&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;multithreadingレンダリングオプションで対応:0c800cade67495a7e4307e6494708031&#34;&gt;MultiThreadingレンダリングオプションで対応&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;UnityEditorのInspector上にて&lt;code&gt;Debug項目&lt;/code&gt;を表示&lt;/li&gt;
+&lt;li&gt;&lt;code&gt;MTRendering設定&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h1 id=&#34;ガベージコレクションを回避:0c800cade67495a7e4307e6494708031&#34;&gt;ガベージコレクションを回避&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;明示的な呼び出しは極力避ける&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;読み込み:0c800cade67495a7e4307e6494708031&#34;&gt;読み込み&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;code&gt;LoadMovie()&lt;/code&gt;ではなく、&lt;code&gt;LoadMovieFromMemory()&lt;/code&gt;
+
+&lt;ul&gt;
+&lt;li&gt;非圧縮の場合は注意&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Vuforia 4.0</title>
+      <link>https://sharkattack51.github.io/post/vuforia4/</link>
+      <pubDate>Tue, 03 Mar 2015 12:51:22 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/vuforia4/</guid>
+      <description>
+
+&lt;h1 id=&#34;料金体系:4ec59d951bd1d25028b10bfb23a0caa6&#34;&gt;料金体系&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ライセンス有料化(クラウド、デバイス両マーカーで共通の模様)
+
+&lt;ul&gt;
+&lt;li&gt;DeveloperPotalにてアプリケーションごとにライセンス取得&lt;/li&gt;
+&lt;li&gt;認識回数によるライセンス&lt;/li&gt;
+&lt;li&gt;開発ライセンスはウォーターマーク入りにて月額無料&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Bronze&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Silver&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Gold&lt;/th&gt;
+&lt;th align=&#34;center&#34;&gt;Platinum&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;月額&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$99/mo&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$399/mo&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;$999/mo&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Contact Us&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;認識回数（月ごと）&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;5,000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;25,000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;100,000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;100,000+&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;クラウド登録マーカー数&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;100,000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;100,000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;100,000&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;1,000,000&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;企業内アプリ&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;NO&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;NO&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;NO&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;OK&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;サポート&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Community Forums&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Community Forums&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Community Forums&lt;/td&gt;
+&lt;td align=&#34;center&#34;&gt;Direct&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;ClassicPlan&lt;/strong&gt;
+
+&lt;ul&gt;
+&lt;li&gt;1アプリ $499 初回のみ&lt;/li&gt;
+&lt;li&gt;認識数無制限でのデバイスターゲット利用
+
+&lt;ul&gt;
+&lt;li&gt;フレームマーカー、イメージマーカー、シリンダー、マルチターゲット、ユーザー定義マーカー&lt;/li&gt;
+&lt;li&gt;Vuforiaに直接コンタクトする
+
+&lt;ul&gt;
+&lt;li&gt;&lt;a href=&#34;https://developer.vuforia.com/platinum-inquiry?utm_source=exacttarget&amp;amp;utm_medium=email&#34;&gt;https://developer.vuforia.com/platinum-inquiry?utm_source=exacttarget&amp;amp;utm_medium=email&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;新機能:4ec59d951bd1d25028b10bfb23a0caa6&#34;&gt;新機能&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;iOS 64bit サポート&lt;/li&gt;
+&lt;li&gt;オブジェクトトラッキング
+
+&lt;ul&gt;
+&lt;li&gt;事前の３Dトラッキング情報を利用する
+
+&lt;ul&gt;
+&lt;li&gt;AndroidのScannerアプリによって特徴点データ生成
+
+&lt;ul&gt;
+&lt;li&gt;トラッキング基準としてA4サイズまたはハガキサイズのマーカーを利用する&lt;/li&gt;
+&lt;li&gt;撮影時、上記マーカーが撮影アングルに入るような物理的な卓上サイズでなければスキャンできない&lt;/li&gt;
+&lt;li&gt;特徴的な形状または、表面模様を検出する。検出ルールはおそらく画像マーカーと同様。&lt;/li&gt;
+&lt;li&gt;平坦なライティング環境が良い&lt;/li&gt;
+&lt;li&gt;グレーの机が良い&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;たぶん下記は認識アウト
+
+&lt;ul&gt;
+&lt;li&gt;スキャン時と違いすぎる照明環境&lt;/li&gt;
+&lt;li&gt;変形するもの&lt;/li&gt;
+&lt;li&gt;反射するもの&lt;/li&gt;
+&lt;li&gt;見上げて認識させようとする場合(スキャン時は見下げの状態なので)&lt;/li&gt;
+&lt;li&gt;特徴的な凸凹が無い形状&lt;/li&gt;
+&lt;li&gt;パターン的な表面&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;スキャン方法
+
+&lt;ol&gt;
+&lt;li&gt;Androidのスキャナーアプリで点群データを計測
+
+&lt;ul&gt;
+&lt;li&gt;現在はDeveloperPotalから&lt;code&gt;.apk&lt;/code&gt;をダウンロードし、手動でインストール&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;.odデータを書き出す
+
+&lt;ul&gt;
+&lt;li&gt;端末からメールなどを利用して送信&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;DeveloperPortalでターゲットデータベースに登録
+
+&lt;ul&gt;
+&lt;li&gt;アプリケーションのライセンスに紐付け&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;li&gt;Unityパッケージデータをダウンロード&lt;/li&gt;
+&lt;li&gt;アプリ組み込み&lt;/li&gt;
+&lt;/ol&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

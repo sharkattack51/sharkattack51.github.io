@@ -1,0 +1,206 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>AppleWatch / WatchKit</title>
+  <meta name="description" content="AppleWatch / WatchKit">
+  <meta name="author" content="sharkattack51">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/fonts.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/normalize.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/skeleton.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="https://sharkattack51.github.io/highlight/styles/default.css">
+  
+  <script src="https://sharkattack51.github.io/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+<header id="menu">
+  <div class="container">
+	<span class="logo">Dokyuments</span>
+	<a>&#9776;</a>
+  </div>
+</header>
+
+<nav class="navbar">
+  <div class="container">
+	<div class="row">
+	  <div class="eight columns offset-by-two">
+		<ul class="">
+		  
+		  <li class="u-pull-left"> <a href="https://sharkattack51.github.io" class="brand" style="font-weight:bold;font-size:normal"> Dokyuments </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/ios" class=""> Ios </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/misc" class=""> Misc </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/unity" class=""> Unity </a></li>
+		  
+		</ul>
+	  </div>
+	</div>
+  </div>
+</nav>
+
+
+<div class="container post-wrapper">
+  <div class="row">
+	<div class="eight columns offset-by-two">
+	  <div id="post-title">
+		<p class="footnote">
+		  
+		  <time class="">2015-02-01</time>
+		  
+		  
+		  |
+		  
+		  
+
+		  
+		  categories:<a href="https://sharkattack51.github.io/categories/ios">iOS</a> 
+		  
+
+		  
+
+		</p>
+		<h5>AppleWatch / WatchKit</h5>
+	  </div>
+
+	  <div class="post">
+		
+
+<ul>
+<li>Xcode6.2ベータ版確認</li>
+<li>iOS8.3ベータ</li>
+</ul>
+
+<h1 id="retinaディスプレイ:cbf319a468bf33c263d5503972154e6d">Retinaディスプレイ</h1>
+
+<ul>
+<li>38mm 272pix * 340pix</li>
+<li>42mm 312pix * 390pix</li>
+</ul>
+
+<h1 id="ジェスチャー:cbf319a468bf33c263d5503972154e6d">ジェスチャー</h1>
+
+<ul>
+<li>シングルタップ、スワイプ、フォースタッチ</li>
+<li>ピンチなどのマルチジェスチャーはない。開発者がジェスチャーを実装することはできない。</li>
+</ul>
+
+<h1 id="アーキテクチャー:cbf319a468bf33c263d5503972154e6d">アーキテクチャー</h1>
+
+<ul>
+<li>WatchにはGUIリソース(Storyboardファイル)のみインストールされる</li>
+<li>iPhoneがホストになり、機能は全部iPhone側で実装する
+
+<ul>
+<li>WatchExtentionによりiPhoneのバックグラウンドで実行される</li>
+<li>WatchAppがアクティブ状態のときだけiPhone側Extentionが動作</li>
+<li>処理結果のみWatchに無線通信で送られる
+
+<ul>
+<li>描画反映までのラグ</li>
+</ul></li>
+</ul></li>
+<li>これが出来ない
+
+<ul>
+<li>iPhone本体を置き忘れたことを時計が感知して知らせる機能</li>
+</ul></li>
+</ul>
+
+<h1 id="機能:cbf319a468bf33c263d5503972154e6d">機能</h1>
+
+<ol>
+<li>Watch App
+
+<ul>
+<li>ホーム画面から起動するアプリ</li>
+</ul></li>
+<li>Glance
+
+<ul>
+<li>読み取り専用の(ボタンが置けない)画面表示</li>
+<li>スワイプで表示するチラ見機能</li>
+<li>ここからアプリを起動できる</li>
+</ul></li>
+<li>Notification
+
+<ul>
+<li>アプリを開かないで動作</li>
+<li>ショートルックとロングルックがある</li>
+<li>手首を下げるとショーtルックは消える</li>
+</ul></li>
+</ol>
+
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+	<div class="row">
+	  <div class="ten columns offset-by-two">
+		<p class="footnote">
+		  
+		  Written by @sharkattack51.
+		  
+		  
+		  Find me at
+
+		  
+		  <a href="https://github.com/http://sharkattack51.github.io" >GitHub</a>
+		  
+
+		  
+
+		  
+		  <a href="https://twitter.com/@sharkattack51">Twitter</a>
+		  
+
+		  
+
+		  
+		</p>
+	  </div>
+	</div>
+  </div>
+</div>
+
+
+<script src="https://sharkattack51.github.io/js/jquery.min.js" type="text/javascript"></script>
+<script src="https://sharkattack51.github.io/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#menu").click(function(){
+    $(".brand").text("HOME");
+    $(".navbar ul li").removeClass("cate");
+    $(".navbar").toggle();
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".navbar").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+
