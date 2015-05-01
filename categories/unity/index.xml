@@ -77,7 +77,7 @@
 &lt;li&gt;&lt;p&gt;&lt;code&gt;Packages/OmniSharp/PrebuiltOmniSharpServer/config.json&lt;/code&gt;でwarningの無視設定&lt;/p&gt;
 
 &lt;ul&gt;
-&lt;li&gt;&lt;p&gt;デフォルト出過ぎなので個人的にはまだ足りない。warningは駆逐したい。&lt;/p&gt;
+&lt;li&gt;&lt;p&gt;デフォルトでwarning出過ぎなので個人的にはまだ足りない。warningは駆逐したい。&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;&amp;quot;IgnoredCodeIssues&amp;quot;:
 [
