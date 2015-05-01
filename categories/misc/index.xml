@@ -9,8 +9,38 @@
     
     
     
-    <lastBuildDate>Mon, 30 Mar 2015 22:11:58 JST</lastBuildDate>
+    <lastBuildDate>Fri, 01 May 2015 21:01:47 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Hugoのワークフロー</title>
+      <link>https://sharkattack51.github.io/post/hugo_flow/</link>
+      <pubDate>Fri, 01 May 2015 21:01:47 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/hugo_flow/</guid>
+      <description>
+
+&lt;p&gt;このサイトは&lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;を使っている。そして頻繁に更新しない。
+ので、新規ポストのたびに使い方調べる羽目になってつらい。ので、使い方思い出す用のメモ。&lt;/p&gt;
+
+&lt;h1 id=&#34;ポストの新規作成:a4ef5acb253fb526eeee44a0fb0c18e4&#34;&gt;ポストの新規作成&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;$ hugo new post/post_name.md&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;ローカルサーバーで確認:a4ef5acb253fb526eeee44a0fb0c18e4&#34;&gt;ローカルサーバーで確認&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;$ hugo server --buildDrafts --watch&lt;/code&gt;
+&lt;code&gt;$ hugo server -D -w&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;パブリッシュ:a4ef5acb253fb526eeee44a0fb0c18e4&#34;&gt;パブリッシュ&lt;/h1&gt;
+
+&lt;p&gt;&lt;code&gt;hugo&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;#️ デプロイ&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;git push origin master&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>logrotate</title>

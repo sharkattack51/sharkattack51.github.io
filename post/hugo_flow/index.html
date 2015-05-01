@@ -3,8 +3,8 @@
 
   
   <meta charset="utf-8">
-  <title>Unity</title>
-  <meta name="description" content="Unity">
+  <title>Hugoのワークフロー</title>
+  <meta name="description" content="Hugoのワークフロー">
   <meta name="author" content="sharkattack51">
 
   
@@ -56,85 +56,53 @@
 </nav>
 
 
-
-<div class="container away">
+<div class="container post-wrapper">
   <div class="row">
 	<div class="eight columns offset-by-two">
-	  <p style="margin-bottom:1em;font-weight:bold;color:#333">Unity:</p>
+	  <div id="post-title">
+		<p class="footnote">
+		  
+		  <time class="">2015-05-01</time>
+		  
+		  
+		  |
+		  
+		  
 
-	  <ul class="posts">
+		  
+		  categories:<a href="https://sharkattack51.github.io/categories/misc">misc</a> 
+		  
+
+		  
+
+		</p>
+		<h5>Hugoのワークフロー</h5>
+	  </div>
+
+	  <div class="post">
 		
-		
-		
-		<li>
-		  <a href="https://sharkattack51.github.io/post/sublime_unity/">SublimeText-OmniSharpでUnityのコード補完設定</a>
 
-		  <p class="footnote">
-			submitted <time datetime="2015-05-01T20:35:42&#43;09:00" class="pull-right post-list timeago">2015-05-01T20:35:42&#43;09:00</time>
+<p>このサイトは<a href="http://gohugo.io">Hugo</a>を使っている。そして頻繁に更新しない。
+ので、新規ポストのたびに使い方調べる羽目になってつらい。ので、使い方思い出す用のメモ。</p>
 
-			
-			to
-			
+<h1 id="ポストの新規作成:a4ef5acb253fb526eeee44a0fb0c18e4">ポストの新規作成</h1>
 
-			
+<p><code>$ hugo new post/post_name.md</code></p>
 
-			
-			categories:[ <a href="https://sharkattack51.github.io/categories/unity">unity</a> ]
-			
+<h1 id="ローカルサーバーで確認:a4ef5acb253fb526eeee44a0fb0c18e4">ローカルサーバーで確認</h1>
 
-			
+<p><code>$ hugo server --buildDrafts --watch</code>
+<code>$ hugo server -D -w</code></p>
 
-		  </p>
-		</li>
-		
-		
-		
-		<li>
-		  <a href="https://sharkattack51.github.io/post/avpro_windows_media/">Unity AVProWindowsMediaプラグインでスムーズな動画再生を行う</a>
+<h1 id="パブリッシュ:a4ef5acb253fb526eeee44a0fb0c18e4">パブリッシュ</h1>
 
-		  <p class="footnote">
-			submitted <time datetime="2015-03-21T20:57:00&#43;09:00" class="pull-right post-list timeago">2015-03-21T20:57:00&#43;09:00</time>
+<p><code>hugo</code></p>
 
-			
-			to
-			
+<p>#️ デプロイ</p>
 
-			
+<p><code>git push origin master</code></p>
 
-			
-			categories:[ <a href="https://sharkattack51.github.io/categories/unity">Unity</a> ]
-			
-
-			
-
-		  </p>
-		</li>
-		
-		
-		
-		<li>
-		  <a href="https://sharkattack51.github.io/post/vuforia4/">Vuforia 4.0</a>
-
-		  <p class="footnote">
-			submitted <time datetime="2015-03-03T12:51:22&#43;09:00" class="pull-right post-list timeago">2015-03-03T12:51:22&#43;09:00</time>
-
-			
-			to
-			
-
-			
-
-			
-			categories:[ <a href="https://sharkattack51.github.io/categories/unity">Unity</a> ]
-			
-
-			
-
-		  </p>
-		</li>
-		
-		
-	  </ul>
+	  </div>
 	</div>
   </div>
 </div>
