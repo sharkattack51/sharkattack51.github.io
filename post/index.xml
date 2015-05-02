@@ -35,11 +35,11 @@
 
 &lt;h1 id=&#34;パブリッシュ:a4ef5acb253fb526eeee44a0fb0c18e4&#34;&gt;パブリッシュ&lt;/h1&gt;
 
-&lt;p&gt;&lt;code&gt;hugo&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ hugo&lt;/code&gt;&lt;/p&gt;
 
 &lt;h1 id=&#34;デプロイ:a4ef5acb253fb526eeee44a0fb0c18e4&#34;&gt;デプロイ&lt;/h1&gt;
 
-&lt;p&gt;&lt;code&gt;git push origin master&lt;/code&gt;&lt;/p&gt;
+&lt;p&gt;&lt;code&gt;$ git push origin master&lt;/code&gt;&lt;/p&gt;
 </description>
     </item>
     
@@ -157,7 +157,7 @@
 
 &lt;h3 id=&#34;サービスごとの設定ファイル:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;サービスごとの設定ファイル&lt;/h3&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cat /etc/logrotate.d
+&lt;pre&gt;&lt;code&gt;$ cat /etc/logrotate.d/xxxxxxxx
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&#34;ローテション確認:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;ローテション確認&lt;/h3&gt;
