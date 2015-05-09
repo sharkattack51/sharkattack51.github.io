@@ -1,0 +1,277 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>Exifとの格闘の記録</title>
+  <meta name="description" content="Exifとの格闘の記録">
+  <meta name="author" content="sharkattack51">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/fonts.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/normalize.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/skeleton.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="https://sharkattack51.github.io/highlight/styles/default.css">
+  
+  <script src="https://sharkattack51.github.io/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+
+</head>
+<body>
+
+<header id="menu">
+  <div class="container">
+	<span class="logo">Dokyuments</span>
+	<a>&#9776;</a>
+  </div>
+</header>
+
+<nav class="navbar">
+  <div class="container">
+	<div class="row">
+	  <div class="eight columns offset-by-two">
+		<ul class="">
+		  
+		  <li class="u-pull-left"> <a href="https://sharkattack51.github.io" class="brand" style="font-weight:bold;font-size:normal"> Dokyuments </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/ios" class=""> Ios </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/misc" class=""> Misc </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/unity" class=""> Unity </a></li>
+		  
+		</ul>
+	  </div>
+	</div>
+  </div>
+</nav>
+
+
+<div class="container post-wrapper">
+  <div class="row">
+	<div class="eight columns offset-by-two">
+	  <div id="post-title">
+		<p class="footnote">
+		  
+		  <time class="">2015-05-09</time>
+		  
+		  
+		  |
+		  
+		  
+
+		  
+		  categories:<a href="https://sharkattack51.github.io/categories/unity">Unity</a> 
+		  
+
+		  
+
+		</p>
+		<h5>Exifとの格闘の記録</h5>
+	  </div>
+
+	  <div class="post">
+		
+
+<p>モバイル端末で撮影した写真画像をUnityの実行時にダウンロード。
+jpegの画像方向が違っていた。原因はExif。</p>
+
+<h1 id="orientation:160c20f234b91182f09adf126dc2ead9">Orientation</h1>
+
+<p>ExifのOrientation情報見てみる。
+調べたらなんか情報が錯綜していたが内容としてはこれっぽい。</p>
+
+<p><a href="http://hackmylife.net/archives/7400448.html">http://hackmylife.net/archives/7400448.html</a></p>
+
+<table>
+<thead>
+<tr>
+<th align="center">Orientation</th>
+<th align="left">補正方法</th>
+</tr>
+</thead>
+
+<tbody>
+<tr>
+<td align="center">1</td>
+<td align="left">そのまま</td>
+</tr>
+
+<tr>
+<td align="center">2</td>
+<td align="left">上下反転</td>
+</tr>
+
+<tr>
+<td align="center">3</td>
+<td align="left">180度回転</td>
+</tr>
+
+<tr>
+<td align="center">4</td>
+<td align="left">左右反転</td>
+</tr>
+
+<tr>
+<td align="center">5</td>
+<td align="left">上下反転、時計周りに270度回転</td>
+</tr>
+
+<tr>
+<td align="center">6</td>
+<td align="left">時計周りに90度回転</td>
+</tr>
+
+<tr>
+<td align="center">7</td>
+<td align="left">上下反転、時計周りに90度回転</td>
+</tr>
+
+<tr>
+<td align="center">8</td>
+<td align="left">時計周りに270度回転</td>
+</tr>
+</tbody>
+</table>
+
+<p>しかし、ここらへんのExif確認ツールで見ても、ツールごとに表示が違うんだがなんなのこれ。</p>
+
+<ul>
+<li>ExifRead
+<a href="http://freesoft-100.com/review/exif-reader.html">http://freesoft-100.com/review/exif-reader.html</a></li>
+<li>F6Exif
+<a href="http://www.vector.co.jp/soft/winnt/art/se427764.html">http://www.vector.co.jp/soft/winnt/art/se427764.html</a></li>
+<li>ExifTool
+<a href="http://www.sno.phy.queensu.ca/~phil/exiftool/">http://www.sno.phy.queensu.ca/~phil/exiftool/</a></li>
+</ul>
+
+<p>変に日本語化されてないし、確認はExifToolが良い気がする。</p>
+
+<h1 id="c-ラッパー:160c20f234b91182f09adf126dc2ead9">C#ラッパー</h1>
+
+<p>さて、こんなのあったので自前で判定してやってみる。
+<a href="http://blog.ch3cooh.jp/entry/20111222/1324552051">http://blog.ch3cooh.jp/entry/20111222/1324552051</a></p>
+
+<p>うーなんか自前すぎるしライブラリあるんちゃうん。あった。</p>
+
+<ul>
+<li>ExifLib   <a href="http://www.codeproject.com/Articles/36342/ExifLib-A-Fast-Exif-Data-Extractor-for-NET">http://www.codeproject.com/Articles/36342/ExifLib-A-Fast-Exif-Data-Extractor-for-NET</a></li>
+</ul>
+
+<p>~~~</p>
+
+<p>その後、だいぶつらみがあったので途中で萎えて辞めた。</p>
+
+<pre><code>- 回転方向の判定 &gt; できた
+- 判定した方向でTexture2Dから取ったColor32配列を回転させる &gt; できた
+- 画像が長方形の時、回転後の配列サイズが...元のTexture2Dサイズが.. &gt; 萎え
+</code></pre>
+
+<h1 id="imagemagick:160c20f234b91182f09adf126dc2ead9">ImageMagick</h1>
+
+<p>少し調べてImageMagickに神オプションを発見。すべてよしなにやってくれる<code>AutoOrient</code>オプションがー。</p>
+
+<p>今回の案件的にはサーバーサイドで対応可能なので、そっちでやってもらうことにした。</p>
+
+<h1 id="c-ラッパー-1:160c20f234b91182f09adf126dc2ead9">C#ラッパー</h1>
+
+<p>ImageMagickのC#ラッパーあるっぽいし、AutoOrient()でやってくれるっぽいんでちょっとやってみる。</p>
+
+<p>WPFとかだったらVisualStudioでNugetできる。ていうか調べると大体System.Drawingのクラス使っててUnityのMonoではつらい印象。</p>
+
+<ul>
+<li>ImageMagick.NET   <a href="https://imagemagick.codeplex.com/">https://imagemagick.codeplex.com/</a>
+
+<ul>
+<li>Unityからどうやって使うん？</li>
+</ul></li>
+
+<li><p>Magick.NET    <a href="https://magick.codeplex.com/">https://magick.codeplex.com/</a></p>
+
+<ul>
+<li><p>コンパイルえらーがー</p>
+
+<pre><code>Unhandled Exception: System.TypeLoadException:
+Could not load type 'ImageMagick.MagickImage' from assembly 'Magick.NET-x86,
+Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec'.
+</code></pre></li>
+</ul></li>
+
+<li><p>DomaMagick    <a href="http://magickwand.blog43.fc2.com/blog-category-25.html">http://magickwand.blog43.fc2.com/blog-category-25.html</a></p>
+
+<ul>
+<li>今回使いたいAutoOrientがないっぽい。</li>
+</ul></li>
+</ul>
+
+<h3 id="結論:160c20f234b91182f09adf126dc2ead9">結論</h3>
+
+<p>Magick.NETがいけそうだったけど、Unity(Mono)だとやりたいことができなかった。
+無念感でいっぱいだが、やる方法あると思う。</p>
+
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+	<div class="row">
+	  <div class="ten columns offset-by-two">
+		<p class="footnote">
+		  
+		  Written by @sharkattack51 using <a href="http://gohugo.io">Hugo</a>.
+		  
+		  
+		  Find me at
+
+		  
+		  <a href="https://github.com/sharkattack51" >GitHub</a>
+		  
+
+		  
+
+		  
+		  <a href="https://twitter.com/sharkattack51">Twitter</a>
+		  
+
+		  
+
+		  
+		</p>
+	  </div>
+	</div>
+  </div>
+</div>
+
+
+<script src="https://sharkattack51.github.io/js/jquery.min.js" type="text/javascript"></script>
+<script src="https://sharkattack51.github.io/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#menu").click(function(){
+    $(".brand").text("HOME");
+    $(".navbar ul li").removeClass("cate");
+    $(".navbar").toggle();
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".navbar").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+

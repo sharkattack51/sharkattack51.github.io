@@ -9,8 +9,154 @@
     
     
     
-    <lastBuildDate>Fri, 01 May 2015 21:01:47 JST</lastBuildDate>
+    <lastBuildDate>Sat, 09 May 2015 13:47:36 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Exifとの格闘の記録</title>
+      <link>https://sharkattack51.github.io/post/exif/</link>
+      <pubDate>Sat, 09 May 2015 13:47:36 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/exif/</guid>
+      <description>
+
+&lt;p&gt;モバイル端末で撮影した写真画像をUnityの実行時にダウンロード。
+jpegの画像方向が違っていた。原因はExif。&lt;/p&gt;
+
+&lt;h1 id=&#34;orientation:160c20f234b91182f09adf126dc2ead9&#34;&gt;Orientation&lt;/h1&gt;
+
+&lt;p&gt;ExifのOrientation情報見てみる。
+調べたらなんか情報が錯綜していたが内容としてはこれっぽい。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://hackmylife.net/archives/7400448.html&#34;&gt;http://hackmylife.net/archives/7400448.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;table&gt;
+&lt;thead&gt;
+&lt;tr&gt;
+&lt;th align=&#34;center&#34;&gt;Orientation&lt;/th&gt;
+&lt;th align=&#34;left&#34;&gt;補正方法&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+
+&lt;tbody&gt;
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;1&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;そのまま&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;2&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;上下反転&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;3&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;180度回転&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;4&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;左右反転&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;5&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;上下反転、時計周りに270度回転&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;6&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;時計周りに90度回転&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;7&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;上下反転、時計周りに90度回転&lt;/td&gt;
+&lt;/tr&gt;
+
+&lt;tr&gt;
+&lt;td align=&#34;center&#34;&gt;8&lt;/td&gt;
+&lt;td align=&#34;left&#34;&gt;時計周りに270度回転&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+&lt;p&gt;しかし、ここらへんのExif確認ツールで見ても、ツールごとに表示が違うんだがなんなのこれ。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ExifRead
+&lt;a href=&#34;http://freesoft-100.com/review/exif-reader.html&#34;&gt;http://freesoft-100.com/review/exif-reader.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;F6Exif
+&lt;a href=&#34;http://www.vector.co.jp/soft/winnt/art/se427764.html&#34;&gt;http://www.vector.co.jp/soft/winnt/art/se427764.html&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;ExifTool
+&lt;a href=&#34;http://www.sno.phy.queensu.ca/~phil/exiftool/&#34;&gt;http://www.sno.phy.queensu.ca/~phil/exiftool/&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;変に日本語化されてないし、確認はExifToolが良い気がする。&lt;/p&gt;
+
+&lt;h1 id=&#34;c-ラッパー:160c20f234b91182f09adf126dc2ead9&#34;&gt;C#ラッパー&lt;/h1&gt;
+
+&lt;p&gt;さて、こんなのあったので自前で判定してやってみる。
+&lt;a href=&#34;http://blog.ch3cooh.jp/entry/20111222/1324552051&#34;&gt;http://blog.ch3cooh.jp/entry/20111222/1324552051&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;うーなんか自前すぎるしライブラリあるんちゃうん。あった。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ExifLib   &lt;a href=&#34;http://www.codeproject.com/Articles/36342/ExifLib-A-Fast-Exif-Data-Extractor-for-NET&#34;&gt;http://www.codeproject.com/Articles/36342/ExifLib-A-Fast-Exif-Data-Extractor-for-NET&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;~~~&lt;/p&gt;
+
+&lt;p&gt;その後、だいぶつらみがあったので途中で萎えて辞めた。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;- 回転方向の判定 &amp;gt; できた
+- 判定した方向でTexture2Dから取ったColor32配列を回転させる &amp;gt; できた
+- 画像が長方形の時、回転後の配列サイズが...元のTexture2Dサイズが.. &amp;gt; 萎え
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;imagemagick:160c20f234b91182f09adf126dc2ead9&#34;&gt;ImageMagick&lt;/h1&gt;
+
+&lt;p&gt;少し調べてImageMagickに神オプションを発見。すべてよしなにやってくれる&lt;code&gt;AutoOrient&lt;/code&gt;オプションがー。&lt;/p&gt;
+
+&lt;p&gt;今回の案件的にはサーバーサイドで対応可能なので、そっちでやってもらうことにした。&lt;/p&gt;
+
+&lt;h1 id=&#34;c-ラッパー-1:160c20f234b91182f09adf126dc2ead9&#34;&gt;C#ラッパー&lt;/h1&gt;
+
+&lt;p&gt;ImageMagickのC#ラッパーあるっぽいし、AutoOrient()でやってくれるっぽいんでちょっとやってみる。&lt;/p&gt;
+
+&lt;p&gt;WPFとかだったらVisualStudioでNugetできる。ていうか調べると大体System.Drawingのクラス使っててUnityのMonoではつらい印象。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ImageMagick.NET   &lt;a href=&#34;https://imagemagick.codeplex.com/&#34;&gt;https://imagemagick.codeplex.com/&lt;/a&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Unityからどうやって使うん？&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Magick.NET    &lt;a href=&#34;https://magick.codeplex.com/&#34;&gt;https://magick.codeplex.com/&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;コンパイルえらーがー&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;Unhandled Exception: System.TypeLoadException:
+Could not load type &#39;ImageMagick.MagickImage&#39; from assembly &#39;Magick.NET-x86,
+Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;DomaMagick    &lt;a href=&#34;http://magickwand.blog43.fc2.com/blog-category-25.html&#34;&gt;http://magickwand.blog43.fc2.com/blog-category-25.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;今回使いたいAutoOrientがないっぽい。&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;結論:160c20f234b91182f09adf126dc2ead9&#34;&gt;結論&lt;/h3&gt;
+
+&lt;p&gt;Magick.NETがいけそうだったけど、Unity(Mono)だとやりたいことができなかった。
+無念感でいっぱいだが、やる方法あると思う。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hugoのワークフロー</title>
