@@ -94,7 +94,7 @@ jpegの画像方向が違っていた。原因はExif。&lt;/p&gt;
 
 &lt;p&gt;変に日本語化されてないし、確認はExifToolが良い気がする。&lt;/p&gt;
 
-&lt;h1 id=&#34;c-ラッパー:160c20f234b91182f09adf126dc2ead9&#34;&gt;C#ラッパー&lt;/h1&gt;
+&lt;h1 id=&#34;exifライブラリ-c:160c20f234b91182f09adf126dc2ead9&#34;&gt;Exifライブラリ(C#)&lt;/h1&gt;
 
 &lt;p&gt;さて、こんなのあったので自前で判定してやってみる。
 &lt;a href=&#34;http://blog.ch3cooh.jp/entry/20111222/1324552051&#34;&gt;http://blog.ch3cooh.jp/entry/20111222/1324552051&lt;/a&gt;&lt;/p&gt;
@@ -120,7 +120,7 @@ jpegの画像方向が違っていた。原因はExif。&lt;/p&gt;
 
 &lt;p&gt;今回の案件的にはサーバーサイドで対応可能なので、そっちでやってもらうことにした。&lt;/p&gt;
 
-&lt;h1 id=&#34;c-ラッパー-1:160c20f234b91182f09adf126dc2ead9&#34;&gt;C#ラッパー&lt;/h1&gt;
+&lt;h1 id=&#34;imagemagick-c-ラッパー:160c20f234b91182f09adf126dc2ead9&#34;&gt;ImageMagick C#ラッパー&lt;/h1&gt;
 
 &lt;p&gt;ImageMagickのC#ラッパーあるっぽいし、AutoOrient()でやってくれるっぽいんでちょっとやってみる。&lt;/p&gt;
 
