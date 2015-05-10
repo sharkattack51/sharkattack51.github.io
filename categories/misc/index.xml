@@ -9,8 +9,42 @@
     
     
     
-    <lastBuildDate>Fri, 01 May 2015 21:01:47 JST</lastBuildDate>
+    <lastBuildDate>Sun, 10 May 2015 12:06:21 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>マウスの強制操作</title>
+      <link>https://sharkattack51.github.io/post/mouse_emulatio/</link>
+      <pubDate>Sun, 10 May 2015 12:06:21 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/mouse_emulatio/</guid>
+      <description>
+
+&lt;p&gt;Win環境(WPF)でマウスの強制操作に関してハマった場合の対応方法。何故。&lt;/p&gt;
+
+&lt;h1 id=&#34;方法1:1abad30d7ce830ee3e84040cbac4d6e8&#34;&gt;方法1&lt;/h1&gt;
+
+&lt;p&gt;今まではここら辺を参考にしていた。
+&lt;a href=&#34;http://homepage2.nifty.com/nonnon/SoftSample/CS.NET/SampleSendInput.html&#34;&gt;http://homepage2.nifty.com/nonnon/SoftSample/CS.NET/SampleSendInput.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;user32.dllからアンマネージdll関数のSendInput()でエミュレート操作データを作って送出。実行。&lt;/p&gt;
+
+&lt;p&gt;で、今回WPF環境で使おうとしたら動かなくて何故なのかー。&lt;/p&gt;
+
+&lt;h1 id=&#34;方法2:1abad30d7ce830ee3e84040cbac4d6e8&#34;&gt;方法2&lt;/h1&gt;
+
+&lt;p&gt;調べた結果、こっちの方法を参考にしたらいけた。ていうかまんま。
+&lt;a href=&#34;http://puarts.com/?pid=1144&#34;&gt;http://puarts.com/?pid=1144&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;WPF内のSetCursorPos()とアンマネージdll関数のmouse_event()でイベント発火させると良いらしい。&lt;/p&gt;
+
+&lt;h1 id=&#34;考察:1abad30d7ce830ee3e84040cbac4d6e8&#34;&gt;考察&lt;/h1&gt;
+
+&lt;p&gt;原因は分からん。エラーも何も出ずに全力で無視されるんだけど、フレームワーク都合の何かっぽい。
+WPFが低レイヤーのどこかでイベントを上書きしてるんだろうか。
+方法1はWPF環境でなければ普通はいける。UnityのC#上からとかでも問題はない。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Hugoのワークフロー</title>
