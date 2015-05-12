@@ -9,8 +9,43 @@
     
     
     
-    <lastBuildDate>Sun, 10 May 2015 12:06:21 JST</lastBuildDate>
+    <lastBuildDate>Tue, 12 May 2015 17:41:17 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>ReactiveProgrammingに関する参照情報</title>
+      <link>https://sharkattack51.github.io/post/reactive_reference/</link>
+      <pubDate>Tue, 12 May 2015 17:41:17 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/reactive_reference/</guid>
+      <description>&lt;p&gt;【翻訳】あなたが求めていたリアクティブプログラミング入門&lt;br/&gt;
+&lt;a href=&#34;http://ninjinkun.hatenablog.com/entry/introrxja&#34;&gt;http://ninjinkun.hatenablog.com/entry/introrxja&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Reactive Porn&lt;br/&gt;
+&lt;a href=&#34;http://steps.dodgson.org/b/2014/12/07/reactive-porn/&#34;&gt;http://steps.dodgson.org/b/2014/12/07/reactive-porn/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;なぜリアクティブプログラミングは重要か。&lt;br/&gt;
+&lt;a href=&#34;http://d.hatena.ne.jp/pokarim/20101226&#34;&gt;http://d.hatena.ne.jp/pokarim/20101226&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Reactive Programming in Javascript&lt;br/&gt;
+&lt;a href=&#34;http://ahomu.github.io/s/150221-frontrend_conference/#1&#34;&gt;http://ahomu.github.io/s/150221-frontrend_conference/#1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;スマートフォンアプリでリアクティブプログラミングをしているが、Promiseとデータバインディングとして使っている&lt;br/&gt;
+&lt;a href=&#34;http://ninjinkun.hatenablog.com/entry/2015/03/21/143712&#34;&gt;http://ninjinkun.hatenablog.com/entry/2015/03/21/143712&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Android開発でRxJavaをチームに導入した話&lt;br/&gt;
+&lt;a href=&#34;http://techlife.cookpad.com/entry/2015/04/17/100000&#34;&gt;http://techlife.cookpad.com/entry/2015/04/17/100000&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;未来のプログラミング技術をUnityで -UniRx-&lt;br/&gt;
+&lt;a href=&#34;http://www.slideshare.net/torisoup/unity-unirx&#34;&gt;http://www.slideshare.net/torisoup/unity-unirx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;UniRxとカスタムバインディング&lt;br/&gt;
+&lt;a href=&#34;http://ykimisaki.hatenablog.jp/entry/2015/03/25/012436&#34;&gt;http://ykimisaki.hatenablog.jp/entry/2015/03/25/012436&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Observable Everywhere - Rxの原則とUniRxにみるデータソースの見つけ方&lt;br/&gt;
+&lt;a href=&#34;http://www.slideshare.net/neuecc/observable-everywhere-rxuni-rx&#34;&gt;http://www.slideshare.net/neuecc/observable-everywhere-rxuni-rx&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>マウスの強制操作</title>
