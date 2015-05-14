@@ -85,27 +85,125 @@
 <pre><code>$ yum install logrotate
 </code></pre>
 
+<p><code>logrotate</code>はデーモンではないので<code>crond</code>によって実行される。</p>
+
+<p><code>/etc/cron.daily/logrotate</code>により
+メイン設定ファイルの<code>/etc/logrotate.conf</code>が読み込まれる。</p>
+
+<p>メイン設定ファイル内のincludeにより
+個別設定ファイルの<code>/etc/logrotate.d/</code>以下が読み込まれる。</p>
+
 <ul>
-<li><p>cronによりdailyでスケジューリングされている</p>
-
-<pre><code>$ cat /etc/cron.daily/logrotate
-</code></pre></li>
-</ul>
-
-<h3 id="基本設定ファイル:abb55c6d0cc5bd0def4c646d24a6d399">基本設定ファイル</h3>
+<li><p>基本設定ファイル</p>
 
 <pre><code>$ cat /etc/logrotate.conf
-</code></pre>
+</code></pre></li>
 
-<h3 id="サービスごとの設定ファイル:abb55c6d0cc5bd0def4c646d24a6d399">サービスごとの設定ファイル</h3>
+<li><p>サービスごとの設定ファイル</p>
 
 <pre><code>$ cat /etc/logrotate.d/xxxxxxxx
 </code></pre>
 
-<h3 id="ローテション確認:abb55c6d0cc5bd0def4c646d24a6d399">ローテション確認</h3>
+<ul>
+<li>こちらが優先される</li>
+</ul></li>
+</ul>
+
+<h4 id="ローテーション確認:abb55c6d0cc5bd0def4c646d24a6d399">ローテーション確認</h4>
+
+<pre><code>$ logrotate -d /etc/logrotate.d/httpd
+</code></pre>
+
+<h4 id="強制実行:abb55c6d0cc5bd0def4c646d24a6d399">強制実行</h4>
+
+<pre><code>$ logrotate -f /etc/logrotate.d/httpd
+</code></pre>
+
+<h4 id="実行履歴確認:abb55c6d0cc5bd0def4c646d24a6d399">実行履歴確認</h4>
+
+<pre><code>$ /var/lib/logrotate.status
+</code></pre>
+
+<h1 id="やりたかったこと:abb55c6d0cc5bd0def4c646d24a6d399">やりたかったこと</h1>
+
+<p>httpdのローテーション設定を変更したかった。</p>
+
+<ul>
+<li>/etc/logrotate.d/httpd</li>
+</ul>
+
+<pre><code>/var/log/httpd/*log {
+	missingok
+	notifempty
+	sharedscripts
+	delaycompress
+	postrotate
+		/sbin/service httpd reload &gt; /dev/null 2&gt;/dev/null || true
+	endscript
+}
+</code></pre>
+
+<p>週ごとのローテーション設定と、世代保存53週(1年)を追加</p>
+
+<pre><code>/var/log/httpd/*log {
+	weekly
+	rotate 53
+	missingok
+	notifempty
+	sharedscripts
+	delaycompress
+	postrotate
+		/sbin/service httpd reload &gt; /dev/null 2&gt;/dev/null || true
+	endscript
+}
+</code></pre>
+
+<p>動作確認</p>
 
 <pre><code>$ logrotate -dv /etc/logrotate.d/httpd
 </code></pre>
+
+<ul>
+<li>vオプションで詳細を表示、個別設定ファイルの場合はメイン設定は使用されない</li>
+</ul>
+
+<p>エラーが出ていた。remove対象のファイルがnot found。ふぁ？？？</p>
+
+<p>vオプションで詳細をよく確認すると、ファイル名処理を日付ではなく連番のextentionで処理しているっぽい？
+現状は<code>/var/log/httpd</code>内には日付ファイル名が存在。</p>
+
+<p>メイン設定ファイル内に<code>dateext</code>という項目を発見。個別設定の方に追加。</p>
+
+<pre><code>/var/log/httpd/*log {
+	weekly
+	rotate 53
+	dateext
+	missingok
+	notifempty
+	sharedscripts
+	delaycompress
+	postrotate
+		/sbin/service httpd reload &gt; /dev/null 2&gt;/dev/null || true
+	endscript
+}
+</code></pre>
+
+<p>再確認</p>
+
+<pre><code>$ logrotate -dv /etc/logrotate.d/httpd
+</code></pre>
+
+<p>いけてるっぽいので実行</p>
+
+<pre><code>$ logrotate -fv /etc/logrotate.d/httpd
+</code></pre>
+
+<p>ログフォルダ確認</p>
+
+<pre><code>$ ls /var/log/httpd
+</code></pre>
+
+<p>ちゃんと消えてた。</p>
 
 	  </div>
 	</div>
