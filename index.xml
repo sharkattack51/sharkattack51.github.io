@@ -9,8 +9,141 @@
     
     
     
-    <lastBuildDate>Tue, 12 May 2015 17:41:17 JST</lastBuildDate>
+    <lastBuildDate>Thu, 14 May 2015 22:11:58 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>logrotate</title>
+      <link>https://sharkattack51.github.io/post/logrotate/</link>
+      <pubDate>Thu, 14 May 2015 22:11:58 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/logrotate/</guid>
+      <description>
+
+&lt;pre&gt;&lt;code&gt;$ yum install logrotate
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;logrotate&lt;/code&gt;はデーモンではないので&lt;code&gt;crond&lt;/code&gt;によって実行される。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;/etc/cron.daily/logrotate&lt;/code&gt;により
+メイン設定ファイルの&lt;code&gt;/etc/logrotate.conf&lt;/code&gt;が読み込まれる。&lt;/p&gt;
+
+&lt;p&gt;メイン設定ファイル内のincludeにより
+個別設定ファイルの&lt;code&gt;/etc/logrotate.d/&lt;/code&gt;以下が読み込まれる。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;基本設定ファイル&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat /etc/logrotate.conf
+&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;サービスごとの設定ファイル&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat /etc/logrotate.d/xxxxxxxx
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;こちらが優先される&lt;/li&gt;
+&lt;/ul&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&#34;ローテーション確認:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;ローテーション確認&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ logrotate -d /etc/logrotate.d/httpd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;強制実行:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;強制実行&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ logrotate -f /etc/logrotate.d/httpd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h4 id=&#34;実行履歴確認:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;実行履歴確認&lt;/h4&gt;
+
+&lt;pre&gt;&lt;code&gt;$ cat /var/lib/logrotate.status
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;やりたかったこと:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;やりたかったこと&lt;/h1&gt;
+
+&lt;p&gt;httpdのローテーション設定を変更したかった。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;/etc/logrotate.d/httpd&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;/var/log/httpd/*log {
+	missingok
+	notifempty
+	sharedscripts
+	delaycompress
+	postrotate
+		/sbin/service httpd reload &amp;gt; /dev/null 2&amp;gt;/dev/null || true
+	endscript
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;週ごとのローテーション設定と、世代保存53週(1年)を追加&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/var/log/httpd/*log {
+	weekly
+	rotate 53
+	missingok
+	notifempty
+	sharedscripts
+	delaycompress
+	postrotate
+		/sbin/service httpd reload &amp;gt; /dev/null 2&amp;gt;/dev/null || true
+	endscript
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;動作確認&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ logrotate -dv /etc/logrotate.d/httpd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;ul&gt;
+&lt;li&gt;vオプションで詳細を表示、個別設定ファイルの場合はメイン設定は使用されない&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;エラーが出ていた。remove対象のファイルがnot found。ふぁ？？？&lt;/p&gt;
+
+&lt;p&gt;vオプションで詳細をよく確認すると、ファイル名処理を日付ではなく連番のextentionで処理しているっぽい？
+現状は&lt;code&gt;/var/log/httpd&lt;/code&gt;内には日付ファイル名が存在。&lt;/p&gt;
+
+&lt;p&gt;メイン設定ファイル内に&lt;code&gt;dateext&lt;/code&gt;という項目を発見。個別設定の方に追加。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;/var/log/httpd/*log {
+	weekly
+	rotate 53
+	dateext
+	missingok
+	notifempty
+	sharedscripts
+	delaycompress
+	postrotate
+		/sbin/service httpd reload &amp;gt; /dev/null 2&amp;gt;/dev/null || true
+	endscript
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;再確認&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ logrotate -dv /etc/logrotate.d/httpd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;いけてるっぽいので実行&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ logrotate -fv /etc/logrotate.d/httpd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ログフォルダ確認&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;$ ls /var/log/httpd
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;ちゃんと消えてた。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>ReactiveProgrammingに関する参照情報</title>
@@ -347,139 +480,6 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>logrotate</title>
-      <link>https://sharkattack51.github.io/post/logrotate/</link>
-      <pubDate>Mon, 30 Mar 2015 22:11:58 JST</pubDate>
-      
-      <guid>https://sharkattack51.github.io/post/logrotate/</guid>
-      <description>
-
-&lt;pre&gt;&lt;code&gt;$ yum install logrotate
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;&lt;code&gt;logrotate&lt;/code&gt;はデーモンではないので&lt;code&gt;crond&lt;/code&gt;によって実行される。&lt;/p&gt;
-
-&lt;p&gt;&lt;code&gt;/etc/cron.daily/logrotate&lt;/code&gt;により
-メイン設定ファイルの&lt;code&gt;/etc/logrotate.conf&lt;/code&gt;が読み込まれる。&lt;/p&gt;
-
-&lt;p&gt;メイン設定ファイル内のincludeにより
-個別設定ファイルの&lt;code&gt;/etc/logrotate.d/&lt;/code&gt;以下が読み込まれる。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;基本設定ファイル&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cat /etc/logrotate.conf
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;サービスごとの設定ファイル&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ cat /etc/logrotate.d/xxxxxxxx
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;こちらが優先される&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h4 id=&#34;ローテーション確認:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;ローテーション確認&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;$ logrotate -d /etc/logrotate.d/httpd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;強制実行:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;強制実行&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;$ logrotate -f /etc/logrotate.d/httpd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h4 id=&#34;実行履歴確認:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;実行履歴確認&lt;/h4&gt;
-
-&lt;pre&gt;&lt;code&gt;$ /var/lib/logrotate.status
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;やりたかったこと:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;やりたかったこと&lt;/h1&gt;
-
-&lt;p&gt;httpdのローテーション設定を変更したかった。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;/etc/logrotate.d/httpd&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;pre&gt;&lt;code&gt;/var/log/httpd/*log {
-	missingok
-	notifempty
-	sharedscripts
-	delaycompress
-	postrotate
-		/sbin/service httpd reload &amp;gt; /dev/null 2&amp;gt;/dev/null || true
-	endscript
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;週ごとのローテーション設定と、世代保存53週(1年)を追加&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/var/log/httpd/*log {
-	weekly
-	rotate 53
-	missingok
-	notifempty
-	sharedscripts
-	delaycompress
-	postrotate
-		/sbin/service httpd reload &amp;gt; /dev/null 2&amp;gt;/dev/null || true
-	endscript
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;動作確認&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ logrotate -dv /etc/logrotate.d/httpd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;vオプションで詳細を表示、個別設定ファイルの場合はメイン設定は使用されない&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;p&gt;エラーが出ていた。remove対象のファイルがnot found。ふぁ？？？&lt;/p&gt;
-
-&lt;p&gt;vオプションで詳細をよく確認すると、ファイル名処理を日付ではなく連番のextentionで処理しているっぽい？
-現状は&lt;code&gt;/var/log/httpd&lt;/code&gt;内には日付ファイル名が存在。&lt;/p&gt;
-
-&lt;p&gt;メイン設定ファイル内に&lt;code&gt;dateext&lt;/code&gt;という項目を発見。個別設定の方に追加。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;/var/log/httpd/*log {
-	weekly
-	rotate 53
-	dateext
-	missingok
-	notifempty
-	sharedscripts
-	delaycompress
-	postrotate
-		/sbin/service httpd reload &amp;gt; /dev/null 2&amp;gt;/dev/null || true
-	endscript
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;再確認&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ logrotate -dv /etc/logrotate.d/httpd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;いけてるっぽいので実行&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ logrotate -fv /etc/logrotate.d/httpd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ログフォルダ確認&lt;/p&gt;
-
-&lt;pre&gt;&lt;code&gt;$ ls /var/log/httpd
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;ちゃんと消えてた。&lt;/p&gt;
 </description>
     </item>
     
