@@ -196,7 +196,7 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;xxxxx-csharp.sln&lt;/code&gt;の設定とUnity用ファイルのプロジェクト除外設定&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;{
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
     &amp;quot;folders&amp;quot;:
     [
         {
@@ -225,7 +225,7 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;デフォルトでwarning出過ぎなので個人的にはまだ足りない。warningは駆逐したい。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;&amp;quot;IgnoredCodeIssues&amp;quot;:
+&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;IgnoredCodeIssues&amp;quot;:
 [
     &amp;quot;^Keyword &#39;private&#39; is redundant. This is the default modifier.$&amp;quot;,
     &amp;quot;.* should not separate words with an underscore.*&amp;quot;,

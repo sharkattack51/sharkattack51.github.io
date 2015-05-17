@@ -82,7 +82,7 @@
 	  <div class="post">
 		
 
-<pre><code>$ yum install logrotate
+<pre><code class="language-sh">$ yum install logrotate
 </code></pre>
 
 <p><code>logrotate</code>はデーモンではないので<code>crond</code>によって実行される。</p>
@@ -96,12 +96,12 @@
 <ul>
 <li><p>基本設定ファイル</p>
 
-<pre><code>$ cat /etc/logrotate.conf
+<pre><code class="language-sh">$ cat /etc/logrotate.conf
 </code></pre></li>
 
 <li><p>サービスごとの設定ファイル</p>
 
-<pre><code>$ cat /etc/logrotate.d/xxxxxxxx
+<pre><code class="language-sh">$ cat /etc/logrotate.d/xxxxxxxx
 </code></pre>
 
 <ul>
@@ -111,17 +111,17 @@
 
 <h4 id="ローテーション確認:abb55c6d0cc5bd0def4c646d24a6d399">ローテーション確認</h4>
 
-<pre><code>$ logrotate -d /etc/logrotate.d/httpd
+<pre><code class="language-sh">$ logrotate -d /etc/logrotate.d/httpd
 </code></pre>
 
 <h4 id="強制実行:abb55c6d0cc5bd0def4c646d24a6d399">強制実行</h4>
 
-<pre><code>$ logrotate -f /etc/logrotate.d/httpd
+<pre><code class="language-sh">$ logrotate -f /etc/logrotate.d/httpd
 </code></pre>
 
 <h4 id="実行履歴確認:abb55c6d0cc5bd0def4c646d24a6d399">実行履歴確認</h4>
 
-<pre><code>$ cat /var/lib/logrotate.status
+<pre><code class="language-sh">$ cat /var/lib/logrotate.status
 </code></pre>
 
 <h1 id="やりたかったこと:abb55c6d0cc5bd0def4c646d24a6d399">やりたかったこと</h1>
@@ -132,7 +132,7 @@
 <li>/etc/logrotate.d/httpd</li>
 </ul>
 
-<pre><code>/var/log/httpd/*log {
+<pre><code class="language-sh">/var/log/httpd/*log {
 	missingok
 	notifempty
 	sharedscripts
@@ -145,7 +145,7 @@
 
 <p>週ごとのローテーション設定と、世代保存53週(1年)を追加</p>
 
-<pre><code>/var/log/httpd/*log {
+<pre><code class="language-sh">/var/log/httpd/*log {
 	weekly
 	rotate 53
 	missingok
@@ -160,7 +160,7 @@
 
 <p>動作確認</p>
 
-<pre><code>$ logrotate -dv /etc/logrotate.d/httpd
+<pre><code class="language-sh">$ logrotate -dv /etc/logrotate.d/httpd
 </code></pre>
 
 <ul>
@@ -174,7 +174,7 @@
 
 <p>メイン設定ファイル内に<code>dateext</code>という項目を発見。個別設定の方に追加。</p>
 
-<pre><code>/var/log/httpd/*log {
+<pre><code class="language-sh">/var/log/httpd/*log {
 	weekly
 	rotate 53
 	dateext
@@ -190,17 +190,17 @@
 
 <p>再確認</p>
 
-<pre><code>$ logrotate -dv /etc/logrotate.d/httpd
+<pre><code class="language-sh">$ logrotate -dv /etc/logrotate.d/httpd
 </code></pre>
 
 <p>いけてるっぽいので実行</p>
 
-<pre><code>$ logrotate -fv /etc/logrotate.d/httpd
+<pre><code class="language-sh">$ logrotate -fv /etc/logrotate.d/httpd
 </code></pre>
 
 <p>ログフォルダ確認</p>
 
-<pre><code>$ ls /var/log/httpd
+<pre><code class="language-sh">$ ls /var/log/httpd
 </code></pre>
 
 <p>ちゃんと消えてた。</p>

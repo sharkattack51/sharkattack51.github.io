@@ -20,7 +20,7 @@
       <guid>https://sharkattack51.github.io/post/logrotate/</guid>
       <description>
 
-&lt;pre&gt;&lt;code&gt;$ yum install logrotate
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ yum install logrotate
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;&lt;code&gt;logrotate&lt;/code&gt;はデーモンではないので&lt;code&gt;crond&lt;/code&gt;によって実行される。&lt;/p&gt;
@@ -34,12 +34,12 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;基本設定ファイル&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cat /etc/logrotate.conf
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cat /etc/logrotate.conf
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;サービスごとの設定ファイル&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cat /etc/logrotate.d/xxxxxxxx
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cat /etc/logrotate.d/xxxxxxxx
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
@@ -49,17 +49,17 @@
 
 &lt;h4 id=&#34;ローテーション確認:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;ローテーション確認&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;$ logrotate -d /etc/logrotate.d/httpd
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ logrotate -d /etc/logrotate.d/httpd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;強制実行:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;強制実行&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;$ logrotate -f /etc/logrotate.d/httpd
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ logrotate -f /etc/logrotate.d/httpd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h4 id=&#34;実行履歴確認:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;実行履歴確認&lt;/h4&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cat /var/lib/logrotate.status
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cat /var/lib/logrotate.status
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h1 id=&#34;やりたかったこと:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;やりたかったこと&lt;/h1&gt;
@@ -70,7 +70,7 @@
 &lt;li&gt;/etc/logrotate.d/httpd&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;pre&gt;&lt;code&gt;/var/log/httpd/*log {
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;/var/log/httpd/*log {
 	missingok
 	notifempty
 	sharedscripts
@@ -83,7 +83,7 @@
 
 &lt;p&gt;週ごとのローテーション設定と、世代保存53週(1年)を追加&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/var/log/httpd/*log {
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;/var/log/httpd/*log {
 	weekly
 	rotate 53
 	missingok
@@ -98,7 +98,7 @@
 
 &lt;p&gt;動作確認&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ logrotate -dv /etc/logrotate.d/httpd
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ logrotate -dv /etc/logrotate.d/httpd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;ul&gt;
@@ -112,7 +112,7 @@
 
 &lt;p&gt;メイン設定ファイル内に&lt;code&gt;dateext&lt;/code&gt;という項目を発見。個別設定の方に追加。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;/var/log/httpd/*log {
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;/var/log/httpd/*log {
 	weekly
 	rotate 53
 	dateext
@@ -128,17 +128,17 @@
 
 &lt;p&gt;再確認&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ logrotate -dv /etc/logrotate.d/httpd
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ logrotate -dv /etc/logrotate.d/httpd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;いけてるっぽいので実行&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ logrotate -fv /etc/logrotate.d/httpd
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ logrotate -fv /etc/logrotate.d/httpd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;ログフォルダ確認&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ ls /var/log/httpd
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ ls /var/log/httpd
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;ちゃんと消えてた。&lt;/p&gt;
@@ -279,7 +279,7 @@ WPFが低レイヤーのどこかでイベントを上書きしてるんだろ�
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;ネットワーク設定&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ emacs /etc/sysconfig/network-scripts/ifcfg-eth0
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ emacs /etc/sysconfig/network-scripts/ifcfg-eth0
 
 
 ONBOOT=yes
@@ -291,7 +291,7 @@ $ service network restart
 
 &lt;li&gt;&lt;p&gt;openssh インストール&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ yum install openssh openssh-server openssh-clients
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ yum install openssh openssh-server openssh-clients
 $ service sshd start
 &lt;/code&gt;&lt;/pre&gt;
 
@@ -299,14 +299,14 @@ $ service sshd start
 
 &lt;li&gt;&lt;p&gt;nginx インストール&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
 $ yum install nginx
 $ service nginx start
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;php-fpm インストール&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ yum install php-fpm
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ yum install php-fpm
 $ emacs /etc/php-fpm.d/www.conf
 
 
@@ -319,7 +319,7 @@ $ service php-fpm start
 
 &lt;li&gt;&lt;p&gt;Boot設定&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ chkconfig iptables off
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ chkconfig iptables off
 $ chkconfig nginx on
 $ chkconfig php-fpm on
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
@@ -327,7 +327,7 @@ $ chkconfig php-fpm on
 
 &lt;h1 id=&#34;サーバー証明書作成:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;サーバー証明書作成&lt;/h1&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd ~
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd ~
 $ openssl genrsa 2048 &amp;gt; cert.key
 $ openssl req -new -x509 -days 3650 -key cert.key -out cert.crt -subj &#39;/CN=XXXXXXXX&#39;
 &lt;/code&gt;&lt;/pre&gt;
@@ -351,7 +351,7 @@ $ openssl req -new -x509 -days 3650 -key cert.key -out cert.crt -subj &#39;/CN=X
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;https設定として証明書を指定、phpの動作を有効化する。&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd /etc/nginx/conf.d
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd /etc/nginx/conf.d
 $ mv default.conf default.conf.bak
 $ emacs example_ssl.conf
 
@@ -392,12 +392,12 @@ server {
 
 &lt;li&gt;&lt;p&gt;設定ファイルのテスト&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ service nginx configtest
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ service nginx configtest
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
 &lt;li&gt;&lt;p&gt;設定ファイルの更新反映&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ service nginx reload
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ service nginx reload
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>

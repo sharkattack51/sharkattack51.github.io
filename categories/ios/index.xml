@@ -30,7 +30,7 @@
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;サインニングの入れ替えを行う&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd ota-tools
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd ota-tools
 $ ./ipa_sign XXXX.ipa XXX.mobileprovision &amp;quot;証明書登録名&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -40,7 +40,7 @@ $ ./ipa_sign XXXX.ipa XXX.mobileprovision &amp;quot;証明書登録名&amp;quot;
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;配布用plistとhtmlを生成&lt;/p&gt;
 
-&lt;pre&gt;&lt;code&gt;$ cd ota-tools
+&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd ota-tools
 $ ./ipa_ota XXXX.ipa https://ipa配置のURL/ &amp;gt; index.html
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 

@@ -105,7 +105,7 @@
 <ul>
 <li><p>ネットワーク設定</p>
 
-<pre><code>$ emacs /etc/sysconfig/network-scripts/ifcfg-eth0
+<pre><code class="language-sh">$ emacs /etc/sysconfig/network-scripts/ifcfg-eth0
 
 
 ONBOOT=yes
@@ -117,7 +117,7 @@ $ service network restart
 
 <li><p>openssh インストール</p>
 
-<pre><code>$ yum install openssh openssh-server openssh-clients
+<pre><code class="language-sh">$ yum install openssh openssh-server openssh-clients
 $ service sshd start
 </code></pre>
 
@@ -125,14 +125,14 @@ $ service sshd start
 
 <li><p>nginx インストール</p>
 
-<pre><code>$ rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
+<pre><code class="language-sh">$ rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
 $ yum install nginx
 $ service nginx start
 </code></pre></li>
 
 <li><p>php-fpm インストール</p>
 
-<pre><code>$ yum install php-fpm
+<pre><code class="language-sh">$ yum install php-fpm
 $ emacs /etc/php-fpm.d/www.conf
 
 
@@ -145,7 +145,7 @@ $ service php-fpm start
 
 <li><p>Boot設定</p>
 
-<pre><code>$ chkconfig iptables off
+<pre><code class="language-sh">$ chkconfig iptables off
 $ chkconfig nginx on
 $ chkconfig php-fpm on
 </code></pre></li>
@@ -153,7 +153,7 @@ $ chkconfig php-fpm on
 
 <h1 id="サーバー証明書作成:044c6e2ffdcdfcd556eea0e367a03f2a">サーバー証明書作成</h1>
 
-<pre><code>$ cd ~
+<pre><code class="language-sh">$ cd ~
 $ openssl genrsa 2048 &gt; cert.key
 $ openssl req -new -x509 -days 3650 -key cert.key -out cert.crt -subj '/CN=XXXXXXXX'
 </code></pre>
@@ -177,7 +177,7 @@ $ openssl req -new -x509 -days 3650 -key cert.key -out cert.crt -subj '/CN=XXXXX
 <ul>
 <li><p>https設定として証明書を指定、phpの動作を有効化する。</p>
 
-<pre><code>$ cd /etc/nginx/conf.d
+<pre><code class="language-sh">$ cd /etc/nginx/conf.d
 $ mv default.conf default.conf.bak
 $ emacs example_ssl.conf
 
@@ -218,12 +218,12 @@ server {
 
 <li><p>設定ファイルのテスト</p>
 
-<pre><code>$ service nginx configtest
+<pre><code class="language-sh">$ service nginx configtest
 </code></pre></li>
 
 <li><p>設定ファイルの更新反映</p>
 
-<pre><code>$ service nginx reload
+<pre><code class="language-sh">$ service nginx reload
 </code></pre></li>
 </ul>
 
