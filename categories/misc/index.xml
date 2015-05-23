@@ -9,8 +9,114 @@
     
     
     
-    <lastBuildDate>Thu, 14 May 2015 22:11:58 JST</lastBuildDate>
+    <lastBuildDate>Sat, 23 May 2015 11:13:29 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Pythonと連携する方法</title>
+      <link>https://sharkattack51.github.io/post/cs_py/</link>
+      <pubDate>Sat, 23 May 2015 11:13:29 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/cs_py/</guid>
+      <description>
+
+&lt;p&gt;Pythonライブラリの有能さを覚えると、外の言語を使っている時にPythonでサクッといきたい場面がある。
+もちろん実行時の処理速度に問題がなければという前提で、非同期で処理できればメインとは別のプロセスで処理できるので受けれる恩恵は大きい。&lt;/p&gt;
+
+&lt;p&gt;例えば画像の変換の場合は&lt;a href=&#34;http://www.pythonware.com/products/pil/&#34;&gt;PIL&lt;/a&gt;なんか使うと相当楽だし、場合によっては&lt;a href=&#34;http://opencv.org/&#34;&gt;OpenCV&lt;/a&gt;ラッパーが使える。(もちろんネイティブライブラリよりは遅い)&lt;br/&gt;
+RSSなんかのFeedのパースなんかも&lt;a href=&#34;https://pypi.python.org/pypi/feedparser&#34;&gt;UniversalFeedParser&lt;/a&gt;が有能すぎるし、&lt;a href=&#34;http://www.crummy.com/software/BeautifulSoup/&#34;&gt;BeautifulSoup&lt;/a&gt;は便利だ。&lt;/p&gt;
+
+&lt;p&gt;例えばUnityやAIRなどの実行環境からPythonに処理を投げたい場合にどうするか。
+データの受け渡しはどうするか。&lt;/p&gt;
+
+&lt;h1 id=&#34;方法:67998c0bf2f1c2d4ed60ea56f653060e&#34;&gt;方法&lt;/h1&gt;
+
+&lt;p&gt;基本的にはイベント処理で実装したいので、Python側をローカルにアプリケーションサーバーとして立てておき、メインアプリ側からhttpリクエストを送る。&lt;/p&gt;
+
+&lt;p&gt;できるだけシンプルに実装したいのでWebフレームワークを使ってアプリケーションサーバーを立てる。
+&lt;a href=&#34;http://a2c.bitbucket.org/flask/&#34;&gt;flask&lt;/a&gt;や&lt;a href=&#34;http://bottlepy.org/docs/dev/index.html&#34;&gt;Bottle&lt;/a&gt;あたりが良いと思う。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-pyhton&#34;&gt;# python
+
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route(&amp;quot;/&amp;quot;, methods=[&#39;GET&#39;])
+def index():
+	return &amp;quot;Hello&amp;quot;
+
+if __name__ == &amp;quot;__main__&amp;quot;:
+	app.debug = True
+	app.run()
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;これでルート &lt;a href=&#34;http://localhost:5000/&#34;&gt;http://localhost:5000/&lt;/a&gt; にアクセスすると結果をとってこれる。
+あとはhttpリクエストで非同期処理してメインアプリ側でイベント処理する。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;// Unity-C# Python側からテキストを受け取る
+
+IEnumerator Start()
+{
+	WWW www = new WWW(&amp;quot;http://localhost:5000/&amp;quot;);
+
+	yield return www;
+
+	Debug.log(www.text) //Hello
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;引数が欲しい場合は、クエリやRESTのAPIを生やして対応できるし、
+画像の受け渡しが必要な場合はbyte配列にした上でformでやり取りする。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-c#&#34;&gt;// Unity-C#
+
+IEnumerator Start()
+{
+	WWWForm form = new WWWForm();
+	form.AddBinaryData(&amp;quot;post_data&amp;quot;, texture.EncodeToPNG(), texture.name, &amp;quot;image/png&amp;quot;);
+	WWW www = new WWW(&amp;quot;http://localhost:5000/test_api&amp;quot;, form);
+
+	yield return www;
+
+	processedTex = www.texture;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-python&#34;&gt;# python PILを使った画像処理結果をC#側に返す
+
+@app.route(&amp;quot;/test_api&amp;quot;, methods=[&amp;quot;POST&amp;quot;])
+def test():
+	if request.method == &amp;quot;POST&amp;quot;:
+
+		# formデータの受け取り
+		image_bytes = request.files[&amp;quot;post_data&amp;quot;]
+
+		# IOオブジェクトでbyteデータをImageに読み込む
+		image = Image.open(StringIO(image_bytes.read()))
+		
+		# imageに対して加工処理
+		# ...
+		
+		# 更新をbufferにpngで保存
+		buf = StringIO()
+		image.save(buf, &amp;quot;png&amp;quot;)
+
+		# bufferからレスポンス作成
+		response = make_response(buf.getvalue())
+		response.headers[&amp;quot;Content-type&amp;quot;] = &amp;quot;Image&amp;quot;
+		return response
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h1 id=&#34;まとめ:67998c0bf2f1c2d4ed60ea56f653060e&#34;&gt;まとめ&lt;/h1&gt;
+
+&lt;p&gt;アプリケーションの実装はこまごました部分をスクリプト側に委譲していく設計もありだと思う。&lt;br/&gt;
+俗にいう&lt;a href=&#34;http://deeeet.com/writing/2014/09/10/microservices/&#34;&gt;Microservices&lt;/a&gt;の一つではないか。&lt;/p&gt;
+
+&lt;p&gt;ちなみにUnityであればこういう手もある。&lt;br/&gt;
+&lt;a href=&#34;http://tkitao.hatenablog.com/entry/2015/05/18/225902&#34;&gt;Unity上でPythonを使う①【アセット組み込み編】 - kitao&amp;rsquo;s blog&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>logrotate</title>
