@@ -46,6 +46,68 @@
     </item>
     
     <item>
+      <title>ReactiveProgrammingに関する参照情報</title>
+      <link>https://sharkattack51.github.io/post/reactive_reference/</link>
+      <pubDate>Wed, 01 Jul 2015 17:41:17 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/reactive_reference/</guid>
+      <description>&lt;p&gt;まず一回ここら辺を適当に読み漁って概要をなんとなく拾う。&lt;/p&gt;
+
+&lt;p&gt;【翻訳】あなたが求めていたリアクティブプログラミング入門&lt;br/&gt;
+&lt;a href=&#34;http://ninjinkun.hatenablog.com/entry/introrxja&#34;&gt;http://ninjinkun.hatenablog.com/entry/introrxja&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Reactive Porn&lt;br/&gt;
+&lt;a href=&#34;http://steps.dodgson.org/b/2014/12/07/reactive-porn/&#34;&gt;http://steps.dodgson.org/b/2014/12/07/reactive-porn/&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;なぜリアクティブプログラミングは重要か。&lt;br/&gt;
+&lt;a href=&#34;http://d.hatena.ne.jp/pokarim/20101226&#34;&gt;http://d.hatena.ne.jp/pokarim/20101226&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Reactive Programming in Javascript&lt;br/&gt;
+&lt;a href=&#34;http://ahomu.github.io/s/150221-frontrend_conference/#1&#34;&gt;http://ahomu.github.io/s/150221-frontrend_conference/#1&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;スマートフォンアプリでリアクティブプログラミングをしているが、Promiseとデータバインディングとして使っている&lt;br/&gt;
+&lt;a href=&#34;http://ninjinkun.hatenablog.com/entry/2015/03/21/143712&#34;&gt;http://ninjinkun.hatenablog.com/entry/2015/03/21/143712&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Android開発でRxJavaをチームに導入した話&lt;br/&gt;
+&lt;a href=&#34;http://techlife.cookpad.com/entry/2015/04/17/100000&#34;&gt;http://techlife.cookpad.com/entry/2015/04/17/100000&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;RxJSをもくもくしてReactivePropertyの価値らしきものを気づかされた話（仮）&lt;br/&gt;
+&lt;a href=&#34;http://saneyukis.hatenablog.com/entry/2015/05/12/125317&#34;&gt;http://saneyukis.hatenablog.com/entry/2015/05/12/125317&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;未来のプログラミング技術をUnityで -UniRx-&lt;br/&gt;
+&lt;a href=&#34;http://www.slideshare.net/torisoup/unity-unirx&#34;&gt;http://www.slideshare.net/torisoup/unity-unirx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;UniRxとカスタムバインディング&lt;br/&gt;
+&lt;a href=&#34;http://ykimisaki.hatenablog.jp/entry/2015/03/25/012436&#34;&gt;http://ykimisaki.hatenablog.jp/entry/2015/03/25/012436&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Observable Everywhere - Rxの原則とUniRxにみるデータソースの見つけ方&lt;br/&gt;
+&lt;a href=&#34;http://www.slideshare.net/neuecc/observable-everywhere-rxuni-rx&#34;&gt;http://www.slideshare.net/neuecc/observable-everywhere-rxuni-rx&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;で、雰囲気を把握したらなんでも良いのでRxライブラリを一回触ってみる。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;C# &lt;a href=&#34;https://rx.codeplex.com&#34;&gt;https://rx.codeplex.com&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Unity UniRx &lt;a href=&#34;https://github.com/neuecc/UniRx&#34;&gt;https://github.com/neuecc/UniRx&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;Python RxPY &lt;a href=&#34;https://github.com/ReactiveX/RxPY&#34;&gt;https://github.com/ReactiveX/RxPY&lt;/a&gt;&lt;/li&gt;
+&lt;li&gt;AS3 Raix &lt;a href=&#34;https://github.com/richardszalay/raix&#34;&gt;https://github.com/richardszalay/raix&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;ライブラリのドキュメント読んで、触りやったらこれ読んで大体機能を把握する。神資料。&lt;/p&gt;
+
+&lt;p&gt;ReactiveExtentions入門&lt;br/&gt;
+&lt;a href=&#34;http://www.slideshare.net/okazuki0130/reactive-extensionsv01&#34;&gt;http://www.slideshare.net/okazuki0130/reactive-extensionsv01&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;その後、UniRx勉強会のスライド見直してまとめ。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.slideshare.net/torisoup/uni-rx&#34;&gt;http://www.slideshare.net/torisoup/uni-rx&lt;/a&gt;
+&lt;a href=&#34;http://www.slideshare.net/HirohitoMorinaga/unirx&#34;&gt;http://www.slideshare.net/HirohitoMorinaga/unirx&lt;/a&gt;
+&lt;a href=&#34;http://www.slideshare.net/yutoiwashita/reactive-ui-withunirx&#34;&gt;http://www.slideshare.net/yutoiwashita/reactive-ui-withunirx&lt;/a&gt;
+&lt;a href=&#34;http://www.slideshare.net/neuecc/history-practices-for-unirx-unirx&#34;&gt;http://www.slideshare.net/neuecc/history-practices-for-unirx-unirx&lt;/a&gt;
+&lt;a href=&#34;http://www.slideshare.net/tnayuki/uni-rx-49594996&#34;&gt;http://www.slideshare.net/tnayuki/uni-rx-49594996&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
       <title>as3 レスポンスヘッダーが取得できない</title>
       <link>https://sharkattack51.github.io/post/as3_get_response_header/</link>
       <pubDate>Tue, 09 Jun 2015 21:36:28 JST</pubDate>
@@ -308,44 +370,6 @@ def test():
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;p&gt;ちゃんと消えてた。&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>ReactiveProgrammingに関する参照情報</title>
-      <link>https://sharkattack51.github.io/post/reactive_reference/</link>
-      <pubDate>Tue, 12 May 2015 17:41:17 JST</pubDate>
-      
-      <guid>https://sharkattack51.github.io/post/reactive_reference/</guid>
-      <description>&lt;p&gt;【翻訳】あなたが求めていたリアクティブプログラミング入門&lt;br/&gt;
-&lt;a href=&#34;http://ninjinkun.hatenablog.com/entry/introrxja&#34;&gt;http://ninjinkun.hatenablog.com/entry/introrxja&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Reactive Porn&lt;br/&gt;
-&lt;a href=&#34;http://steps.dodgson.org/b/2014/12/07/reactive-porn/&#34;&gt;http://steps.dodgson.org/b/2014/12/07/reactive-porn/&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;なぜリアクティブプログラミングは重要か。&lt;br/&gt;
-&lt;a href=&#34;http://d.hatena.ne.jp/pokarim/20101226&#34;&gt;http://d.hatena.ne.jp/pokarim/20101226&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Reactive Programming in Javascript&lt;br/&gt;
-&lt;a href=&#34;http://ahomu.github.io/s/150221-frontrend_conference/#1&#34;&gt;http://ahomu.github.io/s/150221-frontrend_conference/#1&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;スマートフォンアプリでリアクティブプログラミングをしているが、Promiseとデータバインディングとして使っている&lt;br/&gt;
-&lt;a href=&#34;http://ninjinkun.hatenablog.com/entry/2015/03/21/143712&#34;&gt;http://ninjinkun.hatenablog.com/entry/2015/03/21/143712&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Android開発でRxJavaをチームに導入した話&lt;br/&gt;
-&lt;a href=&#34;http://techlife.cookpad.com/entry/2015/04/17/100000&#34;&gt;http://techlife.cookpad.com/entry/2015/04/17/100000&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;RxJSをもくもくしてReactivePropertyの価値らしきものを気づかされた話（仮）&lt;br/&gt;
-&lt;a href=&#34;http://saneyukis.hatenablog.com/entry/2015/05/12/125317&#34;&gt;http://saneyukis.hatenablog.com/entry/2015/05/12/125317&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;未来のプログラミング技術をUnityで -UniRx-&lt;br/&gt;
-&lt;a href=&#34;http://www.slideshare.net/torisoup/unity-unirx&#34;&gt;http://www.slideshare.net/torisoup/unity-unirx&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;UniRxとカスタムバインディング&lt;br/&gt;
-&lt;a href=&#34;http://ykimisaki.hatenablog.jp/entry/2015/03/25/012436&#34;&gt;http://ykimisaki.hatenablog.jp/entry/2015/03/25/012436&lt;/a&gt;&lt;/p&gt;
-
-&lt;p&gt;Observable Everywhere - Rxの原則とUniRxにみるデータソースの見つけ方&lt;br/&gt;
-&lt;a href=&#34;http://www.slideshare.net/neuecc/observable-everywhere-rxuni-rx&#34;&gt;http://www.slideshare.net/neuecc/observable-everywhere-rxuni-rx&lt;/a&gt;&lt;/p&gt;
 </description>
     </item>
     
