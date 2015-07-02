@@ -9,8 +9,41 @@
     
     
     
-    <lastBuildDate>Tue, 09 Jun 2015 21:36:28 JST</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2015 20:00:00 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Virtualbox上のCentOSのディスク容量を追加する</title>
+      <link>https://sharkattack51.github.io/post/virtualbox_add_disk/</link>
+      <pubDate>Thu, 02 Jul 2015 20:00:00 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/virtualbox_add_disk/</guid>
+      <description>&lt;p&gt;VMで動かしていたCentOSが容量一杯になってしまったので緊急調べた。&lt;br/&gt;
+基本的には下記のどっちかでなんとかなる。ほんとWeb無かったらなんも分からないです。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.clock-up.jp/entry/2015/05/03/virtualbox-centos-disk-ext&#34;&gt;http://blog.clock-up.jp/entry/2015/05/03/virtualbox-centos-disk-ext&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.clock-up.jp/entry/2015/05/29/virtualbox-centos-disk-vdi-ext&#34;&gt;http://blog.clock-up.jp/entry/2015/05/29/virtualbox-centos-disk-vdi-ext&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;簡単なのは物理ディスクを追加するやり方。Virtualbox上から追加する。&lt;br/&gt;
+追加したら&lt;code&gt;fdisk /dev/sda&lt;/code&gt;とか&lt;code&gt;fdisk /dev/sdb&lt;/code&gt;でパーティション設定してやる。&lt;/p&gt;
+
+&lt;p&gt;ここは&lt;code&gt;m&lt;/code&gt;コマンドでヘルプを確認しながらやるべき。&lt;br/&gt;
+&lt;code&gt;4&lt;/code&gt;まで使える&lt;code&gt;primaryパーティション&lt;/code&gt;を設定してやる。&lt;br/&gt;
+テーブルの開始位置と終わりの位置を設定するが、基本はデフォルトでやれば追加容量分を全部使う感じ。&lt;/p&gt;
+
+&lt;p&gt;追加できたら再起動 &lt;code&gt;shutdown -r now&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;その後、&lt;br/&gt;
+&lt;code&gt;fdisk -l&lt;/code&gt;で追加したパーティションを確認する。追加できているがまだ使えない。&lt;br/&gt;
+&lt;code&gt;pvcreate /dev/sda3&lt;/code&gt;でパーティションに物理ボリュームを作り、&lt;br/&gt;
+&lt;code&gt;vgextend VolGroup /dev/sda3&lt;/code&gt;でボリュームグループの設定し、&lt;br/&gt;
+&lt;code&gt;lvextend -l +100%FREE /dev/mapper/VolGroup-lv_root&lt;/code&gt;でボリューム拡張して、&lt;br/&gt;
+&lt;code&gt;resize2fs /dev/mapper/VolGroup-lv_root&lt;/code&gt;でファイルシステムを拡張する。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;df&lt;/code&gt;でディスク確認してみると拡張出来ている。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>as3 レスポンスヘッダーが取得できない</title>
@@ -1366,76 +1399,6 @@ void Update()
 &lt;li&gt;手首を下げるとショーtルックは消える&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>MQTT</title>
-      <link>https://sharkattack51.github.io/post/mqtt/</link>
-      <pubDate>Sat, 10 Jan 2015 21:36:30 JST</pubDate>
-      
-      <guid>https://sharkattack51.github.io/post/mqtt/</guid>
-      <description>
-
-&lt;h1 id=&#34;mqttとは:4ac81870a274ec69df24400555a4c924&#34;&gt;MQTTとは？&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;インターネット上での双方向、1対多の通信が可能な通信プロトコル。&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;M2M、IoTでの利用を前提とした軽量メッセージングのための技術仕様。&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;MQTTでは双方向、1対多の通信が可能なので、複数クライアントに対して一方的にデータを送れる。&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;push型の通知が可能。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;mqttブローカーサービス:4ac81870a274ec69df24400555a4c924&#34;&gt;MQTTブローカーサービス&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://sango.shiguredo.jp/&#34;&gt;https://sango.shiguredo.jp/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;接続シーケンス:4ac81870a274ec69df24400555a4c924&#34;&gt;接続シーケンス&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;アプリ、またはブラウザからサーバーへ接続
-
-&lt;ul&gt;
-&lt;li&gt;クライアントは閉じられるまで接続を継続する&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;受信側は特定のチャンネルを常に受信
-
-&lt;ul&gt;
-&lt;li&gt;チャンネルは任意に無制限に設定可能&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;送信側は接続されている受信者に対して一斉送信（ブロードキャスト）する
-
-&lt;ul&gt;
-&lt;li&gt;ただし端末特定はできない&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&#34;library:4ac81870a274ec69df24400555a4c924&#34;&gt;Library&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;iOS
-
-&lt;ul&gt;
-&lt;li&gt;MQTTKit
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://github.com/jmesnil/MQTTKit&#34;&gt;https://github.com/jmesnil/MQTTKit&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Python
-
-&lt;ul&gt;
-&lt;li&gt;paho-mqtt&lt;/li&gt;
-&lt;li&gt;&lt;a href=&#34;http://achiku.github.io/2014/08/29/mqtt-sango.html&#34;&gt;http://achiku.github.io/2014/08/29/mqtt-sango.html&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     

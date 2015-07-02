@@ -9,8 +9,41 @@
     
     
     
-    <lastBuildDate>Tue, 09 Jun 2015 21:36:28 JST</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jul 2015 20:00:00 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Virtualbox上のCentOSのディスク容量を追加する</title>
+      <link>https://sharkattack51.github.io/post/virtualbox_add_disk/</link>
+      <pubDate>Thu, 02 Jul 2015 20:00:00 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/virtualbox_add_disk/</guid>
+      <description>&lt;p&gt;VMで動かしていたCentOSが容量一杯になってしまったので緊急調べた。&lt;br/&gt;
+基本的には下記のどっちかでなんとかなる。ほんとWeb無かったらなんも分からないです。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.clock-up.jp/entry/2015/05/03/virtualbox-centos-disk-ext&#34;&gt;http://blog.clock-up.jp/entry/2015/05/03/virtualbox-centos-disk-ext&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://blog.clock-up.jp/entry/2015/05/29/virtualbox-centos-disk-vdi-ext&#34;&gt;http://blog.clock-up.jp/entry/2015/05/29/virtualbox-centos-disk-vdi-ext&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;簡単なのは物理ディスクを追加するやり方。Virtualbox上から追加する。&lt;br/&gt;
+追加したら&lt;code&gt;fdisk /dev/sda&lt;/code&gt;とか&lt;code&gt;fdisk /dev/sdb&lt;/code&gt;でパーティション設定してやる。&lt;/p&gt;
+
+&lt;p&gt;ここは&lt;code&gt;m&lt;/code&gt;コマンドでヘルプを確認しながらやるべき。&lt;br/&gt;
+&lt;code&gt;4&lt;/code&gt;まで使える&lt;code&gt;primaryパーティション&lt;/code&gt;を設定してやる。&lt;br/&gt;
+テーブルの開始位置と終わりの位置を設定するが、基本はデフォルトでやれば追加容量分を全部使う感じ。&lt;/p&gt;
+
+&lt;p&gt;追加できたら再起動 &lt;code&gt;shutdown -r now&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;その後、&lt;br/&gt;
+&lt;code&gt;fdisk -l&lt;/code&gt;で追加したパーティションを確認する。追加できているがまだ使えない。&lt;br/&gt;
+&lt;code&gt;pvcreate /dev/sda3&lt;/code&gt;でパーティションに物理ボリュームを作り、&lt;br/&gt;
+&lt;code&gt;vgextend VolGroup /dev/sda3&lt;/code&gt;でボリュームグループの設定し、&lt;br/&gt;
+&lt;code&gt;lvextend -l +100%FREE /dev/mapper/VolGroup-lv_root&lt;/code&gt;でボリューム拡張して、&lt;br/&gt;
+&lt;code&gt;resize2fs /dev/mapper/VolGroup-lv_root&lt;/code&gt;でファイルシステムを拡張する。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;df&lt;/code&gt;でディスク確認してみると拡張出来ている。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>as3 レスポンスヘッダーが取得できない</title>

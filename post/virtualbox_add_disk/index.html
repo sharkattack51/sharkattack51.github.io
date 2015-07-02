@@ -1,0 +1,171 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>Virtualbox上のCentOSのディスク容量を追加する</title>
+  <meta name="description" content="Virtualbox上のCentOSのディスク容量を追加する">
+  <meta name="author" content="sharkattack51">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/fonts.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/normalize.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/skeleton.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="https://sharkattack51.github.io/highlight/styles/default.css">
+  
+  <script src="https://sharkattack51.github.io/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-2366280-4', 'auto');
+  ga('send', 'pageview');
+  </script>
+</head>
+<body>
+
+<header id="menu">
+  <div class="container">
+	<span class="logo">Dokyuments</span>
+	<a>&#9776;</a>
+  </div>
+</header>
+
+<nav class="navbar">
+  <div class="container">
+	<div class="row">
+	  <div class="eight columns offset-by-two">
+		<ul class="">
+		  
+		  <li class="u-pull-left"> <a href="https://sharkattack51.github.io" class="brand" style="font-weight:bold;font-size:normal"> Dokyuments </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/ios" class=""> Ios </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/misc" class=""> Misc </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/unity" class=""> Unity </a></li>
+		  
+		</ul>
+	  </div>
+	</div>
+  </div>
+</nav>
+
+
+<div class="container post-wrapper">
+  <div class="row">
+	<div class="eight columns offset-by-two">
+	  <div id="post-title">
+		<p class="footnote">
+		  
+		  <time class="">2015-07-02</time>
+		  
+		  
+		  |
+		  
+		  
+
+		  
+		  categories:<a href="https://sharkattack51.github.io/categories/misc">misc</a> 
+		  
+
+		  
+
+		</p>
+		<h5>Virtualbox上のCentOSのディスク容量を追加する</h5>
+	  </div>
+
+	  <div class="post">
+		<p>VMで動かしていたCentOSが容量一杯になってしまったので緊急調べた。<br/>
+基本的には下記のどっちかでなんとかなる。ほんとWeb無かったらなんも分からないです。</p>
+
+<p><a href="http://blog.clock-up.jp/entry/2015/05/03/virtualbox-centos-disk-ext">http://blog.clock-up.jp/entry/2015/05/03/virtualbox-centos-disk-ext</a></p>
+
+<p><a href="http://blog.clock-up.jp/entry/2015/05/29/virtualbox-centos-disk-vdi-ext">http://blog.clock-up.jp/entry/2015/05/29/virtualbox-centos-disk-vdi-ext</a></p>
+
+<p>簡単なのは物理ディスクを追加するやり方。Virtualbox上から追加する。<br/>
+追加したら<code>fdisk /dev/sda</code>とか<code>fdisk /dev/sdb</code>でパーティション設定してやる。</p>
+
+<p>ここは<code>m</code>コマンドでヘルプを確認しながらやるべき。<br/>
+<code>4</code>まで使える<code>primaryパーティション</code>を設定してやる。<br/>
+テーブルの開始位置と終わりの位置を設定するが、基本はデフォルトでやれば追加容量分を全部使う感じ。</p>
+
+<p>追加できたら再起動 <code>shutdown -r now</code></p>
+
+<p>その後、<br/>
+<code>fdisk -l</code>で追加したパーティションを確認する。追加できているがまだ使えない。<br/>
+<code>pvcreate /dev/sda3</code>でパーティションに物理ボリュームを作り、<br/>
+<code>vgextend VolGroup /dev/sda3</code>でボリュームグループの設定し、<br/>
+<code>lvextend -l +100%FREE /dev/mapper/VolGroup-lv_root</code>でボリューム拡張して、<br/>
+<code>resize2fs /dev/mapper/VolGroup-lv_root</code>でファイルシステムを拡張する。</p>
+
+<p><code>df</code>でディスク確認してみると拡張出来ている。</p>
+
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+	<div class="row">
+	  <div class="ten columns offset-by-two">
+		<p class="footnote">
+		  
+		  Written by @sharkattack51 using <a href="http://gohugo.io">Hugo</a>.
+		  
+		  
+		  Find me at
+
+		  
+		  <a href="https://github.com/sharkattack51" >GitHub</a>
+		  
+
+		  
+
+		  
+		  <a href="https://twitter.com/sharkattack51">Twitter</a>
+		  
+
+		  
+
+		  
+		</p>
+	  </div>
+	</div>
+  </div>
+</div>
+
+
+<script src="https://sharkattack51.github.io/js/jquery.min.js" type="text/javascript"></script>
+<script src="https://sharkattack51.github.io/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#menu").click(function(){
+    $(".brand").text("HOME");
+    $(".navbar ul li").removeClass("cate");
+    $(".navbar").toggle();
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".navbar").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+
