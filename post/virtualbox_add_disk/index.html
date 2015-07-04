@@ -95,22 +95,22 @@
 <p><a href="http://blog.clock-up.jp/entry/2015/05/29/virtualbox-centos-disk-vdi-ext">http://blog.clock-up.jp/entry/2015/05/29/virtualbox-centos-disk-vdi-ext</a></p>
 
 <p>簡単なのは物理ディスクを追加するやり方。Virtualbox上から追加する。<br/>
-追加したら<code>fdisk /dev/sda</code>とか<code>fdisk /dev/sdb</code>でパーティション設定してやる。</p>
+追加したら<code>$ fdisk /dev/sda</code>とか<code>$ fdisk /dev/sdb</code>でパーティション設定してやる。</p>
 
 <p>ここは<code>m</code>コマンドでヘルプを確認しながらやるべき。<br/>
 <code>4</code>まで使える<code>primaryパーティション</code>を設定してやる。<br/>
 テーブルの開始位置と終わりの位置を設定するが、基本はデフォルトでやれば追加容量分を全部使う感じ。</p>
 
-<p>追加できたら再起動 <code>shutdown -r now</code></p>
+<p>追加できたら再起動 <code>$ shutdown -r now</code></p>
 
 <p>その後、<br/>
-<code>fdisk -l</code>で追加したパーティションを確認する。追加できているがまだ使えない。<br/>
-<code>pvcreate /dev/sda3</code>でパーティションに物理ボリュームを作り、<br/>
-<code>vgextend VolGroup /dev/sda3</code>でボリュームグループの設定し、<br/>
-<code>lvextend -l +100%FREE /dev/mapper/VolGroup-lv_root</code>でボリューム拡張して、<br/>
-<code>resize2fs /dev/mapper/VolGroup-lv_root</code>でファイルシステムを拡張する。</p>
+<code>$ fdisk -l</code>で追加したパーティションを確認する。追加できているがまだ使えない。<br/>
+<code>$ pvcreate /dev/sda3</code>でパーティションに物理ボリュームを作り、<br/>
+<code>$ vgextend VolGroup /dev/sda3</code>でボリュームグループの設定し、<br/>
+<code>$ lvextend -l +100%FREE /dev/mapper/VolGroup-lv_root</code>でボリューム拡張して、<br/>
+<code>$ resize2fs /dev/mapper/VolGroup-lv_root</code>でファイルシステムを拡張する。</p>
 
-<p><code>df</code>でディスク確認してみると拡張出来ている。</p>
+<p><code>$ df</code>でディスク確認してみると拡張出来ている。</p>
 
 	  </div>
 	</div>
