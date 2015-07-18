@@ -9,8 +9,56 @@
     
     
     
-    <lastBuildDate>Thu, 02 Jul 2015 20:00:00 JST</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jul 2015 22:02:30 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>WinIMEパネルとRemoteDesktop-Mac</title>
+      <link>https://sharkattack51.github.io/post/win_ime_panel/</link>
+      <pubDate>Sat, 18 Jul 2015 22:02:30 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/win_ime_panel/</guid>
+      <description>
+
+&lt;p&gt;WinのIMEパネル表示させたくないのでいつも消しているが、
+MacからRemoteDesktop使っている時に&lt;code&gt;英数/かな&lt;/code&gt;の切り替えがキーボード操作で出来なくて、
+このパネルが必要になって困る。&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;ime_panel.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;常時これは絶対に表示したくないし、なんとか環境に依存しない方法で解決したい。
+(IMEの設定いじったり、キーマップを変えたりするのはPC環境が変わった場合に面倒なのでやらない)&lt;/p&gt;
+
+&lt;p&gt;結果、完全解決出来なかったので、着地点を設定変更までの手数を減らすということにした。&lt;/p&gt;
+
+&lt;h3 id=&#34;通常:f0add05a456f3f2815ef00db948f079c&#34;&gt;通常&lt;/h3&gt;
+
+&lt;ol&gt;
+&lt;li&gt;コンパネを開く&lt;/li&gt;
+&lt;li&gt;コンパネから地域と言語を開く&lt;/li&gt;
+&lt;li&gt;地域と言語からキーボードと言語タブを開く&lt;/li&gt;
+&lt;li&gt;キーボードの変更ボタンを押す&lt;/li&gt;
+&lt;li&gt;テキストサービスと入力言語ウィンドウを開く&lt;/li&gt;
+&lt;li&gt;言語バータブを開く&lt;/li&gt;
+&lt;li&gt;言語バー設定の変更&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;手数が多すぎてやばい&lt;/p&gt;
+
+&lt;h3 id=&#34;アイディア:f0add05a456f3f2815ef00db948f079c&#34;&gt;アイディア&lt;/h3&gt;
+
+&lt;p&gt;上記 1. 2. 3. 4. をショートカットするコマンド&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ control input.dll&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;コントロールパネル内の設定ウィンドウを直接開く。
+&lt;code&gt;.bat&lt;/code&gt;作って設定ウィンドウopenまでショートカットする。
+入力を切り替えたい時に初めてパネル表示させて、要件終わったら非表示にする。&lt;/p&gt;
+
+&lt;p&gt;あと２クリックをショートカットできたら、、、、、、、、、、、、、、&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Virtualbox上のCentOSのディスク容量を追加する</title>
@@ -1353,81 +1401,6 @@ void Update()
 &lt;li&gt;Unityアセットストア内の有料アセット(v1,v2両対応)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>AppleWatch / WatchKit</title>
-      <link>https://sharkattack51.github.io/post/watchkit/</link>
-      <pubDate>Sun, 01 Feb 2015 12:52:06 JST</pubDate>
-      
-      <guid>https://sharkattack51.github.io/post/watchkit/</guid>
-      <description>
-
-&lt;ul&gt;
-&lt;li&gt;Xcode6.2ベータ版確認&lt;/li&gt;
-&lt;li&gt;iOS8.3ベータ&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;retinaディスプレイ:cbf319a468bf33c263d5503972154e6d&#34;&gt;Retinaディスプレイ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;38mm 272pix * 340pix&lt;/li&gt;
-&lt;li&gt;42mm 312pix * 390pix&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;ジェスチャー:cbf319a468bf33c263d5503972154e6d&#34;&gt;ジェスチャー&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;シングルタップ、スワイプ、フォースタッチ&lt;/li&gt;
-&lt;li&gt;ピンチなどのマルチジェスチャーはない。開発者がジェスチャーを実装することはできない。&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;アーキテクチャー:cbf319a468bf33c263d5503972154e6d&#34;&gt;アーキテクチャー&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;WatchにはGUIリソース(Storyboardファイル)のみインストールされる&lt;/li&gt;
-&lt;li&gt;iPhoneがホストになり、機能は全部iPhone側で実装する
-
-&lt;ul&gt;
-&lt;li&gt;WatchExtentionによりiPhoneのバックグラウンドで実行される&lt;/li&gt;
-&lt;li&gt;WatchAppがアクティブ状態のときだけiPhone側Extentionが動作&lt;/li&gt;
-&lt;li&gt;処理結果のみWatchに無線通信で送られる
-
-&lt;ul&gt;
-&lt;li&gt;描画反映までのラグ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;これが出来ない
-
-&lt;ul&gt;
-&lt;li&gt;iPhone本体を置き忘れたことを時計が感知して知らせる機能&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;機能:cbf319a468bf33c263d5503972154e6d&#34;&gt;機能&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;Watch App
-
-&lt;ul&gt;
-&lt;li&gt;ホーム画面から起動するアプリ&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Glance
-
-&lt;ul&gt;
-&lt;li&gt;読み取り専用の(ボタンが置けない)画面表示&lt;/li&gt;
-&lt;li&gt;スワイプで表示するチラ見機能&lt;/li&gt;
-&lt;li&gt;ここからアプリを起動できる&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Notification
-
-&lt;ul&gt;
-&lt;li&gt;アプリを開かないで動作&lt;/li&gt;
-&lt;li&gt;ショートルックとロングルックがある&lt;/li&gt;
-&lt;li&gt;手首を下げるとショーtルックは消える&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
 </description>
     </item>
     
