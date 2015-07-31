@@ -13,7 +13,7 @@
     <atom:link href="https://sharkattack51.github.io/categories/unity/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
-      <title>OSCライブラリのラッパー for Unity</title>
+      <title>OSC for Unity</title>
       <link>https://sharkattack51.github.io/post/osc/</link>
       <pubDate>Fri, 31 Jul 2015 19:12:20 JST</pubDate>
       
@@ -31,8 +31,12 @@
 
 &lt;p&gt;OSCはUDP通信上のフォーマット仕様。TUIOはさらにOSCを利用してタッチ入力用に取り決められた標準仕様という理解。&lt;/p&gt;
 
-&lt;p&gt;ちなみにWindwsタッチイベントはベンダー以外の開発者が自由にイベント発行できなかったと思うので、そんな場合もTUIOが有効。
-マルチプラットフォーム対応の開発環境には同じ仕組みで対応できるのでそちらでも有用。&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;ちなみにWindowsタッチイベントはハードウェアベンダー以外の開発者が、自由にタッチイベントを発行できなかったと思うので、そんな場合もTUIOが有効。
+マルチプラットフォーム対応のタッチ開発環境には同じ仕組みで対応できるのでそちらでも有用。
+最近ではTouchScriptが全方位カバーされているのでおすすめ。
+&lt;a href=&#34;https://www.assetstore.unity3d.com/jp/#!/content/7394&#34;&gt;https://www.assetstore.unity3d.com/jp/#!/content/7394&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;UDPを使ったソケット通信自体は過去何度も経験があったけど、
 バイナリデータでやり取りしてたり、パースを毎回自前でやってたりして大分不毛だった。
@@ -41,7 +45,7 @@
 &lt;h2 id=&#34;メリットとか特徴とか:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;メリットとか特徴とか&lt;/h2&gt;
 
 &lt;ul&gt;
-&lt;li&gt;言語ごとにライブラリが存在するので通信とデータの解析は自前でやらなくて良い&lt;/li&gt;
+&lt;li&gt;言語ごとにライブラリが存在するので通信処理とデータ解析処理を自前でやらなくて良い&lt;/li&gt;
 &lt;li&gt;値にアクセスするためのURIっぽい構造化されたOSCアドレスが素敵&lt;/li&gt;
 &lt;/ul&gt;
 
