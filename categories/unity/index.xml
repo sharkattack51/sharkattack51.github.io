@@ -9,8 +9,64 @@
     
     
     
-    <lastBuildDate>Sat, 23 May 2015 11:13:29 JST</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2015 19:12:20 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/categories/unity/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>OSCライブラリのラッパー for Unity</title>
+      <link>https://sharkattack51.github.io/post/osc/</link>
+      <pubDate>Fri, 31 Jul 2015 19:12:20 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/osc/</guid>
+      <description>
+
+&lt;p&gt;ちょっと使う機会が出来たらそのうち触っておこうと思っていたOSC周りのライブラリをいろいろ漁ってみていた。
+今回、正確にはTUIOを使う要件だったが、良い機会だったので下レイヤーで動いてるOSCを理解しておこうと思った。&lt;/p&gt;
+
+&lt;h2 id=&#34;osc-tuio:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;OSC/TUIO&lt;/h2&gt;
+
+&lt;h4 id=&#34;opensound-control-osc:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;OpenSound Control (OSC)&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/OpenSound_Control&#34;&gt;https://ja.wikipedia.org/wiki/OpenSound_Control&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;OSCはUDP通信上のフォーマット仕様。TUIOはさらにOSCを利用してタッチ入力用に取り決められた標準仕様という理解。&lt;/p&gt;
+
+&lt;p&gt;ちなみにWindwsタッチイベントはベンダー以外の開発者が自由にイベント発行できなかったと思うので、そんな場合もTUIOが有効。
+マルチプラットフォーム対応の開発環境には同じ仕組みで対応できるのでそちらでも有用。&lt;/p&gt;
+
+&lt;p&gt;UDPを使ったソケット通信自体は過去何度も経験があったけど、
+バイナリデータでやり取りしてたり、パースを毎回自前でやってたりして大分不毛だった。
+3つの違う言語で同じバイナリパース処理を書いたことある。&lt;/p&gt;
+
+&lt;h2 id=&#34;メリットとか特徴とか:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;メリットとか特徴とか&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;言語ごとにライブラリが存在するので通信とデータの解析は自前でやらなくて良い&lt;/li&gt;
+&lt;li&gt;値にアクセスするためのURIっぽい構造化されたOSCアドレスが素敵&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;oscライブラリ:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;OSCライブラリ&lt;/h2&gt;
+
+&lt;p&gt;OSCのライブラリをいろいろ調べていてどれもいまいち使いにくい印象だった。
+どのライブラリも受信データの分解まではやってくれるけど、受信データにもっと直ぐに、もっと簡単に、アクセスしたかった。あと汎用的に。&lt;/p&gt;
+
+&lt;p&gt;その中でこれが良い気がした。OSCアドレス指定で受信毎のコールバックが設定できる。&lt;/p&gt;
+
+&lt;h4 id=&#34;rug-osc:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;Rug.Osc&lt;/h4&gt;
+
+&lt;p&gt;Simple, complete, open source OSC implementation for .NET and Mono.
+&lt;a href=&#34;https://bitbucket.org/rugcode/rug.osc/overview&#34;&gt;https://bitbucket.org/rugcode/rug.osc/overview&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;その上で、もうすこしUnityフレンドリーな感じで受信側のラッパークラス書いた。&lt;/p&gt;
+
+&lt;h4 id=&#34;unity-oscreceivecontroller:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;Unity-OscReceiveController&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/sharkattack51/Unity-OscReceiveController&#34;&gt;https://github.com/sharkattack51/Unity-OscReceiveController&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;受信の値をインスペクタで確認できるようにpublic変数でやってる。
+ソースファイルを増やしたくないのでインスペクタ拡張のEditorスクリプトはわりかし作らない主義です。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Pythonと連携する方法</title>

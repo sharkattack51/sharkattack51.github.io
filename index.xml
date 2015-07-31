@@ -9,8 +9,64 @@
     
     
     
-    <lastBuildDate>Sat, 18 Jul 2015 22:02:30 JST</lastBuildDate>
+    <lastBuildDate>Fri, 31 Jul 2015 19:12:20 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>OSCライブラリのラッパー for Unity</title>
+      <link>https://sharkattack51.github.io/post/osc/</link>
+      <pubDate>Fri, 31 Jul 2015 19:12:20 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/osc/</guid>
+      <description>
+
+&lt;p&gt;ちょっと使う機会が出来たらそのうち触っておこうと思っていたOSC周りのライブラリをいろいろ漁ってみていた。
+今回、正確にはTUIOを使う要件だったが、良い機会だったので下レイヤーで動いてるOSCを理解しておこうと思った。&lt;/p&gt;
+
+&lt;h2 id=&#34;osc-tuio:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;OSC/TUIO&lt;/h2&gt;
+
+&lt;h4 id=&#34;opensound-control-osc:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;OpenSound Control (OSC)&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/OpenSound_Control&#34;&gt;https://ja.wikipedia.org/wiki/OpenSound_Control&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;OSCはUDP通信上のフォーマット仕様。TUIOはさらにOSCを利用してタッチ入力用に取り決められた標準仕様という理解。&lt;/p&gt;
+
+&lt;p&gt;ちなみにWindwsタッチイベントはベンダー以外の開発者が自由にイベント発行できなかったと思うので、そんな場合もTUIOが有効。
+マルチプラットフォーム対応の開発環境には同じ仕組みで対応できるのでそちらでも有用。&lt;/p&gt;
+
+&lt;p&gt;UDPを使ったソケット通信自体は過去何度も経験があったけど、
+バイナリデータでやり取りしてたり、パースを毎回自前でやってたりして大分不毛だった。
+3つの違う言語で同じバイナリパース処理を書いたことある。&lt;/p&gt;
+
+&lt;h2 id=&#34;メリットとか特徴とか:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;メリットとか特徴とか&lt;/h2&gt;
+
+&lt;ul&gt;
+&lt;li&gt;言語ごとにライブラリが存在するので通信とデータの解析は自前でやらなくて良い&lt;/li&gt;
+&lt;li&gt;値にアクセスするためのURIっぽい構造化されたOSCアドレスが素敵&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h2 id=&#34;oscライブラリ:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;OSCライブラリ&lt;/h2&gt;
+
+&lt;p&gt;OSCのライブラリをいろいろ調べていてどれもいまいち使いにくい印象だった。
+どのライブラリも受信データの分解まではやってくれるけど、受信データにもっと直ぐに、もっと簡単に、アクセスしたかった。あと汎用的に。&lt;/p&gt;
+
+&lt;p&gt;その中でこれが良い気がした。OSCアドレス指定で受信毎のコールバックが設定できる。&lt;/p&gt;
+
+&lt;h4 id=&#34;rug-osc:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;Rug.Osc&lt;/h4&gt;
+
+&lt;p&gt;Simple, complete, open source OSC implementation for .NET and Mono.
+&lt;a href=&#34;https://bitbucket.org/rugcode/rug.osc/overview&#34;&gt;https://bitbucket.org/rugcode/rug.osc/overview&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;その上で、もうすこしUnityフレンドリーな感じで受信側のラッパークラス書いた。&lt;/p&gt;
+
+&lt;h4 id=&#34;unity-oscreceivecontroller:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;Unity-OscReceiveController&lt;/h4&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/sharkattack51/Unity-OscReceiveController&#34;&gt;https://github.com/sharkattack51/Unity-OscReceiveController&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;受信の値をインスペクタで確認できるようにpublic変数でやってる。
+ソースファイルを増やしたくないのでインスペクタ拡張のEditorスクリプトはわりかし作らない主義です。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>WinIMEパネルとRemoteDesktop-Mac</title>
@@ -1181,224 +1237,6 @@ server {
 &lt;li&gt;Unityパッケージデータをダウンロード&lt;/li&gt;
 &lt;li&gt;アプリ組み込み&lt;/li&gt;
 &lt;/ol&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>KINECT v2</title>
-      <link>https://sharkattack51.github.io/post/kinect2/</link>
-      <pubDate>Tue, 03 Feb 2015 22:12:59 JST</pubDate>
-      
-      <guid>https://sharkattack51.github.io/post/kinect2/</guid>
-      <description>
-
-&lt;p&gt;&lt;a href=&#34;http://www.microsoftstore.com/store/msjp/ja_JP/pdp/productID.298959900&#34;&gt;MicrosoftStoreJapan オンラインストア&lt;/a&gt;
-¥21,578 (税込)&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;今後はXboxOne用+Windows用アダプタになる模様&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;動作環境:56dfcf25620037a9b9098a7284b1203a&#34;&gt;動作環境&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Windows 8.1&lt;/li&gt;
-&lt;li&gt;64ビット、デュアルコア 2.66GHz以上&lt;/li&gt;
-&lt;li&gt;メモリ2GB以上&lt;/li&gt;
-&lt;li&gt;DirectX11&lt;/li&gt;
-&lt;li&gt;USB 3.0&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;kinect-v1-とのスペック比較:56dfcf25620037a9b9098a7284b1203a&#34;&gt;Kinect(v1)とのスペック比較&lt;/h1&gt;
-
-&lt;table&gt;
-&lt;thead&gt;
-&lt;tr&gt;
-&lt;th align=&#34;left&#34;&gt;機能&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Kinect v1&lt;/th&gt;
-&lt;th align=&#34;left&#34;&gt;Kinect v2&lt;/th&gt;
-&lt;/tr&gt;
-&lt;/thead&gt;
-
-&lt;tbody&gt;
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Color画像&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;640×480 30fps&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;1920×1080 30fps&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;Depth（深度）画像&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;320×240&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;512×424&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;最大距離&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;4.5m&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;4.5m&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;最少距離&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;40cm（Near Mode)&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;50cm&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;水平視野角&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;57度&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;70度&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;垂直視野角&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;43度&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;60度&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;チルトモーター&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;有り コントロール可&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;無し　コントロール不可&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;骨格定義数&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;20関節/1人&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;25関節/1人&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;最大追跡対象スケルトン&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;2人&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;6人&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;手指の検出&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;なし&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;親指と指先&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;手のポーズ検出&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;グーとパーのみ&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;グー、チョキ、パー&lt;/td&gt;
-&lt;/tr&gt;
-
-&lt;tr&gt;
-&lt;td align=&#34;left&#34;&gt;音声入力&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;あり&lt;/td&gt;
-&lt;td align=&#34;left&#34;&gt;あり&lt;/td&gt;
-&lt;/tr&gt;
-&lt;/tbody&gt;
-&lt;/table&gt;
-
-&lt;ul&gt;
-&lt;li&gt;距離測定のセンシング方式が変更になった
-
-&lt;ul&gt;
-&lt;li&gt;v1では赤外線ライトパターンを測定する方式だったが、v2では赤外線反射時間を測定するTimeOfFlight方式&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;チルトモーターの廃止によってプログラムからの本体角度調整が行えなくなった
-
-&lt;ul&gt;
-&lt;li&gt;手動にて角度調整を行う&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;構成:56dfcf25620037a9b9098a7284b1203a&#34;&gt;構成&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;KinectMonitor&lt;/code&gt;によりWindowsサービスとして実行されるようになった
-
-&lt;ul&gt;
-&lt;li&gt;複数アプリケーションが同時に接続使用可能になった&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;コードサンプル:56dfcf25620037a9b9098a7284b1203a&#34;&gt;コードサンプル&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code&gt;void Start()
-{
-  KinectSensor kinect = KinectSensor.GetDefault();
-  BodyFrameReader reader = kinect.BodyFrameSource.OpenReader();
-}
-
-void Update()
-{
-  BodyFrame frame = reader.AcquireLatestFrame();
-  ...
-}
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;h1 id=&#34;取得データ:56dfcf25620037a9b9098a7284b1203a&#34;&gt;取得データ&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Color画像
-
-&lt;ul&gt;
-&lt;li&gt;カメラ画角が広くなり、解像度が1920x1080に変更&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Depth画像
-
-&lt;ul&gt;
-&lt;li&gt;カメラ画角が広くなり、解像度が512x424に変更&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;スケルトントラッキング情報
-
-&lt;ul&gt;
-&lt;li&gt;最大人数が2人から6人に変更&lt;/li&gt;
-&lt;li&gt;トラッキング部位も20箇所から25箇所に変更&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;手の開閉
-
-&lt;ul&gt;
-&lt;li&gt;最大2人まで3種類の認識が可能
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;Closed&lt;/code&gt; グー（握っている）&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Lasso&lt;/code&gt; チョキ（全部の指が開いていない）&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Open&lt;/code&gt; パー（全部の指が開いている）&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;顔認識
-
-&lt;ul&gt;
-&lt;li&gt;顔の３次元位置&lt;/li&gt;
-&lt;li&gt;表情パターン&lt;/li&gt;
-&lt;li&gt;左右目の開閉&lt;/li&gt;
-&lt;li&gt;口の開閉&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;その他:56dfcf25620037a9b9098a7284b1203a&#34;&gt;その他&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Gesture Builder
-
-&lt;ul&gt;
-&lt;li&gt;機械学習によるジェスチャ定義をサポートするアプリケーション（現状ベータ版）が標準インストールされる。
-
-&lt;ul&gt;
-&lt;li&gt;まだベータ段階のようで、使用方法や情報があまり見つからなかった。かなり有用な気がする。&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;開発環境:56dfcf25620037a9b9098a7284b1203a&#34;&gt;開発環境&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Visual Studio 2012、または、Visual Studio 2013（無料のExpress可）&lt;/li&gt;
-&lt;li&gt;Unity Pro
-
-&lt;ul&gt;
-&lt;li&gt;Microsoft公式Unityアセット
-&lt;a href=&#34;http://download.microsoft.com/download/0/D/6/0D63A520-05FE-4054-9B5C-DDFE1D141681/KinectForWindows_UnityPro_PublicPreview_1409.zip&#34;&gt;Kinect for Windows SDK 2.0 Unity Pro Add-in&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;Unityアセットストア内の有料アセット(v1,v2両対応)&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
