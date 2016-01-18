@@ -1,0 +1,262 @@
+<html lang="en">
+<head>
+
+  
+  <meta charset="utf-8">
+  <title>sublime での as3 ビルド設定</title>
+  <meta name="description" content="sublime での as3 ビルド設定">
+  <meta name="author" content="sharkattack51">
+
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/fonts.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/normalize.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/skeleton.css">
+  <link rel="stylesheet" href="https://sharkattack51.github.io/css/custom.css">
+
+  
+  
+  <link rel="stylesheet" href="https://sharkattack51.github.io/highlight/styles/default.css">
+  
+  <script src="https://sharkattack51.github.io/highlight/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  
+  
+  <script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+  ga('create', 'UA-2366280-4', 'auto');
+  ga('send', 'pageview');
+  </script>
+</head>
+<body>
+
+<header id="menu">
+  <div class="container">
+	<span class="logo">Dokyuments</span>
+	<a>&#9776;</a>
+  </div>
+</header>
+
+<nav class="navbar">
+  <div class="container">
+	<div class="row">
+	  <div class="eight columns offset-by-two">
+		<ul class="">
+		  
+		  <li class="u-pull-left"> <a href="https://sharkattack51.github.io" class="brand" style="font-weight:bold;font-size:normal"> Dokyuments </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/ios" class=""> Ios </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/misc" class=""> Misc </a></li>
+		  
+		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/unity" class=""> Unity </a></li>
+		  
+		</ul>
+	  </div>
+	</div>
+  </div>
+</nav>
+
+
+<div class="container post-wrapper">
+  <div class="row">
+	<div class="eight columns offset-by-two">
+	  <div id="post-title">
+		<p class="footnote">
+		  
+		  <time class="">2016-01-17</time>
+		  
+		  
+		  |
+		  
+		  
+
+		  
+		  categories:<a href="https://sharkattack51.github.io/categories/misc">misc</a> 
+		  
+
+		  
+
+		</p>
+		<h5>sublime での as3 ビルド設定</h5>
+	  </div>
+
+	  <div class="post">
+		
+
+<p>FlashDevelop が mac - CrossOver 使っても満足する感じで使えなかったので
+sublime でのセットアップメモ。</p>
+
+<h1 id="air-sdk-のダウンロード:dcd0c2a6d767c9690c91b7f090ca5cda">AIR SDK のダウンロード</h1>
+
+<p><a href="http://www.adobe.com/devnet/air/air-sdk-download.html">http://www.adobe.com/devnet/air/air-sdk-download.html</a></p>
+
+<h1 id="build-systemの追加:dcd0c2a6d767c9690c91b7f090ca5cda">Build Systemの追加</h1>
+
+<p>ここ <a href="https://gist.github.com/newtriks/3131123">https://gist.github.com/newtriks/3131123</a>
+を参考に sublime の build system を追加。
+<code>~/LIbrary/Application Support/Sublime Text 3/Packages/User</code> の下に置く。</p>
+
+<pre><code class="language-json:as3.sublime-build">{
+	&quot;cmd&quot;: [
+		&quot;/AIR_SDK_PATH/bin/mxmlc&quot;, 
+		&quot;$file&quot;,
+		&quot;-static-link-runtime-shared-libraries=true&quot;,
+		&quot;-load-config+=${file_path}/../sublime_build_config.xml&quot;
+	],
+	&quot;file_regex&quot;: &quot;(.*)[(](\\d+)[)]:(?: col: (?:\\d+))? *Error: (.*)&quot;,
+	&quot;selector&quot;: &quot;source.actionscript&quot;,
+	&quot;variants&quot;: [
+		{
+			&quot;cmd&quot;: [
+				&quot;open '/Applications/Flash Player.app' ${file_path}/../bin/${file_base_name}.swf&quot;
+			],
+			&quot;shell&quot;: true,
+			&quot;name&quot;: &quot;Run&quot;
+		}
+	]
+}
+</code></pre>
+
+<p><code>-load-config</code> オプションで xml の Build コンフィグを利用するようにする。</p>
+
+<pre><code class="language-xml:sublime_build_config.xml">&lt;?xml version=&quot;1.0&quot;?&gt;
+&lt;flex-config&gt;
+	&lt;target-player&gt;20.0&lt;/target-player&gt;
+	&lt;swf-version&gt;31&lt;/swf-version&gt;
+	&lt;compiler&gt;
+		&lt;accessible&gt;true&lt;/accessible&gt;
+		&lt;source-path&gt;
+			&lt;path-element&gt;src&lt;/path-element&gt;
+			&lt;path-element&gt;lib&lt;/path-element&gt;
+		&lt;/source-path&gt;
+		&lt;show-actionscript-warnings&gt;true&lt;/show-actionscript-warnings&gt;
+		&lt;debug&gt;true&lt;/debug&gt;
+		&lt;library-path&gt;
+			&lt;path-element&gt;gui&lt;/path-element&gt;
+		&lt;/library-path&gt;
+		&lt;optimize&gt;true&lt;/optimize&gt; 
+	&lt;/compiler&gt;
+	&lt;output&gt;bin/Main.swf&lt;/output&gt;
+&lt;/flex-config&gt;
+</code></pre>
+
+<p>あとコンパイルオプションはここが詳しい。
+<a href="https://sites.google.com/site/shin1ogawa/adobe-air/mxml-compile">https://sites.google.com/site/shin1ogawa/adobe-air/mxml-compile</a></p>
+
+<h1 id="java-実行バージョン変更:dcd0c2a6d767c9690c91b7f090ca5cda">Java 実行バージョン変更</h1>
+
+<p>fdb 実行のために Java を 32bit 対応バージョン v1.6 へ変更する。
+標準でインストール済なので環境変数 JAVA_HOME の参照先を変更するのみ。
+.zshrc に追加した。</p>
+
+<p><code>$ export JAVA_HOME=$(/usr/libexec/java_home -d32)</code></p>
+
+<h1 id="コンソール出力の文字化け対応:dcd0c2a6d767c9690c91b7f090ca5cda">コンソール出力の文字化け対応</h1>
+
+<p>Java の文字コードが OSX と異なるために文字化けする。
+以下ファイル内の最終行、java コマンドに encoding オプションを追加する。</p>
+
+<ul>
+<li>bin/compc</li>
+<li>bin/fdb</li>
+<li>bin/mxmlc</li>
+</ul>
+
+<p>変更 : <code>java -Dfile.encoding=UTF8 $VMARGS...</code></p>
+
+<h1 id="その他:dcd0c2a6d767c9690c91b7f090ca5cda">その他</h1>
+
+<p>fdb コマンドを .zshrc に alias で追加した。</p>
+
+<h3 id="fdb-使い方:dcd0c2a6d767c9690c91b7f090ca5cda">fdb 使い方</h3>
+
+<p><a href="http://qiita.com/tutui/items/1c1b79572c0d82ea3983">http://qiita.com/tutui/items/1c1b79572c0d82ea3983</a></p>
+
+<pre><code>// 次のブレークポイントまで実行 : c(continue)
+(fdb) c
+// 変数表示 : p (print)
+(fdb) p value
+// ステップ実行 : s (step)
+(fdb) s
+// 強制終了 : k (kill)
+(fdb) k
+// fdb終了 : q (quit)
+(fdb) q
+
+// ブレークポイントの設定方法 : b (break)
+(fdb) b 行番号
+(fdb) b 関数名
+(fdb) b test.as:10 (test.asの10行目に設定)
+(fdb) b test.as:execute (test.asのexecute()に設定)
+// 設定中のブレークポイントの確認方法 : i b (info break)
+(fdb) i b
+// 設定中のブレークポイントの削除方法 : d (delete)
+(fdb) d Num (i bで表示された「Num」カラムの値を指定)
+
+// ヘルプ : help
+(fdb) help
+</code></pre>
+
+	  </div>
+	</div>
+  </div>
+</div>
+
+<div class="footer">
+  <div class="container">
+	<div class="row">
+	  <div class="ten columns offset-by-two">
+		<p class="footnote">
+		  
+		  Written by @sharkattack51 using <a href="http://gohugo.io">Hugo</a>.
+		  
+		  
+		  Find me at
+
+		  
+		  <a href="https://github.com/sharkattack51" >GitHub</a>
+		  
+
+		  
+
+		  
+		  <a href="https://twitter.com/sharkattack51">Twitter</a>
+		  
+
+		  
+
+		  
+		</p>
+	  </div>
+	</div>
+  </div>
+</div>
+
+
+<script src="https://sharkattack51.github.io/js/jquery.min.js" type="text/javascript"></script>
+<script src="https://sharkattack51.github.io/js/jquery.timeago.js" type="text/javascript"></script>
+<script type="text/javascript">
+  $(function(){
+    $("time.timeago").timeago();
+  })
+  $("#menu").click(function(){
+    $(".brand").text("HOME");
+    $(".navbar ul li").removeClass("cate");
+    $(".navbar").toggle();
+  });
+  $(window).resize(function(){
+    if(window.innerWidth > 768) {
+      $(".navbar").removeAttr("style");
+    }
+  });
+</script>
+
+</body>
+</html>
+

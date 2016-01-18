@@ -9,8 +9,132 @@
     
     
     
-    <lastBuildDate>Sat, 08 Aug 2015 20:03:20 JST</lastBuildDate>
+    <lastBuildDate>Sun, 17 Jan 2016 21:28:29 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>sublime での as3 ビルド設定</title>
+      <link>https://sharkattack51.github.io/post/sublime_build_as3/</link>
+      <pubDate>Sun, 17 Jan 2016 21:28:29 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/sublime_build_as3/</guid>
+      <description>
+
+&lt;p&gt;FlashDevelop が mac - CrossOver 使っても満足する感じで使えなかったので
+sublime でのセットアップメモ。&lt;/p&gt;
+
+&lt;h1 id=&#34;air-sdk-のダウンロード:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;AIR SDK のダウンロード&lt;/h1&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://www.adobe.com/devnet/air/air-sdk-download.html&#34;&gt;http://www.adobe.com/devnet/air/air-sdk-download.html&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;build-systemの追加:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;Build Systemの追加&lt;/h1&gt;
+
+&lt;p&gt;ここ &lt;a href=&#34;https://gist.github.com/newtriks/3131123&#34;&gt;https://gist.github.com/newtriks/3131123&lt;/a&gt;
+を参考に sublime の build system を追加。
+&lt;code&gt;~/LIbrary/Application Support/Sublime Text 3/Packages/User&lt;/code&gt; の下に置く。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-json:as3.sublime-build&#34;&gt;{
+	&amp;quot;cmd&amp;quot;: [
+		&amp;quot;/AIR_SDK_PATH/bin/mxmlc&amp;quot;, 
+		&amp;quot;$file&amp;quot;,
+		&amp;quot;-static-link-runtime-shared-libraries=true&amp;quot;,
+		&amp;quot;-load-config+=${file_path}/../sublime_build_config.xml&amp;quot;
+	],
+	&amp;quot;file_regex&amp;quot;: &amp;quot;(.*)[(](\\d+)[)]:(?: col: (?:\\d+))? *Error: (.*)&amp;quot;,
+	&amp;quot;selector&amp;quot;: &amp;quot;source.actionscript&amp;quot;,
+	&amp;quot;variants&amp;quot;: [
+		{
+			&amp;quot;cmd&amp;quot;: [
+				&amp;quot;open &#39;/Applications/Flash Player.app&#39; ${file_path}/../bin/${file_base_name}.swf&amp;quot;
+			],
+			&amp;quot;shell&amp;quot;: true,
+			&amp;quot;name&amp;quot;: &amp;quot;Run&amp;quot;
+		}
+	]
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;code&gt;-load-config&lt;/code&gt; オプションで xml の Build コンフィグを利用するようにする。&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&#34;language-xml:sublime_build_config.xml&#34;&gt;&amp;lt;?xml version=&amp;quot;1.0&amp;quot;?&amp;gt;
+&amp;lt;flex-config&amp;gt;
+	&amp;lt;target-player&amp;gt;20.0&amp;lt;/target-player&amp;gt;
+	&amp;lt;swf-version&amp;gt;31&amp;lt;/swf-version&amp;gt;
+	&amp;lt;compiler&amp;gt;
+		&amp;lt;accessible&amp;gt;true&amp;lt;/accessible&amp;gt;
+		&amp;lt;source-path&amp;gt;
+			&amp;lt;path-element&amp;gt;src&amp;lt;/path-element&amp;gt;
+			&amp;lt;path-element&amp;gt;lib&amp;lt;/path-element&amp;gt;
+		&amp;lt;/source-path&amp;gt;
+		&amp;lt;show-actionscript-warnings&amp;gt;true&amp;lt;/show-actionscript-warnings&amp;gt;
+		&amp;lt;debug&amp;gt;true&amp;lt;/debug&amp;gt;
+		&amp;lt;library-path&amp;gt;
+			&amp;lt;path-element&amp;gt;gui&amp;lt;/path-element&amp;gt;
+		&amp;lt;/library-path&amp;gt;
+		&amp;lt;optimize&amp;gt;true&amp;lt;/optimize&amp;gt; 
+	&amp;lt;/compiler&amp;gt;
+	&amp;lt;output&amp;gt;bin/Main.swf&amp;lt;/output&amp;gt;
+&amp;lt;/flex-config&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あとコンパイルオプションはここが詳しい。
+&lt;a href=&#34;https://sites.google.com/site/shin1ogawa/adobe-air/mxml-compile&#34;&gt;https://sites.google.com/site/shin1ogawa/adobe-air/mxml-compile&lt;/a&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;java-実行バージョン変更:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;Java 実行バージョン変更&lt;/h1&gt;
+
+&lt;p&gt;fdb 実行のために Java を 32bit 対応バージョン v1.6 へ変更する。
+標準でインストール済なので環境変数 JAVA_HOME の参照先を変更するのみ。
+.zshrc に追加した。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ export JAVA_HOME=$(/usr/libexec/java_home -d32)&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;コンソール出力の文字化け対応:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;コンソール出力の文字化け対応&lt;/h1&gt;
+
+&lt;p&gt;Java の文字コードが OSX と異なるために文字化けする。
+以下ファイル内の最終行、java コマンドに encoding オプションを追加する。&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;bin/compc&lt;/li&gt;
+&lt;li&gt;bin/fdb&lt;/li&gt;
+&lt;li&gt;bin/mxmlc&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;p&gt;変更 : &lt;code&gt;java -Dfile.encoding=UTF8 $VMARGS...&lt;/code&gt;&lt;/p&gt;
+
+&lt;h1 id=&#34;その他:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;その他&lt;/h1&gt;
+
+&lt;p&gt;fdb コマンドを .zshrc に alias で追加した。&lt;/p&gt;
+
+&lt;h3 id=&#34;fdb-使い方:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;fdb 使い方&lt;/h3&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://qiita.com/tutui/items/1c1b79572c0d82ea3983&#34;&gt;http://qiita.com/tutui/items/1c1b79572c0d82ea3983&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;// 次のブレークポイントまで実行 : c(continue)
+(fdb) c
+// 変数表示 : p (print)
+(fdb) p value
+// ステップ実行 : s (step)
+(fdb) s
+// 強制終了 : k (kill)
+(fdb) k
+// fdb終了 : q (quit)
+(fdb) q
+
+// ブレークポイントの設定方法 : b (break)
+(fdb) b 行番号
+(fdb) b 関数名
+(fdb) b test.as:10 (test.asの10行目に設定)
+(fdb) b test.as:execute (test.asのexecute()に設定)
+// 設定中のブレークポイントの確認方法 : i b (info break)
+(fdb) i b
+// 設定中のブレークポイントの削除方法 : d (delete)
+(fdb) d Num (i bで表示された「Num」カラムの値を指定)
+
+// ヘルプ : help
+(fdb) help
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
     
     <item>
       <title>MS-OfficeファイルをIEで開く設定</title>
@@ -1017,161 +1141,6 @@ $ ./ipa_ota XXXX.ipa https://ipa配置のURL/ &amp;gt; index.html
 &lt;ul&gt;
 &lt;li&gt;構成プロファイルをメール等で配布し、iPhone構成ユーティリティで端末にインストールしてもらう&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>CentOSでSSLサーバー(OTAインストール用)を立てたいレシピ</title>
-      <link>https://sharkattack51.github.io/post/centos_ssl_server_recipe/</link>
-      <pubDate>Fri, 20 Mar 2015 21:51:33 JST</pubDate>
-      
-      <guid>https://sharkattack51.github.io/post/centos_ssl_server_recipe/</guid>
-      <description>
-
-&lt;h1 id=&#34;virtualboxに新規vm作成:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;VirtualBoxに新規VM作成&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;Vagrantが楽&lt;/li&gt;
-&lt;li&gt;じゃなければ
-
-&lt;ul&gt;
-&lt;li&gt;CentOS 64bit&lt;/li&gt;
-&lt;li&gt;基本デフォルト設定でおk&lt;/li&gt;
-&lt;li&gt;インストールドライブにインストーラーイメージを設定する&lt;/li&gt;
-&lt;li&gt;内部ネットワーク設定
-
-&lt;ul&gt;
-&lt;li&gt;割り当て : ブリッジアダプター&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;サーバー設定:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;サーバー設定&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;ネットワーク設定&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ emacs /etc/sysconfig/network-scripts/ifcfg-eth0
-
-
-ONBOOT=yes
-NM_CONTROLLED=no
-
-
-$ service network restart
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;openssh インストール&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ yum install openssh openssh-server openssh-clients
-$ service sshd start
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;p&gt;以降はSSHにて作業&lt;/p&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;nginx インストール&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
-$ yum install nginx
-$ service nginx start
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;php-fpm インストール&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ yum install php-fpm
-$ emacs /etc/php-fpm.d/www.conf
-
-
-user = nginx
-group = nginx
-
-
-$ service php-fpm start
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Boot設定&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ chkconfig iptables off
-$ chkconfig nginx on
-$ chkconfig php-fpm on
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;サーバー証明書作成:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;サーバー証明書作成&lt;/h1&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd ~
-$ openssl genrsa 2048 &amp;gt; cert.key
-$ openssl req -new -x509 -days 3650 -key cert.key -out cert.crt -subj &#39;/CN=XXXXXXXX&#39;
-&lt;/code&gt;&lt;/pre&gt;
-
-&lt;ul&gt;
-&lt;li&gt;iPhone構成ユーティリティから&lt;code&gt;.mobileconfig&lt;/code&gt;の生成
-
-&lt;ul&gt;
-&lt;li&gt;構成プロファイル &amp;gt; 新規作成 &amp;gt; 資格情報にcrtの登録 &amp;gt; 書き出し
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;cert.crt&lt;/code&gt;をインポート&lt;/li&gt;
-&lt;li&gt;プロファイル表示名を設定する&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;cert.mobileconfig&lt;/code&gt;を書き出し&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;nginx設定を変更:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;nginx設定を変更&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;https設定として証明書を指定、phpの動作を有効化する。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd /etc/nginx/conf.d
-$ mv default.conf default.conf.bak
-$ emacs example_ssl.conf
-
-
-server {
-    listen        80;
-    listen        443 ssl;
-    server_name   XXXXXXXX;
-
-
-    ssl_certificate       /XXX/cert.crt;
-    ssl_certificate_key   /XXX/cert.key;
-
-
-    ssl_session_cache     shared:SSL:1m;
-    ssl_session_timeout   5m;
-
-
-    ssl_ciphers                 HIGH:!aNULL:!MD5;
-    ssl_prefer_server_ciphers   on;
-
-
-    location / {
-        root    /usr/share/nginx/html;
-        index   index.html index.htm index.php;
-    }
-
-
-    location ~ \.php$ {
-        root           /usr/share/nginx/html;
-        fastcgi_pass   127.0.0.1:9000;
-        fastcgi_index  index.php;
-        fastcgi_param  SCRIPT_FILENAME  /usr/share/nginx/html$fastcgi_script_name;
-        include        fastcgi_params;
-    }
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;設定ファイルのテスト&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ service nginx configtest
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;設定ファイルの更新反映&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ service nginx reload
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 </description>
     </item>
