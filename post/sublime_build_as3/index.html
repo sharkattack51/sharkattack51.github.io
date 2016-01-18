@@ -172,7 +172,12 @@ sublime でのセットアップメモ。</p>
 
 <h1 id="その他:dcd0c2a6d767c9690c91b7f090ca5cda">その他</h1>
 
-<p>fdb コマンドを .zshrc に alias で追加した。</p>
+<h3 id="デバッグ実行:dcd0c2a6d767c9690c91b7f090ca5cda">デバッグ実行</h3>
+
+<p>fdb コマンドを .zshrc に alias で追加した。デバッグ時はこっちで起動する。
+.sublime-build で BUild - Run でデバッグ実行したかったが、java の切り替えが上手くいかなくて起動できなかった。</p>
+
+<p><code>$ fdb -f SWF/TO/PATH</code></p>
 
 <h3 id="fdb-使い方:dcd0c2a6d767c9690c91b7f090ca5cda">fdb 使い方</h3>
 
@@ -202,6 +207,14 @@ sublime でのセットアップメモ。</p>
 // ヘルプ : help
 (fdb) help
 </code></pre>
+
+<h3 id="flashdevelop-からの移行の場合:dcd0c2a6d767c9690c91b7f090ca5cda">FlashDevelop からの移行の場合</h3>
+
+<p>Build コンフィグの xml を引き継いで使うのが良い。一部パス設定の変更と、項目の追加を行う。</p>
+
+<p>追加 <code>&lt;swf-version&gt;31&lt;/swf-version&gt;</code></p>
+
+<p>.sublime-build の コンフィグ xml 指定パスも変更する。</p>
 
 	  </div>
 	</div>

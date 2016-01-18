@@ -103,7 +103,12 @@ sublime でのセットアップメモ。&lt;/p&gt;
 
 &lt;h1 id=&#34;その他:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;その他&lt;/h1&gt;
 
-&lt;p&gt;fdb コマンドを .zshrc に alias で追加した。&lt;/p&gt;
+&lt;h3 id=&#34;デバッグ実行:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;デバッグ実行&lt;/h3&gt;
+
+&lt;p&gt;fdb コマンドを .zshrc に alias で追加した。デバッグ時はこっちで起動する。
+.sublime-build で BUild - Run でデバッグ実行したかったが、java の切り替えが上手くいかなくて起動できなかった。&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ fdb -f SWF/TO/PATH&lt;/code&gt;&lt;/p&gt;
 
 &lt;h3 id=&#34;fdb-使い方:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;fdb 使い方&lt;/h3&gt;
 
@@ -133,6 +138,14 @@ sublime でのセットアップメモ。&lt;/p&gt;
 // ヘルプ : help
 (fdb) help
 &lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;flashdevelop-からの移行の場合:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;FlashDevelop からの移行の場合&lt;/h3&gt;
+
+&lt;p&gt;Build コンフィグの xml を引き継いで使うのが良い。一部パス設定の変更と、項目の追加を行う。&lt;/p&gt;
+
+&lt;p&gt;追加 &lt;code&gt;&amp;lt;swf-version&amp;gt;31&amp;lt;/swf-version&amp;gt;&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;.sublime-build の コンフィグ xml 指定パスも変更する。&lt;/p&gt;
 </description>
     </item>
     
