@@ -9,8 +9,89 @@
     
     
     
-    <lastBuildDate>Sun, 17 Jan 2016 21:28:29 JST</lastBuildDate>
+    <lastBuildDate>Thu, 02 Jun 2016 18:57:00 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/categories/misc/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Redux.NET</title>
+      <link>https://sharkattack51.github.io/post/redux_net/</link>
+      <pubDate>Thu, 02 Jun 2016 18:57:00 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/redux_net/</guid>
+      <description>
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/GuillaumeSalles/redux.NET&#34;&gt;https://github.com/GuillaumeSalles/redux.NET&lt;/a&gt;&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;State 管理のライブラリ。内部で Rx を用いることで、ライブラリ自体はごく薄いものとなっている。他と組み合わせやすそう。&lt;/li&gt;
+&lt;li&gt;オリジナルは JS 版&lt;/li&gt;
+&lt;li&gt;Rx がもつ「関係性をプログラムする」という流れを踏襲することで、機能分割を明確にできる&lt;/li&gt;
+&lt;li&gt;ロジックを一カ所にまとめることができる&lt;/li&gt;
+&lt;li&gt;データフローが一方向になる&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;参考:03df5dba7e680b3c94d9a06794d60928&#34;&gt;参考&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;&lt;p&gt;10分で理解する Redux の基礎&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://qiita.com/kiita312/items/49a1f03445b19cf407b7&#34;&gt;http://qiita.com/kiita312/items/49a1f03445b19cf407b7&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;なぜ Redux を使うのか&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/kuy/nazereduxwoshi-ufalseka&#34;&gt;https://speakerdeck.com/kuy/nazereduxwoshi-ufalseka&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;登場人物:03df5dba7e680b3c94d9a06794d60928&#34;&gt;登場人物&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Action : 何をするかの内容をもつオブジェクト&lt;/li&gt;
+&lt;li&gt;State : アプリケーションの状態をもつオブジェクト&lt;/li&gt;
+&lt;li&gt;Store : 現在の State を持つ。Action を受け取って State と一緒に Reducer に渡す&lt;/li&gt;
+&lt;li&gt;Reducer : 受け取った Action と State から新しい State を返す。Pure 関数。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;流れ:03df5dba7e680b3c94d9a06794d60928&#34;&gt;流れ&lt;/h1&gt;
+
+&lt;ul&gt;
+&lt;li&gt;ViewProvider は View の各コンポーネントを管理し、関連付けを行う。&lt;/li&gt;
+&lt;li&gt;ViewProvider は状態を持たない&lt;/li&gt;
+&lt;li&gt;Store が個別の状態 State を持っており、ViewProvider が Store を持っている&lt;/li&gt;
+&lt;li&gt;各コンポーネントは Store に Action を Dispatch することで処理を実行する。各コンポーネント自体が処理を実行はしない。&lt;/li&gt;
+&lt;li&gt;State オブジェクトは現在のアプリケーションの状態をもつ。ツリー構造を用いて全体的な状態をもつこともできる。&lt;/li&gt;
+&lt;li&gt;実際の処理は Store が現在の State と一緒に、送られた Action を Reducer に渡す&lt;/li&gt;
+&lt;li&gt;Reducer は State と Action をもとに新しい State を返す。（元の State オブジェクトを更新しない。Pure関数）&lt;/li&gt;
+&lt;li&gt;Reducer は Pure 関数であり、入力Aの場合は毎回Bを返さなければならない&lt;/li&gt;
+&lt;li&gt;Reducer はだんだん肥大化するので、分割を検討する。Stateのツリー構造に対応して子Reducerに分割し、親Reducerがまとめるようにする。&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&#34;pure関数:03df5dba7e680b3c94d9a06794d60928&#34;&gt;Pure関数&lt;/h3&gt;
+
+&lt;p&gt;必ず結果が一緒になる関数&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;引数の値を変更するのはだめ&lt;/li&gt;
+&lt;li&gt;副作用をおこす(APIを呼んだり、ルーティングを変えるなど)はだめ&lt;/li&gt;
+&lt;li&gt;毎回値が変わるもの(Date.now() や Math.random())を扱うのはだめ&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h1 id=&#34;3原則:03df5dba7e680b3c94d9a06794d60928&#34;&gt;3原則&lt;/h1&gt;
+
+&lt;ol&gt;
+&lt;li&gt;&lt;p&gt;Single source of truth&lt;/p&gt;
+
+&lt;p&gt;アプリケーション内でStoreは1つのみとし、State は単独のオブジェクトとしてStoreに保持される。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;State is read-only&lt;/p&gt;
+
+&lt;p&gt;State を直接変更することはできず、action を Store へ dispatch することでしか State は変更できない。&lt;/p&gt;&lt;/li&gt;
+
+&lt;li&gt;&lt;p&gt;Mutations are written as pure functions&lt;/p&gt;
+
+&lt;p&gt;State を変更する関数 Reducer は pure な関数にする。&lt;/p&gt;&lt;/li&gt;
+&lt;/ol&gt;
+</description>
+    </item>
     
     <item>
       <title>sublime での as3 ビルド設定</title>
