@@ -9,8 +9,65 @@
     
     
     
-    <lastBuildDate>Thu, 02 Jun 2016 18:57:00 JST</lastBuildDate>
+    <lastBuildDate>Sat, 01 Oct 2016 09:17:47 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Windows10アニバーサリーアップデートしたついでに Bash on Ubuntu on Windows いれたのでとりあえずやってみた設定</title>
+      <link>https://sharkattack51.github.io/post/BoW/</link>
+      <pubDate>Sat, 01 Oct 2016 09:17:47 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/BoW/</guid>
+      <description>
+
+&lt;p&gt;まず&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ apt update&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;$ apt upgrade&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;とりま&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;$ apt install build-essential&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;$ apt install git&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;ホスト名解決:60439b64dadb6abbf5cca3cbbdddb953&#34;&gt;ホスト名解決&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;$ echo 127.0.1.1 $(hostname) &amp;gt;&amp;gt; /etc/hosts&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;zsh-インストール:60439b64dadb6abbf5cca3cbbdddb953&#34;&gt;zsh インストール&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;$ apt install zsh&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;sh -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;quot;&lt;/code&gt;&lt;/p&gt;
+
+&lt;h4 id=&#34;sh作って-bash-を-zsh-へ切り替える:60439b64dadb6abbf5cca3cbbdddb953&#34;&gt;sh作って bash を zsh へ切り替える&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;$ mv /bin/bash /bin/.bash&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;$ touch /bin/bash&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;$ chmod 755 /bin/bash&lt;/code&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;#!/bin/sh
+if [ $SHELL = /bin/bash ]; then
+  export SHELL=/bin/zsh
+  exec $SHELL
+else
+  /bin/.bash $*
+fi
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;あと .zshrc の各種設定。&lt;/p&gt;
+
+&lt;h4 id=&#34;golang-インストール:60439b64dadb6abbf5cca3cbbdddb953&#34;&gt;golang インストール&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;$ apt install golang&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;現状 &lt;a href=&#34;https://github.com/peco/peco&#34;&gt;peco&lt;/a&gt; 入れるとこで何故かはまり中、、、&lt;/p&gt;
+
+&lt;h4 id=&#34;win-ubuntu-それぞれのマウント状態確認:60439b64dadb6abbf5cca3cbbdddb953&#34;&gt;Win/Ubuntu それぞれのマウント状態確認&lt;/h4&gt;
+
+&lt;p&gt;&lt;code&gt;(Win) C: =&amp;gt; (Ubuntu) /mnt/c&lt;/code&gt;&lt;br /&gt;
+&lt;code&gt;(Ubuntu) ~ =&amp;gt; (Win) C:/Users/user/AppData/Local/lxss/home/user&lt;/code&gt;&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Redux.NET</title>
@@ -1079,122 +1136,6 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>Unity AVProWindowsMediaプラグインでスムーズな動画再生を行う</title>
-      <link>https://sharkattack51.github.io/post/avpro_windows_media/</link>
-      <pubDate>Sat, 21 Mar 2015 20:57:00 JST</pubDate>
-      
-      <guid>https://sharkattack51.github.io/post/avpro_windows_media/</guid>
-      <description>
-
-&lt;p&gt;実はWMV再生が遅かったので（再生時デコードに時間がかかり、解像度が大きい映像データだとカクつく）
-その対応方法について&lt;/p&gt;
-
-&lt;h1 id=&#34;ハードウェアで対応:0c800cade67495a7e4307e6494708031&#34;&gt;ハードウェアで対応&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;GPU,CPUは速いのが良い&lt;/li&gt;
-&lt;li&gt;SSDが良い&lt;/li&gt;
-&lt;li&gt;AVProWindowsMediaプラグイン自体は64bit対応されているので64bitビルドがお勧め
-
-&lt;ul&gt;
-&lt;li&gt;Unity4はEditorが32bitなので環境違いに注意&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;colourformatで対応:0c800cade67495a7e4307e6494708031&#34;&gt;ColourFormatで対応&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;速い
-
-&lt;ul&gt;
-&lt;li&gt;YCbCr_HD (default)&lt;/li&gt;
-&lt;li&gt;YCbCr_SD&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;遅い
-
-&lt;ul&gt;
-&lt;li&gt;RGBA32&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;解像度で対応:0c800cade67495a7e4307e6494708031&#34;&gt;解像度で対応&lt;/h1&gt;
-
-&lt;p&gt;速↑&lt;/p&gt;
-
-&lt;ol&gt;
-&lt;li&gt;幅、高さともに2乗 (eg 256, 512, 1024, 2048, 4096)&lt;/li&gt;
-&lt;li&gt;幅のみ2乗&lt;/li&gt;
-&lt;li&gt;幅、高さともに16の倍数&lt;/li&gt;
-&lt;li&gt;幅のみ16の倍数&lt;/li&gt;
-&lt;li&gt;幅、高さともに4の倍数&lt;/li&gt;
-&lt;li&gt;幅のみ4の倍数&lt;/li&gt;
-&lt;li&gt;幅、高さともに上記に当てはまらない&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;p&gt;遅↓&lt;/p&gt;
-
-&lt;h1 id=&#34;codecで対応:0c800cade67495a7e4307e6494708031&#34;&gt;Codecで対応&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;.avi&lt;/code&gt;を使用する&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;mp4&lt;/code&gt;は大きな解像度には向いていない&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Hap&lt;/code&gt; が推奨。または&lt;code&gt;Xvid&lt;/code&gt;。
-
-&lt;ul&gt;
-&lt;li&gt;CPUリソースとデコード速度のバランスが良い(最適なのはHap)&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;DirectShowは1080pix以上の&lt;code&gt;H.264&lt;/code&gt;に対応していない&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;H.264&lt;/code&gt;はCPUリソースを食う&lt;/li&gt;
-&lt;li&gt;非圧縮
-
-&lt;ul&gt;
-&lt;li&gt;デコード処理が無いので早い&lt;/li&gt;
-&lt;li&gt;メモリ読み込みの場合にメモリオーバーになる可能性あり&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Hap&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.renderheads.com/portfolio/HapDirectShow/&#34;&gt;http://www.renderheads.com/portfolio/HapDirectShow/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;Xvid&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;https://www.xvid.com/download/&#34;&gt;https://www.xvid.com/download/&lt;/a&gt;&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;$ ffmpeg -i input.avi -b:v 50000k -c:v libxvid output.avi&lt;/code&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;multithreadingレンダリングオプションで対応:0c800cade67495a7e4307e6494708031&#34;&gt;MultiThreadingレンダリングオプションで対応&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;UnityEditorのInspector上にて&lt;code&gt;Debug項目&lt;/code&gt;を表示&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;MTRendering設定&lt;/code&gt;&lt;/li&gt;
-&lt;/ol&gt;
-
-&lt;h1 id=&#34;ガベージコレクションを回避:0c800cade67495a7e4307e6494708031&#34;&gt;ガベージコレクションを回避&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;明示的な呼び出しは極力避ける&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;読み込み:0c800cade67495a7e4307e6494708031&#34;&gt;読み込み&lt;/h1&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;code&gt;LoadMovie()&lt;/code&gt;ではなく、&lt;code&gt;LoadMovieFromMemory()&lt;/code&gt;
-
-&lt;ul&gt;
-&lt;li&gt;非圧縮の場合は注意&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ul&gt;
 </description>
     </item>
     
