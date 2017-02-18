@@ -9,8 +9,55 @@
     
     
     
-    <lastBuildDate>Sat, 01 Oct 2016 09:17:47 JST</lastBuildDate>
+    <lastBuildDate>Sat, 18 Feb 2017 10:15:10 JST</lastBuildDate>
     <atom:link href="https://sharkattack51.github.io/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>goでguiライブラリを使う</title>
+      <link>https://sharkattack51.github.io/post/go_gui/</link>
+      <pubDate>Sat, 18 Feb 2017 10:15:10 JST</pubDate>
+      
+      <guid>https://sharkattack51.github.io/post/go_gui/</guid>
+      <description>
+
+&lt;p&gt;前から気になってちょこちょこ調べていた go での gui ライブラリを試す。
+いろいろ漁った結果、&lt;a href=&#34;https://github.com/andlabs/ui&#34;&gt;libui&lt;/a&gt; が良さそうだったのでセットアップにだいぶ苦戦しながら最終的には動かせた。&lt;/p&gt;
+
+&lt;h3 id=&#34;とりあえずインストール:11024d50bd707cacf2838d6925d07daf&#34;&gt;とりあえずインストール&lt;/h3&gt;
+
+&lt;p&gt;&lt;code&gt;go get github.com/andlabs/ui&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;まずここでしばらくつまづいていた。&lt;/p&gt;
+
+&lt;p&gt;Win64bit環境で &lt;code&gt;go get&lt;/code&gt; したら途中でエラーが出て完了できなかった。
+いろいろ調べたら64bit環境のビルドツールチェインがインストールされてなかったのが原因のエラーだった。
+github の issue を読んでいたら &lt;code&gt;MinGW-w64&lt;/code&gt; 入れろって書いてあったので試しにいれてパス通したら動いた。&lt;/p&gt;
+
+&lt;p&gt;そもそも &lt;code&gt;go get&lt;/code&gt; の仕組みをちゃんと理解していなかったのだけれども &lt;code&gt;go get&lt;/code&gt; はダウンロードするだけではなくてその後にコンパイルも行う。
+今回の &lt;code&gt;libui&lt;/code&gt; は cgo で c コンパイルが走るのでどうやらそこでつまづいていた。&lt;/p&gt;
+
+&lt;h3 id=&#34;試す:11024d50bd707cacf2838d6925d07daf&#34;&gt;試す&lt;/h3&gt;
+
+&lt;p&gt;とりあえず Github の &lt;a href=&#34;https://github.com/andlabs/ui/wiki/Getting-Started&#34;&gt;tutorial&lt;/a&gt; だとだいぶ機能が少なかったので、
+オリジナルライブラリのほうの c のソース &lt;a href=&#34;https://github.com/andlabs/libui/blob/master/examples/controlgallery/main.c&#34;&gt;examples&lt;/a&gt; を go で写経したのがこちら。&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/sharkattack51/go_libui_test&#34;&gt;https://github.com/sharkattack51/go_libui_test&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;libui_control_gallery.png&#34; alt=&#34;&#34; /&gt;
+&lt;/p&gt;
+
+&lt;p&gt;ライブラリ自体はまだ完全ではなさそうで、まだオリジナルから bind できていない機能もあったけど簡単なものだったら大丈夫そうだった。&lt;/p&gt;
+
+&lt;p&gt;そもそも go で gui アプリが作れた場合のメリットとしてはスクリプト感覚で作れるし、クロスプラットフォームであり、
+ビルドしてしまえば実行環境に異存にしないバイナリが一個だけというのがあってとてもシンプルで素敵だ。&lt;/p&gt;
+
+&lt;p&gt;今回ついで解って良かったのは、&lt;/p&gt;
+
+&lt;p&gt;&lt;code&gt;go build -ldflags &amp;quot;-H=windowsgui&amp;quot; main.go&lt;/code&gt;&lt;/p&gt;
+
+&lt;p&gt;Winビルドのオプションにこれつけるとアプリケーションがコンソール無しになる。&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>Windows10アニバーサリーアップデートしたついでに Bash on Ubuntu on Windows いれたのでとりあえずやってみた設定</title>
@@ -1047,95 +1094,6 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;h1 id=&#34;デプロイ:a4ef5acb253fb526eeee44a0fb0c18e4&#34;&gt;デプロイ&lt;/h1&gt;
 
 &lt;p&gt;&lt;code&gt;$ git push origin master&lt;/code&gt;&lt;/p&gt;
-</description>
-    </item>
-    
-    <item>
-      <title>SublimeText-OmniSharpでUnityのコード補完設定</title>
-      <link>https://sharkattack51.github.io/post/sublime_unity/</link>
-      <pubDate>Fri, 01 May 2015 20:35:42 JST</pubDate>
-      
-      <guid>https://sharkattack51.github.io/post/sublime_unity/</guid>
-      <description>
-
-&lt;p&gt;幾度かの挫折の末にやっと判明した設定方法について&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;その後Monodevelopとさらばしたかったが、結局なかなか離れられていない&lt;/li&gt;
-&lt;/ul&gt;
-
-&lt;h1 id=&#34;参考元:bf320ad6e095134691cd2a21bde2ae24&#34;&gt;参考元&lt;/h1&gt;
-
-&lt;p&gt;&lt;a href=&#34;http://www.radjor.com/blog/p/65&#34;&gt;http://www.radjor.com/blog/p/65&lt;/a&gt;&lt;/p&gt;
-
-&lt;h1 id=&#34;手順:bf320ad6e095134691cd2a21bde2ae24&#34;&gt;手順&lt;/h1&gt;
-
-&lt;ol&gt;
-&lt;li&gt;&lt;code&gt;SublimeText&lt;/code&gt;に&lt;code&gt;OmniSharp&lt;/code&gt;パッケージをインストール&lt;/li&gt;
-&lt;li&gt;&lt;code&gt;Mono&lt;/code&gt;をインストール
-
-&lt;ul&gt;
-&lt;li&gt;&lt;a href=&#34;http://www.mono-project.com/&#34;&gt;http://www.mono-project.com/&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;li&gt;Unityのプロジェクトディレクトリで&lt;code&gt;.sublime-project&lt;/code&gt;を保存
-
-&lt;ul&gt;
-&lt;li&gt;sublコマンドで開くとらくちん&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;.sublime-project&lt;/code&gt;を編集&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;&lt;code&gt;xxxxx-csharp.sln&lt;/code&gt;の設定とUnity用ファイルのプロジェクト除外設定&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;{
-    &amp;quot;folders&amp;quot;:
-    [
-        {
-            &amp;quot;follow_symlinks&amp;quot;: true,
-            &amp;quot;path&amp;quot;: &amp;quot;.&amp;quot;,
-            &amp;quot;file_exclude_patterns&amp;quot;:
-            [
-                &amp;quot;*.meta&amp;quot;,
-                &amp;quot;*.csproj&amp;quot;,
-                &amp;quot;*.unityproj&amp;quot;
-            ],
-            &amp;quot;folder_include_patterns&amp;quot;:
-            [
-                &amp;quot;Assets&amp;quot;,
-                &amp;quot;Assets/*&amp;quot;
-            ]
-        }
-    ],
-    &amp;quot;solution_file&amp;quot;: &amp;quot;xxxxxxxx-csharp.sln&amp;quot;
-}
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-
-&lt;li&gt;&lt;p&gt;&lt;code&gt;Packages/OmniSharp/PrebuiltOmniSharpServer/config.json&lt;/code&gt;でwarningの無視設定&lt;/p&gt;
-
-&lt;ul&gt;
-&lt;li&gt;&lt;p&gt;デフォルトでwarning出過ぎなので個人的にはまだ足りない。warningは駆逐したい。&lt;/p&gt;
-
-&lt;pre&gt;&lt;code class=&#34;language-json&#34;&gt;&amp;quot;IgnoredCodeIssues&amp;quot;:
-[
-    &amp;quot;^Keyword &#39;private&#39; is redundant. This is the default modifier.$&amp;quot;,
-    &amp;quot;.* should not separate words with an underscore.*&amp;quot;,
-    &amp;quot;^Redundant argument name specification$&amp;quot;,
-    &amp;quot;^Convert to &#39;.*&#39; expre.&amp;quot;,
-    &amp;quot;^Use &#39;var&#39; keyword$&amp;quot;,
-    &amp;quot;^Name should have prefix.&amp;quot;,
-    &amp;quot;^Redundant ToString.&amp;quot;,
-    &amp;quot;^Initializing field by default value is redundant$&amp;quot;,
-    &amp;quot;^Parameter can be IComparable$&amp;quot;,
-    &amp;quot;^Convert to constant.*&amp;quot;,
-    &amp;quot;^Variable could be moved to a nested scope$&amp;quot;,
-    &amp;quot;^Method never reaches its end or a &#39;return&#39; statement.$&amp;quot;,
-    &amp;quot;.* should start with an upper case letter. \\(Rule &#39;Enum Members&#39;\\)$&amp;quot;
-]
-&lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
-&lt;/ul&gt;&lt;/li&gt;
-&lt;/ol&gt;
 </description>
     </item>
     

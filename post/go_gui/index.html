@@ -3,8 +3,8 @@
 
   
   <meta charset="utf-8">
-  <title>MS-OfficeファイルをIEで開く設定</title>
-  <meta name="description" content="MS-OfficeファイルをIEで開く設定">
+  <title>goでguiライブラリを使う</title>
+  <meta name="description" content="goでguiライブラリを使う">
   <meta name="author" content="sharkattack51">
 
   
@@ -71,7 +71,7 @@
 	  <div id="post-title">
 		<p class="footnote">
 		  
-		  <time class="">2015-08-08</time>
+		  <time class="">2017-02-18</time>
 		  
 		  
 		  |
@@ -79,85 +79,54 @@
 		  
 
 		  
-		  categories:<a href="https://sharkattack51.github.io/categories/misc">misc</a> 
+		  categories:<a href="https://sharkattack51.github.io/categories/go">go</a> 
 		  
 
 		  
 
 		</p>
-		<h5>MS-OfficeファイルをIEで開く設定</h5>
+		<h5>goでguiライブラリを使う</h5>
 	  </div>
 
 	  <div class="post">
-		<p>MS-Officeファイルを、とくにPowerPointを自前のアプリケーションで開く場合に
-一番簡単な方法でIEに丸投げする方法がある。</p>
+		
 
-<p>Viewer用のActiveXとか探すとあるみたいだけど、バージョンの互換で辛くなること必至なので
-MSにおまかせするのが正解な気がする。</p>
+<p>前から気になってちょこちょこ調べていた go での gui ライブラリを試す。
+いろいろ漁った結果、<a href="https://github.com/andlabs/ui">libui</a> が良さそうだったのでセットアップにだいぶ苦戦しながら最終的には動かせた。</p>
 
-<p>IEで開ける＝WindowsFormやWPFなどのWebBrowserコントロールで開くことができるようになる。</p>
+<h3 id="とりあえずインストール:11024d50bd707cacf2838d6925d07daf">とりあえずインストール</h3>
 
-<p>ただし、標準設定ではIE上で開くことができないのでレジストリを設定する必要がある。
-あと、警告でるので無視する設定が必要。</p>
+<p><code>go get github.com/andlabs/ui</code></p>
 
-<p>リポジトリはここ
-<a href="https://github.com/sharkattack51/office-in-browser-settings">https://github.com/sharkattack51/office-in-browser-settings</a></p>
+<p>まずここでしばらくつまづいていた。</p>
 
-<pre><code class="language-reg">Windows Registry Editor Version 5.00
+<p>Win64bit環境で <code>go get</code> したら途中でエラーが出て完了できなかった。
+いろいろ調べたら64bit環境のビルドツールチェインがインストールされてなかったのが原因のエラーだった。
+github の issue を読んでいたら <code>MinGW-w64</code> 入れろって書いてあったので試しにいれてパス通したら動いた。</p>
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Word.Document.8]
-&quot;BrowserFlags&quot;=dword:80000024
+<p>そもそも <code>go get</code> の仕組みをちゃんと理解していなかったのだけれども <code>go get</code> はダウンロードするだけではなくてその後にコンパイルも行う。
+今回の <code>libui</code> は cgo で c コンパイルが走るのでどうやらそこでつまづいていた。</p>
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Word.RTF.8]
-&quot;BrowserFlags&quot;=dword:80000024
+<h3 id="試す:11024d50bd707cacf2838d6925d07daf">試す</h3>
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Word.Document.12]
-&quot;BrowserFlags&quot;=dword:80000024
+<p>とりあえず Github の <a href="https://github.com/andlabs/ui/wiki/Getting-Started">tutorial</a> だとだいぶ機能が少なかったので、
+オリジナルライブラリのほうの c のソース <a href="https://github.com/andlabs/libui/blob/master/examples/controlgallery/main.c">examples</a> を go で写経したのがこちら。</p>
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Word.DocumentMacroEnabled.12]
-&quot;BrowserFlags&quot;=dword:80000024
+<p><a href="https://github.com/sharkattack51/go_libui_test">https://github.com/sharkattack51/go_libui_test</a></p>
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Excel.Sheet.8]
-&quot;BrowserFlags&quot;=dword:80000A00
+<p><img src="libui_control_gallery.png" alt="" />
+</p>
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Excel.Sheet.12]
-&quot;BrowserFlags&quot;=dword:80000A00
+<p>ライブラリ自体はまだ完全ではなさそうで、まだオリジナルから bind できていない機能もあったけど簡単なものだったら大丈夫そうだった。</p>
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Excel.SheetMacroEnabled.12]
-&quot;BrowserFlags&quot;=dword:80000A00
+<p>そもそも go で gui アプリが作れた場合のメリットとしてはスクリプト感覚で作れるし、クロスプラットフォームであり、
+ビルドしてしまえば実行環境に異存にしないバイナリが一個だけというのがあってとてもシンプルで素敵だ。</p>
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\Excel.SheetBinaryMacroEnabled.12]
-&quot;BrowserFlags&quot;=dword:80000A00
+<p>今回ついで解って良かったのは、</p>
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PowerPoint.Show.8]
-&quot;BrowserFlags&quot;=dword:00000000
+<p><code>go build -ldflags &quot;-H=windowsgui&quot; main.go</code></p>
 
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PowerPoint.Show.12]
-&quot;BrowserFlags&quot;=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PowerPoint.ShowMacroEnabled.12]
-&quot;BrowserFlags&quot;=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PowerPoint.SlideShow.8]
-&quot;BrowserFlags&quot;=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PowerPoint.SlideShow.12]
-&quot;BrowserFlags&quot;=dword:00000000
-
-[HKEY_LOCAL_MACHINE\SOFTWARE\Classes\PowerPoint.SlideShowMacroEnabled.12]
-&quot;BrowserFlags&quot;=dword:00000000
-
-[HKEY_CURRENT_USER\Software\Microsoft\Windows\Shell\AttachmentExecute\{0002DF01-0000-0000-C000-000000000046}]
-&quot;Word.Document.8&quot;=dword:00000000
-&quot;Word.RTF.8&quot;=dword:00000000
-&quot;Word.Document.12&quot;=dword:00000000
-&quot;PowerPoint.Show.8&quot;=dword:00000000
-&quot;PowerPoint.Show.12&quot;=dword:00000000
-&quot;PowerPoint.SlideShow.8&quot;=dword:00000000
-&quot;PowerPoint.SlideShow.12&quot;=dword:00000000
-&quot;Excel.Sheet.8&quot;=dword:00000000
-&quot;Excel.Sheet.12&quot;=dword:00000000
-</code></pre>
+<p>Winビルドのオプションにこれつけるとアプリケーションがコンソール無しになる。</p>
 
 	  </div>
 	</div>
