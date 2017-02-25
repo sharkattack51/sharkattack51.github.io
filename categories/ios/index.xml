@@ -2,20 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Ios on Dokyuments</title>
-    <link>https://sharkattack51.github.io/categories/ios/</link>
+    <link>https://sharkattack51.github.io/categories/ios/index.xml</link>
     <description>Recent content in Ios on Dokyuments</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    
-    
-    
-    <lastBuildDate>Fri, 20 Mar 2015 22:06:33 JST</lastBuildDate>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sharkattack51&#34;&gt;sharkattack51&lt;/a&gt; 2017</copyright>
     <atom:link href="https://sharkattack51.github.io/categories/ios/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>ota-tools</title>
       <link>https://sharkattack51.github.io/post/ota_tools/</link>
-      <pubDate>Fri, 20 Mar 2015 22:06:33 JST</pubDate>
+      <pubDate>Fri, 20 Mar 2015 22:06:33 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/ota_tools/</guid>
       <description>
@@ -25,7 +22,7 @@
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/RichardBronosky/ota-tools&#34;&gt;https://github.com/RichardBronosky/ota-tools&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;サインニング時:f2acc3b9dac2091e4694592d23a8045c&#34;&gt;サインニング時&lt;/h1&gt;
+&lt;h1 id=&#34;サインニング時&#34;&gt;サインニング時&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;サインニングの入れ替えを行う&lt;/p&gt;
@@ -35,7 +32,7 @@ $ ./ipa_sign XXXX.ipa XXX.mobileprovision &amp;quot;証明書登録名&amp;quot;
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;ota配布時:f2acc3b9dac2091e4694592d23a8045c&#34;&gt;OTA配布時&lt;/h1&gt;
+&lt;h1 id=&#34;ota配布時&#34;&gt;OTA配布時&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;配布用plistとhtmlを生成&lt;/p&gt;
@@ -56,7 +53,7 @@ $ ./ipa_ota XXXX.ipa https://ipa配置のURL/ &amp;gt; index.html
     <item>
       <title>AppleWatch / WatchKit</title>
       <link>https://sharkattack51.github.io/post/watchkit/</link>
-      <pubDate>Sun, 01 Feb 2015 12:52:06 JST</pubDate>
+      <pubDate>Sun, 01 Feb 2015 12:52:06 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/watchkit/</guid>
       <description>
@@ -66,21 +63,21 @@ $ ./ipa_ota XXXX.ipa https://ipa配置のURL/ &amp;gt; index.html
 &lt;li&gt;iOS8.3ベータ&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;retinaディスプレイ:cbf319a468bf33c263d5503972154e6d&#34;&gt;Retinaディスプレイ&lt;/h1&gt;
+&lt;h1 id=&#34;retinaディスプレイ&#34;&gt;Retinaディスプレイ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;38mm 272pix * 340pix&lt;/li&gt;
 &lt;li&gt;42mm 312pix * 390pix&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;ジェスチャー:cbf319a468bf33c263d5503972154e6d&#34;&gt;ジェスチャー&lt;/h1&gt;
+&lt;h1 id=&#34;ジェスチャー&#34;&gt;ジェスチャー&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;シングルタップ、スワイプ、フォースタッチ&lt;/li&gt;
 &lt;li&gt;ピンチなどのマルチジェスチャーはない。開発者がジェスチャーを実装することはできない。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;アーキテクチャー:cbf319a468bf33c263d5503972154e6d&#34;&gt;アーキテクチャー&lt;/h1&gt;
+&lt;h1 id=&#34;アーキテクチャー&#34;&gt;アーキテクチャー&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;WatchにはGUIリソース(Storyboardファイル)のみインストールされる&lt;/li&gt;
@@ -102,7 +99,7 @@ $ ./ipa_ota XXXX.ipa https://ipa配置のURL/ &amp;gt; index.html
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;機能:cbf319a468bf33c263d5503972154e6d&#34;&gt;機能&lt;/h1&gt;
+&lt;h1 id=&#34;機能&#34;&gt;機能&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;Watch App

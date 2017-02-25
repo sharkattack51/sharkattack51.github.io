@@ -2,20 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Unity on Dokyuments</title>
-    <link>https://sharkattack51.github.io/categories/unity/</link>
+    <link>https://sharkattack51.github.io/categories/unity/index.xml</link>
     <description>Recent content in Unity on Dokyuments</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    
-    
-    
-    <lastBuildDate>Fri, 31 Jul 2015 19:12:20 JST</lastBuildDate>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sharkattack51&#34;&gt;sharkattack51&lt;/a&gt; 2017</copyright>
     <atom:link href="https://sharkattack51.github.io/categories/unity/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>OSC for Unity</title>
       <link>https://sharkattack51.github.io/post/osc/</link>
-      <pubDate>Fri, 31 Jul 2015 19:12:20 JST</pubDate>
+      <pubDate>Fri, 31 Jul 2015 19:12:20 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/osc/</guid>
       <description>
@@ -23,9 +20,9 @@
 &lt;p&gt;ちょっと使う機会が出来たらそのうち触っておこうと思っていたOSC周りのライブラリをいろいろ漁ってみていた。
 今回、正確にはTUIOを使う要件だったが、良い機会だったので下レイヤーで動いてるOSCを理解しておこうと思った。&lt;/p&gt;
 
-&lt;h2 id=&#34;osc-tuio:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;OSC/TUIO&lt;/h2&gt;
+&lt;h2 id=&#34;osc-tuio&#34;&gt;OSC/TUIO&lt;/h2&gt;
 
-&lt;h4 id=&#34;opensound-control-osc:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;OpenSound Control (OSC)&lt;/h4&gt;
+&lt;h4 id=&#34;opensound-control-osc&#34;&gt;OpenSound Control (OSC)&lt;/h4&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://ja.wikipedia.org/wiki/OpenSound_Control&#34;&gt;https://ja.wikipedia.org/wiki/OpenSound_Control&lt;/a&gt;&lt;/p&gt;
 
@@ -42,28 +39,28 @@
 バイナリデータでやり取りしてたり、パースを毎回自前でやってたりして大分不毛だった。
 同じバイナリパース処理を3つの違う言語バージョンで書いたことある。&lt;/p&gt;
 
-&lt;h2 id=&#34;メリットとか特徴とか:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;メリットとか特徴とか&lt;/h2&gt;
+&lt;h2 id=&#34;メリットとか特徴とか&#34;&gt;メリットとか特徴とか&lt;/h2&gt;
 
 &lt;ul&gt;
 &lt;li&gt;言語ごとにライブラリが存在するので通信処理とデータ解析処理を自前でやらなくて良い&lt;/li&gt;
 &lt;li&gt;値にアクセスするためのURIっぽい構造化されたOSCアドレスが素敵&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h2 id=&#34;oscライブラリ:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;OSCライブラリ&lt;/h2&gt;
+&lt;h2 id=&#34;oscライブラリ&#34;&gt;OSCライブラリ&lt;/h2&gt;
 
 &lt;p&gt;OSCのライブラリをいろいろ調べていてどれもいまいち使いにくい印象だった。
 どのライブラリも受信データの分解まではやってくれるけど、受信データにもっと直ぐに、もっと簡単に、アクセスしたかった。あと汎用的に。&lt;/p&gt;
 
 &lt;p&gt;その中でこれが良い気がした。OSCアドレス指定で受信毎のコールバックが設定できる。&lt;/p&gt;
 
-&lt;h4 id=&#34;rug-osc:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;Rug.Osc&lt;/h4&gt;
+&lt;h4 id=&#34;rug-osc&#34;&gt;Rug.Osc&lt;/h4&gt;
 
 &lt;p&gt;Simple, complete, open source OSC implementation for .NET and Mono.
 &lt;a href=&#34;https://bitbucket.org/rugcode/rug.osc/overview&#34;&gt;https://bitbucket.org/rugcode/rug.osc/overview&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;その上で、もうすこしUnityフレンドリーな感じで受信側のラッパークラス書いた。&lt;/p&gt;
 
-&lt;h4 id=&#34;unity-oscreceivecontroller:3f9c07b85f04e1e0f54f7c02256b1a87&#34;&gt;Unity-OscReceiveController&lt;/h4&gt;
+&lt;h4 id=&#34;unity-oscreceivecontroller&#34;&gt;Unity-OscReceiveController&lt;/h4&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/sharkattack51/Unity-OscReceiveController&#34;&gt;https://github.com/sharkattack51/Unity-OscReceiveController&lt;/a&gt;&lt;/p&gt;
 
@@ -75,7 +72,7 @@
     <item>
       <title>Pythonと連携する方法</title>
       <link>https://sharkattack51.github.io/post/cs_py/</link>
-      <pubDate>Sat, 23 May 2015 11:13:29 JST</pubDate>
+      <pubDate>Sat, 23 May 2015 11:13:29 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/cs_py/</guid>
       <description>
@@ -89,7 +86,7 @@ RSSなんかのFeedのパースなんかも&lt;a href=&#34;https://pypi.python.o
 &lt;p&gt;例えばUnityやAIRなどの実行環境からPythonに処理を投げたい場合にどうするか。
 データの受け渡しはどうするか。&lt;/p&gt;
 
-&lt;h1 id=&#34;方法:67998c0bf2f1c2d4ed60ea56f653060e&#34;&gt;方法&lt;/h1&gt;
+&lt;h1 id=&#34;方法&#34;&gt;方法&lt;/h1&gt;
 
 &lt;p&gt;基本的にはイベント処理で実装したいので、Python側をローカルにアプリケーションサーバーとして立てておき、メインアプリ側からhttpリクエストを送る。&lt;/p&gt;
 
@@ -168,7 +165,7 @@ def test():
 		return response
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;まとめ:67998c0bf2f1c2d4ed60ea56f653060e&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;p&gt;アプリケーションの実装はこまごました部分をスクリプト側に委譲していく設計もありだと思う。&lt;br/&gt;
 俗にいう&lt;a href=&#34;http://deeeet.com/writing/2014/09/10/microservices/&#34;&gt;Microservices&lt;/a&gt;の一つではないか。&lt;/p&gt;
@@ -181,7 +178,7 @@ def test():
     <item>
       <title>Exifとの格闘の記録</title>
       <link>https://sharkattack51.github.io/post/exif/</link>
-      <pubDate>Sat, 09 May 2015 13:47:36 JST</pubDate>
+      <pubDate>Sat, 09 May 2015 13:47:36 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/exif/</guid>
       <description>
@@ -189,7 +186,7 @@ def test():
 &lt;p&gt;モバイル端末で撮影した写真画像をUnityの実行時にダウンロード。
 jpegの画像方向が違っていた。原因はExif。&lt;/p&gt;
 
-&lt;h1 id=&#34;orientation:160c20f234b91182f09adf126dc2ead9&#34;&gt;Orientation&lt;/h1&gt;
+&lt;h1 id=&#34;orientation&#34;&gt;Orientation&lt;/h1&gt;
 
 &lt;p&gt;ExifのOrientation情報見てみる。
 調べたらなんか情報が錯綜していたが内容としてはこれっぽい。&lt;/p&gt;
@@ -260,7 +257,7 @@ jpegの画像方向が違っていた。原因はExif。&lt;/p&gt;
 
 &lt;p&gt;変に日本語化されてないし、確認はExifToolが良い気がする。&lt;/p&gt;
 
-&lt;h1 id=&#34;exifライブラリ-c:160c20f234b91182f09adf126dc2ead9&#34;&gt;Exifライブラリ(C#)&lt;/h1&gt;
+&lt;h1 id=&#34;exifライブラリ-c&#34;&gt;Exifライブラリ(C#)&lt;/h1&gt;
 
 &lt;p&gt;さて、こんなのあったので自前で判定してやってみる。
 &lt;a href=&#34;http://blog.ch3cooh.jp/entry/20111222/1324552051&#34;&gt;http://blog.ch3cooh.jp/entry/20111222/1324552051&lt;/a&gt;&lt;/p&gt;
@@ -280,13 +277,13 @@ jpegの画像方向が違っていた。原因はExif。&lt;/p&gt;
 - 画像が長方形の時、回転後の配列サイズが...元のTexture2Dサイズが.. &amp;gt; 萎え
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;imagemagick:160c20f234b91182f09adf126dc2ead9&#34;&gt;ImageMagick&lt;/h1&gt;
+&lt;h1 id=&#34;imagemagick&#34;&gt;ImageMagick&lt;/h1&gt;
 
 &lt;p&gt;少し調べてImageMagickに神オプションを発見。すべてよしなにやってくれる&lt;code&gt;AutoOrient&lt;/code&gt;オプションがー。&lt;/p&gt;
 
 &lt;p&gt;今回の案件的にはサーバーサイドで対応可能なので、そっちでやってもらうことにした。&lt;/p&gt;
 
-&lt;h1 id=&#34;imagemagick-c-ラッパー:160c20f234b91182f09adf126dc2ead9&#34;&gt;ImageMagick C#ラッパー&lt;/h1&gt;
+&lt;h1 id=&#34;imagemagick-c-ラッパー&#34;&gt;ImageMagick C#ラッパー&lt;/h1&gt;
 
 &lt;p&gt;ImageMagickのC#ラッパーあるっぽいし、AutoOrient()でやってくれるっぽいんでちょっとやってみる。&lt;/p&gt;
 
@@ -317,7 +314,7 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;結論:160c20f234b91182f09adf126dc2ead9&#34;&gt;結論&lt;/h3&gt;
+&lt;h3 id=&#34;結論&#34;&gt;結論&lt;/h3&gt;
 
 &lt;p&gt;Magick.NETがいけそうだったけど、Unity(Mono)だとやりたいことができなかった。
 無念感でいっぱいだが、やる方法あると思う。&lt;/p&gt;
@@ -327,7 +324,7 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
     <item>
       <title>SublimeText-OmniSharpでUnityのコード補完設定</title>
       <link>https://sharkattack51.github.io/post/sublime_unity/</link>
-      <pubDate>Fri, 01 May 2015 20:35:42 JST</pubDate>
+      <pubDate>Fri, 01 May 2015 20:35:42 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/sublime_unity/</guid>
       <description>
@@ -338,11 +335,11 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;li&gt;その後Monodevelopとさらばしたかったが、結局なかなか離れられていない&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;参考元:bf320ad6e095134691cd2a21bde2ae24&#34;&gt;参考元&lt;/h1&gt;
+&lt;h1 id=&#34;参考元&#34;&gt;参考元&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.radjor.com/blog/p/65&#34;&gt;http://www.radjor.com/blog/p/65&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;手順:bf320ad6e095134691cd2a21bde2ae24&#34;&gt;手順&lt;/h1&gt;
+&lt;h1 id=&#34;手順&#34;&gt;手順&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;code&gt;SublimeText&lt;/code&gt;に&lt;code&gt;OmniSharp&lt;/code&gt;パッケージをインストール&lt;/li&gt;
@@ -416,7 +413,7 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
     <item>
       <title>Unity AVProWindowsMediaプラグインでスムーズな動画再生を行う</title>
       <link>https://sharkattack51.github.io/post/avpro_windows_media/</link>
-      <pubDate>Sat, 21 Mar 2015 20:57:00 JST</pubDate>
+      <pubDate>Sat, 21 Mar 2015 20:57:00 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/avpro_windows_media/</guid>
       <description>
@@ -424,7 +421,7 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;p&gt;実はWMV再生が遅かったので（再生時デコードに時間がかかり、解像度が大きい映像データだとカクつく）
 その対応方法について&lt;/p&gt;
 
-&lt;h1 id=&#34;ハードウェアで対応:0c800cade67495a7e4307e6494708031&#34;&gt;ハードウェアで対応&lt;/h1&gt;
+&lt;h1 id=&#34;ハードウェアで対応&#34;&gt;ハードウェアで対応&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;GPU,CPUは速いのが良い&lt;/li&gt;
@@ -436,7 +433,7 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;colourformatで対応:0c800cade67495a7e4307e6494708031&#34;&gt;ColourFormatで対応&lt;/h1&gt;
+&lt;h1 id=&#34;colourformatで対応&#34;&gt;ColourFormatで対応&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;速い
@@ -452,7 +449,7 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;解像度で対応:0c800cade67495a7e4307e6494708031&#34;&gt;解像度で対応&lt;/h1&gt;
+&lt;h1 id=&#34;解像度で対応&#34;&gt;解像度で対応&lt;/h1&gt;
 
 &lt;p&gt;速↑&lt;/p&gt;
 
@@ -468,7 +465,7 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 
 &lt;p&gt;遅↓&lt;/p&gt;
 
-&lt;h1 id=&#34;codecで対応:0c800cade67495a7e4307e6494708031&#34;&gt;Codecで対応&lt;/h1&gt;
+&lt;h1 id=&#34;codecで対応&#34;&gt;Codecで対応&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;&lt;code&gt;.avi&lt;/code&gt;を使用する&lt;/p&gt;
@@ -504,20 +501,20 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;multithreadingレンダリングオプションで対応:0c800cade67495a7e4307e6494708031&#34;&gt;MultiThreadingレンダリングオプションで対応&lt;/h1&gt;
+&lt;h1 id=&#34;multithreadingレンダリングオプションで対応&#34;&gt;MultiThreadingレンダリングオプションで対応&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;UnityEditorのInspector上にて&lt;code&gt;Debug項目&lt;/code&gt;を表示&lt;/li&gt;
 &lt;li&gt;&lt;code&gt;MTRendering設定&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h1 id=&#34;ガベージコレクションを回避:0c800cade67495a7e4307e6494708031&#34;&gt;ガベージコレクションを回避&lt;/h1&gt;
+&lt;h1 id=&#34;ガベージコレクションを回避&#34;&gt;ガベージコレクションを回避&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;明示的な呼び出しは極力避ける&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;読み込み:0c800cade67495a7e4307e6494708031&#34;&gt;読み込み&lt;/h1&gt;
+&lt;h1 id=&#34;読み込み&#34;&gt;読み込み&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;LoadMovie()&lt;/code&gt;ではなく、&lt;code&gt;LoadMovieFromMemory()&lt;/code&gt;
@@ -532,12 +529,12 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
     <item>
       <title>Vuforia 4.0</title>
       <link>https://sharkattack51.github.io/post/vuforia4/</link>
-      <pubDate>Tue, 03 Mar 2015 12:51:22 JST</pubDate>
+      <pubDate>Tue, 03 Mar 2015 12:51:22 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/vuforia4/</guid>
       <description>
 
-&lt;h1 id=&#34;料金体系:4ec59d951bd1d25028b10bfb23a0caa6&#34;&gt;料金体系&lt;/h1&gt;
+&lt;h1 id=&#34;料金体系&#34;&gt;料金体系&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ライセンス有料化(クラウド、デバイス両マーカーで共通の模様)
@@ -621,7 +618,7 @@ Version=7.0.0.0, Culture=neutral, PublicKeyToken=2004825badfa91ec&#39;.
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;新機能:4ec59d951bd1d25028b10bfb23a0caa6&#34;&gt;新機能&lt;/h1&gt;
+&lt;h1 id=&#34;新機能&#34;&gt;新機能&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;iOS 64bit サポート&lt;/li&gt;

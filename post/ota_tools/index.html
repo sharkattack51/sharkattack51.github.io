@@ -1,102 +1,64 @@
-<html lang="en">
-<head>
 
-  
-  <meta charset="utf-8">
-  <title>ota-tools</title>
-  <meta name="description" content="ota-tools">
-  <meta name="author" content="sharkattack51">
+<!DOCTYPE html>
+<html lang="ja-jp">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta content="" name="keywords">
+<meta content="ota-tools - Dokyuments" property="og:title">
+<title>ota-tools | Dokyuments</title>
+<link rel="stylesheet" href="https://sharkattack51.github.io/css/style.css">
+<link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
 
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/styles/github.min.css">
 
-  
 
-  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
-  
-  <link rel="stylesheet" href="https://sharkattack51.github.io/css/fonts.css">
-  <link rel="stylesheet" href="https://sharkattack51.github.io/css/normalize.css">
-  <link rel="stylesheet" href="https://sharkattack51.github.io/css/skeleton.css">
-  <link rel="stylesheet" href="https://sharkattack51.github.io/css/custom.css">
-
-  
-  
-  <link rel="stylesheet" href="https://sharkattack51.github.io/highlight/styles/default.css">
-  
-  <script src="https://sharkattack51.github.io/highlight/highlight.pack.js"></script>
-  <script>hljs.initHighlightingOnLoad();</script>
-  
-  
-  <script>
-  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
-  ga('create', 'UA-2366280-4', 'auto');
-  ga('send', 'pageview');
-  </script>
-</head>
-<body>
-
-<header id="menu">
+<section class="section">
   <div class="container">
-	<span class="logo">Dokyuments</span>
-	<a>&#9776;</a>
+    <nav class="nav">
+      <div class="nav-left">
+        <a class="nav-item" href="https://sharkattack51.github.io"><h1 class="title is-1">Dokyuments</h1></a>
+      </div>
+      <div class="nav-right">
+        <nav class="nav-item level is-mobile">
+          
+          <a class="level-item" href="https://github.com/sharkattack51">
+            <span class="icon">
+              <i class="fa fa-github"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="https://twitter.com/sharkattack51">
+            <span class="icon">
+              <i class="fa fa-twitter"></i>
+            </span>
+          </a>
+          
+          <a class="level-item" href="/index.xml">
+            <span class="icon">
+              <i class="fa fa-rss"></i>
+            </span>
+          </a>
+          
+        </nav>
+      </div>
+    </nav>
   </div>
-</header>
+</section>
 
-<nav class="navbar">
+<section class="section">
   <div class="container">
-	<div class="row">
-	  <div class="eight columns offset-by-two">
-		<ul class="">
-		  
-		  <li class="u-pull-left"> <a href="https://sharkattack51.github.io" class="brand" style="font-weight:bold;font-size:normal"> Dokyuments </a></li>
-		  
-		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/go" class=""> Go </a></li>
-		  
-		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/ios" class=""> Ios </a></li>
-		  
-		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/misc" class=""> Misc </a></li>
-		  
-		  <li class="u-pull-right cate"> <a href="https://sharkattack51.github.io/categories/unity" class=""> Unity </a></li>
-		  
-		</ul>
-	  </div>
-	</div>
-  </div>
-</nav>
-
-
-<div class="container post-wrapper">
-  <div class="row">
-	<div class="eight columns offset-by-two">
-	  <div id="post-title">
-		<p class="footnote">
-		  
-		  <time class="">2015-03-20</time>
-		  
-		  
-		  |
-		  
-		  
-
-		  
-		  categories:<a href="https://sharkattack51.github.io/categories/ios">iOS</a> 
-		  
-
-		  
-
-		</p>
-		<h5>ota-tools</h5>
-	  </div>
-
-	  <div class="post">
-		
+    <h2 class="subtitle is-6">March 20, 2015</h2>
+    <h1 class="title">ota-tools</h1>
+    
+    <div class="content">
+      
 
 <p>OTAインストールの準備および、証明書の入れ替えを行うmac用のコマンドラインツール。
 プロビジョニングの入れ替えおよび、配布用に必要なplist、htmlを自動で生成する。</p>
 
 <p><a href="https://github.com/RichardBronosky/ota-tools">https://github.com/RichardBronosky/ota-tools</a></p>
 
-<h1 id="サインニング時:f2acc3b9dac2091e4694592d23a8045c">サインニング時</h1>
+<h1 id="サインニング時">サインニング時</h1>
 
 <ul>
 <li><p>サインニングの入れ替えを行う</p>
@@ -106,7 +68,7 @@ $ ./ipa_sign XXXX.ipa XXX.mobileprovision &quot;証明書登録名&quot;
 </code></pre></li>
 </ul>
 
-<h1 id="ota配布時:f2acc3b9dac2091e4694592d23a8045c">OTA配布時</h1>
+<h1 id="ota配布時">OTA配布時</h1>
 
 <ul>
 <li><p>配布用plistとhtmlを生成</p>
@@ -122,60 +84,34 @@ $ ./ipa_ota XXXX.ipa https://ipa配置のURL/ &gt; index.html
 </ul></li>
 </ul>
 
-	  </div>
-	</div>
+    </div>
   </div>
-</div>
+</section>
 
-<div class="footer">
-  <div class="container">
-	<div class="row">
-	  <div class="ten columns offset-by-two">
-		<p class="footnote">
-		  
-		  Written by @sharkattack51 using <a href="http://gohugo.io">Hugo</a>.
-		  
-		  
-		  Find me at
-
-		  
-		  <a href="https://github.com/sharkattack51" >GitHub</a>
-		  
-
-		  
-
-		  
-		  <a href="https://twitter.com/sharkattack51">Twitter</a>
-		  
-
-		  
-
-		  
-		</p>
-	  </div>
-	</div>
+<section class="section">
+  <div class="container has-text-centered">
+    <p>&copy; <a href="https://github.com/sharkattack51">sharkattack51</a> 2017</p>
   </div>
-</div>
+</section>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/highlight.min.js" integrity="sha256-KbfTjB0WZ8vvXngdpJGY3Yp3xKk+tttbqClO11anCIU=" crossorigin="anonymous"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/go.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/c#.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/python.min.js"></script>
+
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.9.0/languages/unity.min.js"></script>
+
+<script>hljs.initHighlightingOnLoad();</script>
 
 
-<script src="https://sharkattack51.github.io/js/jquery.min.js" type="text/javascript"></script>
-<script src="https://sharkattack51.github.io/js/jquery.timeago.js" type="text/javascript"></script>
-<script type="text/javascript">
-  $(function(){
-    $("time.timeago").timeago();
-  })
-  $("#menu").click(function(){
-    $(".brand").text("HOME");
-    $(".navbar ul li").removeClass("cate");
-    $(".navbar").toggle();
-  });
-  $(window).resize(function(){
-    if(window.innerWidth > 768) {
-      $(".navbar").removeAttr("style");
-    }
-  });
+<script>
+window.ga=window.ga||function(){(ga.q=ga.q||[]).push(arguments)};ga.l=+new Date;
+ga('create', '(function(i,s,o,g,r,a,m){i[\x27GoogleAnalyticsObject\x27]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,\x27script\x27,\x27\/\/www.google-analytics.com\/analytics.js\x27,\x27ga\x27);ga(\x27create\x27, \x27{{ .Site.Author.gaID }}\x27, \x27auto\x27);ga(\x27send\x27, \x27pageview\x27);', 'auto');
+ga('send', 'pageview');
 </script>
+<script async src='//www.google-analytics.com/analytics.js'></script>
 
-</body>
-</html>
+
 

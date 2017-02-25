@@ -2,20 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Go on Dokyuments</title>
-    <link>https://sharkattack51.github.io/categories/go/</link>
+    <link>https://sharkattack51.github.io/categories/go/index.xml</link>
     <description>Recent content in Go on Dokyuments</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    
-    
-    
-    <lastBuildDate>Sat, 18 Feb 2017 10:15:10 JST</lastBuildDate>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sharkattack51&#34;&gt;sharkattack51&lt;/a&gt; 2017</copyright>
     <atom:link href="https://sharkattack51.github.io/categories/go/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>goでguiライブラリを使う</title>
       <link>https://sharkattack51.github.io/post/go_gui/</link>
-      <pubDate>Sat, 18 Feb 2017 10:15:10 JST</pubDate>
+      <pubDate>Sat, 18 Feb 2017 10:15:10 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/go_gui/</guid>
       <description>
@@ -23,7 +20,7 @@
 &lt;p&gt;前から気になってちょこちょこ調べていた go での gui ライブラリを試す。
 いろいろ漁った結果、&lt;a href=&#34;https://github.com/andlabs/ui&#34;&gt;libui&lt;/a&gt; が良さそうだったのでセットアップにだいぶ苦戦しながら最終的には動かせた。&lt;/p&gt;
 
-&lt;h3 id=&#34;とりあえずインストール:11024d50bd707cacf2838d6925d07daf&#34;&gt;とりあえずインストール&lt;/h3&gt;
+&lt;h3 id=&#34;とりあえずインストール&#34;&gt;とりあえずインストール&lt;/h3&gt;
 
 &lt;p&gt;&lt;code&gt;go get github.com/andlabs/ui&lt;/code&gt;&lt;/p&gt;
 
@@ -36,15 +33,16 @@ github の issue を読んでいたら &lt;code&gt;MinGW-w64&lt;/code&gt; 入れ
 &lt;p&gt;そもそも &lt;code&gt;go get&lt;/code&gt; の仕組みをちゃんと理解していなかったのだけれども &lt;code&gt;go get&lt;/code&gt; はダウンロードするだけではなくてその後にコンパイルも行う。
 今回の &lt;code&gt;libui&lt;/code&gt; は cgo で c コンパイルが走るのでどうやらそこでつまづいていた。&lt;/p&gt;
 
-&lt;h3 id=&#34;試す:11024d50bd707cacf2838d6925d07daf&#34;&gt;試す&lt;/h3&gt;
+&lt;h3 id=&#34;試す&#34;&gt;試す&lt;/h3&gt;
 
 &lt;p&gt;とりあえず Github の &lt;a href=&#34;https://github.com/andlabs/ui/wiki/Getting-Started&#34;&gt;tutorial&lt;/a&gt; だとだいぶ機能が少なかったので、
 オリジナルライブラリのほうの c のソース &lt;a href=&#34;https://github.com/andlabs/libui/blob/master/examples/controlgallery/main.c&#34;&gt;examples&lt;/a&gt; を go で写経したのがこちら。&lt;/p&gt;
 
 &lt;p&gt;&lt;a href=&#34;https://github.com/sharkattack51/go_libui_test&#34;&gt;https://github.com/sharkattack51/go_libui_test&lt;/a&gt;&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;libui_control_gallery.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;libui_control_gallery_win.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;img src=&#34;libui_control_gallery_mac.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;ライブラリ自体はまだ完全ではなさそうで、まだオリジナルから bind できていない機能もあったけど簡単なものだったら大丈夫そうだった。&lt;/p&gt;
 

@@ -2,20 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Misc on Dokyuments</title>
-    <link>https://sharkattack51.github.io/categories/misc/</link>
+    <link>https://sharkattack51.github.io/categories/misc/index.xml</link>
     <description>Recent content in Misc on Dokyuments</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>ja-jp</language>
-    
-    
-    
-    <lastBuildDate>Sat, 01 Oct 2016 09:17:47 JST</lastBuildDate>
+    <copyright>&amp;copy; &lt;a href=&#34;https://github.com/sharkattack51&#34;&gt;sharkattack51&lt;/a&gt; 2017</copyright>
     <atom:link href="https://sharkattack51.github.io/categories/misc/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Windows10アニバーサリーアップデートしたついでに Bash on Ubuntu on Windows いれたのでとりあえずやってみた設定</title>
       <link>https://sharkattack51.github.io/post/BoW/</link>
-      <pubDate>Sat, 01 Oct 2016 09:17:47 JST</pubDate>
+      <pubDate>Sat, 01 Oct 2016 09:17:47 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/BoW/</guid>
       <description>
@@ -30,16 +27,16 @@
 &lt;p&gt;&lt;code&gt;$ apt install build-essential&lt;/code&gt;&lt;br /&gt;
 &lt;code&gt;$ apt install git&lt;/code&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;ホスト名解決:60439b64dadb6abbf5cca3cbbdddb953&#34;&gt;ホスト名解決&lt;/h4&gt;
+&lt;h4 id=&#34;ホスト名解決&#34;&gt;ホスト名解決&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;$ echo 127.0.1.1 $(hostname) &amp;gt;&amp;gt; /etc/hosts&lt;/code&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;zsh-インストール:60439b64dadb6abbf5cca3cbbdddb953&#34;&gt;zsh インストール&lt;/h4&gt;
+&lt;h4 id=&#34;zsh-インストール&#34;&gt;zsh インストール&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;$ apt install zsh&lt;/code&gt;&lt;br /&gt;
 &lt;code&gt;sh -c &amp;quot;$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)&amp;quot;&lt;/code&gt;&lt;/p&gt;
 
-&lt;h4 id=&#34;sh作って-bash-を-zsh-へ切り替える:60439b64dadb6abbf5cca3cbbdddb953&#34;&gt;sh作って bash を zsh へ切り替える&lt;/h4&gt;
+&lt;h4 id=&#34;sh作って-bash-を-zsh-へ切り替える&#34;&gt;sh作って bash を zsh へ切り替える&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;$ mv /bin/bash /bin/.bash&lt;/code&gt;&lt;br /&gt;
 &lt;code&gt;$ touch /bin/bash&lt;/code&gt;&lt;br /&gt;
@@ -56,13 +53,13 @@ fi
 
 &lt;p&gt;あと .zshrc の各種設定。&lt;/p&gt;
 
-&lt;h4 id=&#34;golang-インストール:60439b64dadb6abbf5cca3cbbdddb953&#34;&gt;golang インストール&lt;/h4&gt;
+&lt;h4 id=&#34;golang-インストール&#34;&gt;golang インストール&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;$ apt install golang&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;現状 &lt;a href=&#34;https://github.com/peco/peco&#34;&gt;peco&lt;/a&gt; 入れるとこで何故かはまり中、、、&lt;/p&gt;
 
-&lt;h4 id=&#34;win-ubuntu-それぞれのマウント状態確認:60439b64dadb6abbf5cca3cbbdddb953&#34;&gt;Win/Ubuntu それぞれのマウント状態確認&lt;/h4&gt;
+&lt;h4 id=&#34;win-ubuntu-それぞれのマウント状態確認&#34;&gt;Win/Ubuntu それぞれのマウント状態確認&lt;/h4&gt;
 
 &lt;p&gt;&lt;code&gt;(Win) C: =&amp;gt; (Ubuntu) /mnt/c&lt;/code&gt;&lt;br /&gt;
 &lt;code&gt;(Ubuntu) ~ =&amp;gt; (Win) C:/Users/user/AppData/Local/lxss/home/user&lt;/code&gt;&lt;/p&gt;
@@ -72,7 +69,7 @@ fi
     <item>
       <title>Redux.NET</title>
       <link>https://sharkattack51.github.io/post/redux_net/</link>
-      <pubDate>Thu, 02 Jun 2016 18:57:00 JST</pubDate>
+      <pubDate>Thu, 02 Jun 2016 18:57:00 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/redux_net/</guid>
       <description>
@@ -87,7 +84,7 @@ fi
 &lt;li&gt;データフローが一方向になる&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;参考:03df5dba7e680b3c94d9a06794d60928&#34;&gt;参考&lt;/h1&gt;
+&lt;h1 id=&#34;参考&#34;&gt;参考&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;10分で理解する Redux の基礎&lt;/p&gt;
@@ -99,7 +96,7 @@ fi
 &lt;p&gt;&lt;a href=&#34;https://speakerdeck.com/kuy/nazereduxwoshi-ufalseka&#34;&gt;https://speakerdeck.com/kuy/nazereduxwoshi-ufalseka&lt;/a&gt;&lt;/p&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;登場人物:03df5dba7e680b3c94d9a06794d60928&#34;&gt;登場人物&lt;/h1&gt;
+&lt;h1 id=&#34;登場人物&#34;&gt;登場人物&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Action : 何をするかの内容をもつオブジェクト&lt;/li&gt;
@@ -108,7 +105,7 @@ fi
 &lt;li&gt;Reducer : 受け取った Action と State から新しい State を返す。Pure 関数。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;流れ:03df5dba7e680b3c94d9a06794d60928&#34;&gt;流れ&lt;/h1&gt;
+&lt;h1 id=&#34;流れ&#34;&gt;流れ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;ViewProvider は View の各コンポーネントを管理し、関連付けを行う。&lt;/li&gt;
@@ -122,7 +119,7 @@ fi
 &lt;li&gt;Reducer はだんだん肥大化するので、分割を検討する。Stateのツリー構造に対応して子Reducerに分割し、親Reducerがまとめるようにする。&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h3 id=&#34;pure関数:03df5dba7e680b3c94d9a06794d60928&#34;&gt;Pure関数&lt;/h3&gt;
+&lt;h3 id=&#34;pure関数&#34;&gt;Pure関数&lt;/h3&gt;
 
 &lt;p&gt;必ず結果が一緒になる関数&lt;/p&gt;
 
@@ -132,7 +129,7 @@ fi
 &lt;li&gt;毎回値が変わるもの(Date.now() や Math.random())を扱うのはだめ&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;3原則:03df5dba7e680b3c94d9a06794d60928&#34;&gt;3原則&lt;/h1&gt;
+&lt;h1 id=&#34;3原則&#34;&gt;3原則&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;&lt;p&gt;Single source of truth&lt;/p&gt;
@@ -153,7 +150,7 @@ fi
     <item>
       <title>sublime での as3 ビルド設定</title>
       <link>https://sharkattack51.github.io/post/sublime_build_as3/</link>
-      <pubDate>Sun, 17 Jan 2016 21:28:29 JST</pubDate>
+      <pubDate>Sun, 17 Jan 2016 21:28:29 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/sublime_build_as3/</guid>
       <description>
@@ -161,11 +158,11 @@ fi
 &lt;p&gt;FlashDevelop が mac - CrossOver 使っても満足する感じで使えなかったので
 sublime でのセットアップメモ。&lt;/p&gt;
 
-&lt;h1 id=&#34;air-sdk-のダウンロード:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;AIR SDK のダウンロード&lt;/h1&gt;
+&lt;h1 id=&#34;air-sdk-のダウンロード&#34;&gt;AIR SDK のダウンロード&lt;/h1&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://www.adobe.com/devnet/air/air-sdk-download.html&#34;&gt;http://www.adobe.com/devnet/air/air-sdk-download.html&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;build-systemの追加:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;Build Systemの追加&lt;/h1&gt;
+&lt;h1 id=&#34;build-systemの追加&#34;&gt;Build Systemの追加&lt;/h1&gt;
 
 &lt;p&gt;ここ &lt;a href=&#34;https://gist.github.com/newtriks/3131123&#34;&gt;https://gist.github.com/newtriks/3131123&lt;/a&gt;
 を参考に sublime の build system を追加。
@@ -218,7 +215,7 @@ sublime でのセットアップメモ。&lt;/p&gt;
 &lt;p&gt;あとコンパイルオプションはここが詳しい。
 &lt;a href=&#34;https://sites.google.com/site/shin1ogawa/adobe-air/mxml-compile&#34;&gt;https://sites.google.com/site/shin1ogawa/adobe-air/mxml-compile&lt;/a&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;java-実行バージョン変更:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;Java 実行バージョン変更&lt;/h1&gt;
+&lt;h1 id=&#34;java-実行バージョン変更&#34;&gt;Java 実行バージョン変更&lt;/h1&gt;
 
 &lt;p&gt;fdb 実行のために Java を 32bit 対応バージョン v1.6 へ変更する。
 標準でインストール済なので環境変数 JAVA_HOME の参照先を変更するのみ。
@@ -226,7 +223,7 @@ sublime でのセットアップメモ。&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;$ export JAVA_HOME=$(/usr/libexec/java_home -d32)&lt;/code&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;コンソール出力の文字化け対応:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;コンソール出力の文字化け対応&lt;/h1&gt;
+&lt;h1 id=&#34;コンソール出力の文字化け対応&#34;&gt;コンソール出力の文字化け対応&lt;/h1&gt;
 
 &lt;p&gt;Java の文字コードが OSX と異なるために文字化けする。
 以下ファイル内の最終行、java コマンドに encoding オプションを追加する。&lt;/p&gt;
@@ -239,16 +236,16 @@ sublime でのセットアップメモ。&lt;/p&gt;
 
 &lt;p&gt;変更 : &lt;code&gt;java -Dfile.encoding=UTF8 $VMARGS...&lt;/code&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;その他:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;その他&lt;/h1&gt;
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
 
-&lt;h3 id=&#34;デバッグ実行:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;デバッグ実行&lt;/h3&gt;
+&lt;h3 id=&#34;デバッグ実行&#34;&gt;デバッグ実行&lt;/h3&gt;
 
 &lt;p&gt;fdb コマンドを .zshrc に alias で追加した。デバッグ時はこっちで起動する。
 .sublime-build で BUild - Run でデバッグ実行したかったが、java の切り替えが上手くいかなくて起動できなかった。&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;$ fdb -f SWF/TO/PATH&lt;/code&gt;&lt;/p&gt;
 
-&lt;h3 id=&#34;fdb-使い方:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;fdb 使い方&lt;/h3&gt;
+&lt;h3 id=&#34;fdb-使い方&#34;&gt;fdb 使い方&lt;/h3&gt;
 
 &lt;p&gt;&lt;a href=&#34;http://qiita.com/tutui/items/1c1b79572c0d82ea3983&#34;&gt;http://qiita.com/tutui/items/1c1b79572c0d82ea3983&lt;/a&gt;&lt;/p&gt;
 
@@ -277,7 +274,7 @@ sublime でのセットアップメモ。&lt;/p&gt;
 (fdb) help
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h3 id=&#34;flashdevelop-からの移行の場合:dcd0c2a6d767c9690c91b7f090ca5cda&#34;&gt;FlashDevelop からの移行の場合&lt;/h3&gt;
+&lt;h3 id=&#34;flashdevelop-からの移行の場合&#34;&gt;FlashDevelop からの移行の場合&lt;/h3&gt;
 
 &lt;p&gt;Build コンフィグの xml を引き継いで使うのが良い。一部パス設定の変更と、項目の追加を行う。&lt;/p&gt;
 
@@ -290,7 +287,7 @@ sublime でのセットアップメモ。&lt;/p&gt;
     <item>
       <title>MS-OfficeファイルをIEで開く設定</title>
       <link>https://sharkattack51.github.io/post/office-in-browser/</link>
-      <pubDate>Sat, 08 Aug 2015 20:03:20 JST</pubDate>
+      <pubDate>Sat, 08 Aug 2015 20:03:20 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/office-in-browser/</guid>
       <description>&lt;p&gt;MS-Officeファイルを、とくにPowerPointを自前のアプリケーションで開く場合に
@@ -368,7 +365,7 @@ MSにおまかせするのが正解な気がする。&lt;/p&gt;
     <item>
       <title>WinIMEパネルとRemoteDesktop-Mac</title>
       <link>https://sharkattack51.github.io/post/win_ime_panel/</link>
-      <pubDate>Sat, 18 Jul 2015 22:02:30 JST</pubDate>
+      <pubDate>Sat, 18 Jul 2015 22:02:30 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/win_ime_panel/</guid>
       <description>
@@ -377,15 +374,14 @@ MSにおまかせするのが正解な気がする。&lt;/p&gt;
 MacからRemoteDesktop使っている時に&lt;code&gt;英数/かな&lt;/code&gt;の切り替えがキーボード操作で出来なくて、
 このパネルが必要になって困る。&lt;/p&gt;
 
-&lt;p&gt;&lt;img src=&#34;ime_panel.png&#34; alt=&#34;&#34; /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img src=&#34;ime_panel.png&#34; alt=&#34;&#34; /&gt;&lt;/p&gt;
 
 &lt;p&gt;常時これは絶対に表示したくないし、なんとか環境に依存しない方法で解決したい。
 (IMEの設定いじったり、キーマップを変えたりするのはPC環境が変わった場合に面倒なのでやらない)&lt;/p&gt;
 
 &lt;p&gt;結果、完全解決出来なかったので、着地点を設定変更までの手数を減らすということにした。&lt;/p&gt;
 
-&lt;h3 id=&#34;通常:f0add05a456f3f2815ef00db948f079c&#34;&gt;通常&lt;/h3&gt;
+&lt;h3 id=&#34;通常&#34;&gt;通常&lt;/h3&gt;
 
 &lt;ol&gt;
 &lt;li&gt;コンパネを開く&lt;/li&gt;
@@ -399,7 +395,7 @@ MacからRemoteDesktop使っている時に&lt;code&gt;英数/かな&lt;/code&gt
 
 &lt;p&gt;手数が多すぎてやばい&lt;/p&gt;
 
-&lt;h3 id=&#34;アイディア:f0add05a456f3f2815ef00db948f079c&#34;&gt;アイディア&lt;/h3&gt;
+&lt;h3 id=&#34;アイディア&#34;&gt;アイディア&lt;/h3&gt;
 
 &lt;p&gt;上記 1. 2. 3. 4. をショートカットするコマンド&lt;/p&gt;
 
@@ -416,7 +412,7 @@ MacからRemoteDesktop使っている時に&lt;code&gt;英数/かな&lt;/code&gt
     <item>
       <title>Virtualbox上のCentOSのディスク容量を追加する</title>
       <link>https://sharkattack51.github.io/post/virtualbox_add_disk/</link>
-      <pubDate>Thu, 02 Jul 2015 20:00:00 JST</pubDate>
+      <pubDate>Thu, 02 Jul 2015 20:00:00 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/virtualbox_add_disk/</guid>
       <description>&lt;p&gt;VMで動かしていたCentOSが容量一杯になってしまったので緊急調べた。&lt;br/&gt;
@@ -449,7 +445,7 @@ MacからRemoteDesktop使っている時に&lt;code&gt;英数/かな&lt;/code&gt
     <item>
       <title>ReactiveProgrammingに関する参照情報</title>
       <link>https://sharkattack51.github.io/post/reactive_reference/</link>
-      <pubDate>Wed, 01 Jul 2015 17:41:17 JST</pubDate>
+      <pubDate>Wed, 01 Jul 2015 17:41:17 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/reactive_reference/</guid>
       <description>&lt;p&gt;まず一回ここら辺を適当に読み漁って概要をなんとなく拾う。&lt;/p&gt;
@@ -516,7 +512,7 @@ MacからRemoteDesktop使っている時に&lt;code&gt;英数/かな&lt;/code&gt
     <item>
       <title>as3 レスポンスヘッダーが取得できない</title>
       <link>https://sharkattack51.github.io/post/as3_get_response_header/</link>
-      <pubDate>Tue, 09 Jun 2015 21:36:28 JST</pubDate>
+      <pubDate>Tue, 09 Jun 2015 21:36:28 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/as3_get_response_header/</guid>
       <description>&lt;p&gt;as3でサーバーからのレスポンスヘッダーを取りたかった。&lt;br/&gt;
@@ -543,7 +539,7 @@ MacからRemoteDesktop使っている時に&lt;code&gt;英数/かな&lt;/code&gt
     <item>
       <title>Pythonと連携する方法</title>
       <link>https://sharkattack51.github.io/post/cs_py/</link>
-      <pubDate>Sat, 23 May 2015 11:13:29 JST</pubDate>
+      <pubDate>Sat, 23 May 2015 11:13:29 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/cs_py/</guid>
       <description>
@@ -557,7 +553,7 @@ RSSなんかのFeedのパースなんかも&lt;a href=&#34;https://pypi.python.o
 &lt;p&gt;例えばUnityやAIRなどの実行環境からPythonに処理を投げたい場合にどうするか。
 データの受け渡しはどうするか。&lt;/p&gt;
 
-&lt;h1 id=&#34;方法:67998c0bf2f1c2d4ed60ea56f653060e&#34;&gt;方法&lt;/h1&gt;
+&lt;h1 id=&#34;方法&#34;&gt;方法&lt;/h1&gt;
 
 &lt;p&gt;基本的にはイベント処理で実装したいので、Python側をローカルにアプリケーションサーバーとして立てておき、メインアプリ側からhttpリクエストを送る。&lt;/p&gt;
 
@@ -636,7 +632,7 @@ def test():
 		return response
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;まとめ:67998c0bf2f1c2d4ed60ea56f653060e&#34;&gt;まとめ&lt;/h1&gt;
+&lt;h1 id=&#34;まとめ&#34;&gt;まとめ&lt;/h1&gt;
 
 &lt;p&gt;アプリケーションの実装はこまごました部分をスクリプト側に委譲していく設計もありだと思う。&lt;br/&gt;
 俗にいう&lt;a href=&#34;http://deeeet.com/writing/2014/09/10/microservices/&#34;&gt;Microservices&lt;/a&gt;の一つではないか。&lt;/p&gt;
@@ -649,7 +645,7 @@ def test():
     <item>
       <title>logrotate</title>
       <link>https://sharkattack51.github.io/post/logrotate/</link>
-      <pubDate>Thu, 14 May 2015 22:11:58 JST</pubDate>
+      <pubDate>Thu, 14 May 2015 22:11:58 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/logrotate/</guid>
       <description>
@@ -681,22 +677,22 @@ def test():
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h4 id=&#34;ローテーション確認:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;ローテーション確認&lt;/h4&gt;
+&lt;h4 id=&#34;ローテーション確認&#34;&gt;ローテーション確認&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ logrotate -d /etc/logrotate.d/httpd
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;強制実行:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;強制実行&lt;/h4&gt;
+&lt;h4 id=&#34;強制実行&#34;&gt;強制実行&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ logrotate -f /etc/logrotate.d/httpd
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h4 id=&#34;実行履歴確認:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;実行履歴確認&lt;/h4&gt;
+&lt;h4 id=&#34;実行履歴確認&#34;&gt;実行履歴確認&lt;/h4&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cat /var/lib/logrotate.status
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;やりたかったこと:abb55c6d0cc5bd0def4c646d24a6d399&#34;&gt;やりたかったこと&lt;/h1&gt;
+&lt;h1 id=&#34;やりたかったこと&#34;&gt;やりたかったこと&lt;/h1&gt;
 
 &lt;p&gt;httpdのローテーション設定を変更したかった。&lt;/p&gt;
 
@@ -782,14 +778,14 @@ def test():
     <item>
       <title>マウスの強制操作</title>
       <link>https://sharkattack51.github.io/post/mouse_emulation/</link>
-      <pubDate>Sun, 10 May 2015 12:06:21 JST</pubDate>
+      <pubDate>Sun, 10 May 2015 12:06:21 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/mouse_emulation/</guid>
       <description>
 
 &lt;p&gt;Win環境(WPF)でマウスの強制操作に関してハマった場合の対応方法。何故。&lt;/p&gt;
 
-&lt;h1 id=&#34;方法1:046002245d2b3b653a986c98e88234bb&#34;&gt;方法1&lt;/h1&gt;
+&lt;h1 id=&#34;方法1&#34;&gt;方法1&lt;/h1&gt;
 
 &lt;p&gt;今まではここら辺を参考にしていた。
 &lt;a href=&#34;http://homepage2.nifty.com/nonnon/SoftSample/CS.NET/SampleSendInput.html&#34;&gt;http://homepage2.nifty.com/nonnon/SoftSample/CS.NET/SampleSendInput.html&lt;/a&gt;&lt;/p&gt;
@@ -798,14 +794,14 @@ def test():
 
 &lt;p&gt;で、今回WPF環境で使おうとしたら動かなくて何故なのかー。&lt;/p&gt;
 
-&lt;h1 id=&#34;方法2:046002245d2b3b653a986c98e88234bb&#34;&gt;方法2&lt;/h1&gt;
+&lt;h1 id=&#34;方法2&#34;&gt;方法2&lt;/h1&gt;
 
 &lt;p&gt;調べた結果、こっちの方法を参考にしたらいけた。ていうかまんま。
 &lt;a href=&#34;http://puarts.com/?pid=1144&#34;&gt;http://puarts.com/?pid=1144&lt;/a&gt;&lt;/p&gt;
 
 &lt;p&gt;WPF内のSetCursorPos()とアンマネージdll関数のmouse_event()でイベント発火させると良いらしい。&lt;/p&gt;
 
-&lt;h1 id=&#34;考察:046002245d2b3b653a986c98e88234bb&#34;&gt;考察&lt;/h1&gt;
+&lt;h1 id=&#34;考察&#34;&gt;考察&lt;/h1&gt;
 
 &lt;p&gt;原因は分からん。エラーも何も出ずに全力で無視されるんだけど、フレームワーク都合の何かっぽい。
 WPFが低レイヤーのどこかでイベントを上書きしてるんだろうか。
@@ -816,7 +812,7 @@ WPFが低レイヤーのどこかでイベントを上書きしてるんだろ�
     <item>
       <title>Hugoのワークフロー</title>
       <link>https://sharkattack51.github.io/post/hugo_flow/</link>
-      <pubDate>Fri, 01 May 2015 21:01:47 JST</pubDate>
+      <pubDate>Fri, 01 May 2015 21:01:47 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/hugo_flow/</guid>
       <description>
@@ -824,21 +820,21 @@ WPFが低レイヤーのどこかでイベントを上書きしてるんだろ�
 &lt;p&gt;このサイトは&lt;a href=&#34;http://gohugo.io&#34;&gt;Hugo&lt;/a&gt;を使っている。そして頻繁に更新しない。
 ので、新規ポストのたびに使い方調べる羽目になってつらい。ので、使い方思い出す用のメモ。&lt;/p&gt;
 
-&lt;h1 id=&#34;ポストの新規作成:a4ef5acb253fb526eeee44a0fb0c18e4&#34;&gt;ポストの新規作成&lt;/h1&gt;
+&lt;h1 id=&#34;ポストの新規作成&#34;&gt;ポストの新規作成&lt;/h1&gt;
 
 &lt;p&gt;&lt;code&gt;$ hugo new post/post_name.md&lt;/code&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;ローカルサーバーで確認:a4ef5acb253fb526eeee44a0fb0c18e4&#34;&gt;ローカルサーバーで確認&lt;/h1&gt;
+&lt;h1 id=&#34;ローカルサーバーで確認&#34;&gt;ローカルサーバーで確認&lt;/h1&gt;
 
 &lt;p&gt;&lt;code&gt;$ hugo server --buildDrafts --watch&lt;/code&gt;&lt;/p&gt;
 
 &lt;p&gt;&lt;code&gt;$ hugo server -D -w&lt;/code&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;パブリッシュ:a4ef5acb253fb526eeee44a0fb0c18e4&#34;&gt;パブリッシュ&lt;/h1&gt;
+&lt;h1 id=&#34;パブリッシュ&#34;&gt;パブリッシュ&lt;/h1&gt;
 
 &lt;p&gt;&lt;code&gt;$ hugo&lt;/code&gt;&lt;/p&gt;
 
-&lt;h1 id=&#34;デプロイ:a4ef5acb253fb526eeee44a0fb0c18e4&#34;&gt;デプロイ&lt;/h1&gt;
+&lt;h1 id=&#34;デプロイ&#34;&gt;デプロイ&lt;/h1&gt;
 
 &lt;p&gt;&lt;code&gt;$ git push origin master&lt;/code&gt;&lt;/p&gt;
 </description>
@@ -847,12 +843,12 @@ WPFが低レイヤーのどこかでイベントを上書きしてるんだろ�
     <item>
       <title>CentOSでSSLサーバー(OTAインストール用)を立てたいレシピ</title>
       <link>https://sharkattack51.github.io/post/centos_ssl_server_recipe/</link>
-      <pubDate>Fri, 20 Mar 2015 21:51:33 JST</pubDate>
+      <pubDate>Fri, 20 Mar 2015 21:51:33 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/centos_ssl_server_recipe/</guid>
       <description>
 
-&lt;h1 id=&#34;virtualboxに新規vm作成:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;VirtualBoxに新規VM作成&lt;/h1&gt;
+&lt;h1 id=&#34;virtualboxに新規vm作成&#34;&gt;VirtualBoxに新規VM作成&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Vagrantが楽&lt;/li&gt;
@@ -870,18 +866,16 @@ WPFが低レイヤーのどこかでイベントを上書きしてるんだろ�
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;サーバー設定:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;サーバー設定&lt;/h1&gt;
+&lt;h1 id=&#34;サーバー設定&#34;&gt;サーバー設定&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;ネットワーク設定&lt;/p&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ emacs /etc/sysconfig/network-scripts/ifcfg-eth0
 
-
 ONBOOT=yes
 NM_CONTROLLED=no
-
-
+    
 $ service network restart
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
@@ -905,11 +899,9 @@ $ service nginx start
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ yum install php-fpm
 $ emacs /etc/php-fpm.d/www.conf
 
-
 user = nginx
 group = nginx
-
-
+    
 $ service php-fpm start
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 
@@ -921,7 +913,7 @@ $ chkconfig php-fpm on
 &lt;/code&gt;&lt;/pre&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;サーバー証明書作成:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;サーバー証明書作成&lt;/h1&gt;
+&lt;h1 id=&#34;サーバー証明書作成&#34;&gt;サーバー証明書作成&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code class=&#34;language-sh&#34;&gt;$ cd ~
 $ openssl genrsa 2048 &amp;gt; cert.key
@@ -942,7 +934,7 @@ $ openssl req -new -x509 -days 3650 -key cert.key -out cert.crt -subj &#39;/CN=X
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;nginx設定を変更:044c6e2ffdcdfcd556eea0e367a03f2a&#34;&gt;nginx設定を変更&lt;/h1&gt;
+&lt;h1 id=&#34;nginx設定を変更&#34;&gt;nginx設定を変更&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;p&gt;https設定として証明書を指定、phpの動作を有効化する。&lt;/p&gt;
@@ -951,30 +943,24 @@ $ openssl req -new -x509 -days 3650 -key cert.key -out cert.crt -subj &#39;/CN=X
 $ mv default.conf default.conf.bak
 $ emacs example_ssl.conf
 
-
 server {
     listen        80;
     listen        443 ssl;
     server_name   XXXXXXXX;
 
-
     ssl_certificate       /XXX/cert.crt;
     ssl_certificate_key   /XXX/cert.key;
-
 
     ssl_session_cache     shared:SSL:1m;
     ssl_session_timeout   5m;
 
-
     ssl_ciphers                 HIGH:!aNULL:!MD5;
     ssl_prefer_server_ciphers   on;
-
 
     location / {
         root    /usr/share/nginx/html;
         index   index.html index.htm index.php;
     }
-
 
     location ~ \.php$ {
         root           /usr/share/nginx/html;
@@ -1002,7 +988,7 @@ server {
     <item>
       <title>KINECT v2</title>
       <link>https://sharkattack51.github.io/post/kinect2/</link>
-      <pubDate>Tue, 03 Feb 2015 22:12:59 JST</pubDate>
+      <pubDate>Tue, 03 Feb 2015 22:12:59 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/kinect2/</guid>
       <description>
@@ -1014,7 +1000,7 @@ server {
 &lt;li&gt;今後はXboxOne用+Windows用アダプタになる模様&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;動作環境:56dfcf25620037a9b9098a7284b1203a&#34;&gt;動作環境&lt;/h1&gt;
+&lt;h1 id=&#34;動作環境&#34;&gt;動作環境&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Windows 8.1&lt;/li&gt;
@@ -1024,7 +1010,7 @@ server {
 &lt;li&gt;USB 3.0&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;kinect-v1-とのスペック比較:56dfcf25620037a9b9098a7284b1203a&#34;&gt;Kinect(v1)とのスペック比較&lt;/h1&gt;
+&lt;h1 id=&#34;kinect-v1-とのスペック比較&#34;&gt;Kinect(v1)とのスペック比較&lt;/h1&gt;
 
 &lt;table&gt;
 &lt;thead&gt;
@@ -1123,7 +1109,7 @@ server {
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;構成:56dfcf25620037a9b9098a7284b1203a&#34;&gt;構成&lt;/h1&gt;
+&lt;h1 id=&#34;構成&#34;&gt;構成&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;code&gt;KinectMonitor&lt;/code&gt;によりWindowsサービスとして実行されるようになった
@@ -1133,7 +1119,7 @@ server {
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;コードサンプル:56dfcf25620037a9b9098a7284b1203a&#34;&gt;コードサンプル&lt;/h1&gt;
+&lt;h1 id=&#34;コードサンプル&#34;&gt;コードサンプル&lt;/h1&gt;
 
 &lt;pre&gt;&lt;code&gt;void Start()
 {
@@ -1148,7 +1134,7 @@ void Update()
 }
 &lt;/code&gt;&lt;/pre&gt;
 
-&lt;h1 id=&#34;取得データ:56dfcf25620037a9b9098a7284b1203a&#34;&gt;取得データ&lt;/h1&gt;
+&lt;h1 id=&#34;取得データ&#34;&gt;取得データ&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Color画像
@@ -1188,7 +1174,7 @@ void Update()
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;その他:56dfcf25620037a9b9098a7284b1203a&#34;&gt;その他&lt;/h1&gt;
+&lt;h1 id=&#34;その他&#34;&gt;その他&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Gesture Builder
@@ -1202,7 +1188,7 @@ void Update()
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;開発環境:56dfcf25620037a9b9098a7284b1203a&#34;&gt;開発環境&lt;/h1&gt;
+&lt;h1 id=&#34;開発環境&#34;&gt;開発環境&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;Visual Studio 2012、または、Visual Studio 2013（無料のExpress可）&lt;/li&gt;
@@ -1220,12 +1206,12 @@ void Update()
     <item>
       <title>MQTT</title>
       <link>https://sharkattack51.github.io/post/mqtt/</link>
-      <pubDate>Sat, 10 Jan 2015 21:36:30 JST</pubDate>
+      <pubDate>Sat, 10 Jan 2015 21:36:30 +0900</pubDate>
       
       <guid>https://sharkattack51.github.io/post/mqtt/</guid>
       <description>
 
-&lt;h1 id=&#34;mqttとは:4ac81870a274ec69df24400555a4c924&#34;&gt;MQTTとは？&lt;/h1&gt;
+&lt;h1 id=&#34;mqttとは&#34;&gt;MQTTとは？&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;インターネット上での双方向、1対多の通信が可能な通信プロトコル。&lt;/li&gt;
@@ -1239,13 +1225,13 @@ void Update()
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;mqttブローカーサービス:4ac81870a274ec69df24400555a4c924&#34;&gt;MQTTブローカーサービス&lt;/h1&gt;
+&lt;h1 id=&#34;mqttブローカーサービス&#34;&gt;MQTTブローカーサービス&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;&lt;a href=&#34;https://sango.shiguredo.jp/&#34;&gt;https://sango.shiguredo.jp/&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;
 
-&lt;h1 id=&#34;接続シーケンス:4ac81870a274ec69df24400555a4c924&#34;&gt;接続シーケンス&lt;/h1&gt;
+&lt;h1 id=&#34;接続シーケンス&#34;&gt;接続シーケンス&lt;/h1&gt;
 
 &lt;ol&gt;
 &lt;li&gt;アプリ、またはブラウザからサーバーへ接続
@@ -1265,7 +1251,7 @@ void Update()
 &lt;/ul&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h1 id=&#34;library:4ac81870a274ec69df24400555a4c924&#34;&gt;Library&lt;/h1&gt;
+&lt;h1 id=&#34;library&#34;&gt;Library&lt;/h1&gt;
 
 &lt;ul&gt;
 &lt;li&gt;iOS
